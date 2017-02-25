@@ -1,6 +1,6 @@
 ---
 layout   : post
-title    : "【LeetCode】 #1 Two Sum "
+title    : "【LeetCode】 #2 Add Two Numbers "
 date     : 2017-02-25 23:15:00
 author   : fxleyu
 tags:
