@@ -22,6 +22,7 @@ return [0, 1].
 ```
 
 ## Python
+- 下面是我提交的AC代码，运行时间是`1215ms`
 ```Python
 class Solution(object):
     def twoSum(self, nums, target):
@@ -38,4 +39,17 @@ class Solution(object):
             else:
                 map[item] = index
         return []
+```
+- 在评论区找到的优秀代码，运行时间是`355ms`
+```Python
+class Solution(object):
+    def twoSum(self, nums, target):
+        if len(nums) <= 1:
+            return False
+        buff_dict = {}
+        for i in range(len(nums)):
+            if nums[i] in buff_dict:
+                return [buff_dict[nums[i]], i]
+            else:
+                buff_dict[target - nums[i]] = i
 ```

@@ -20,6 +20,7 @@ Output: 7 -> 0 -> 8
 ```
 
 ## Python
+- 下面是我提交的AC代码，运行时间是`199ms`
 ```Python
 class Solution(object):
     def addTwoNumbers(self, l1, l2):
@@ -51,4 +52,27 @@ class Solution(object):
             temp.next = ListNode(1)
 
         return preResult.next
+```
+- 在评论区找到的优秀代码，运行时间是`138ms`
+```Python
+class Solution(object):
+    def addTwoNumbers(self, l1, l2):
+        """
+        :type l1: ListNode
+        :type l2: ListNode
+        :rtype: ListNode
+        """
+        ret = ListNode(0)
+        cur = ret
+        add = 0
+
+        while l1 or l2 or add:
+            val = (l1.val if l1 else 0) + (l2.val if l2 else 0) + add
+            add = val / 10
+            cur.next = ListNode(val % 10)
+            cur = cur.next
+            l1 = l1.next if l1 else None
+            l2 = l2.next if l2 else None
+
+        return ret.next
 ```
