@@ -30,6 +30,7 @@ The median is (2 + 3)/2 = 2.5
 
 ## Python
 - 下面是我提交的AC代码，运行时间是`95ms`
+
 ```python
 import sys
 
@@ -75,6 +76,7 @@ class Solution(object):
             return sys.maxint
 ```
 - 在评论区找到的优秀代码，运行时间是`126ms`
+
 ```python
 class Solution:
     # @return a float
