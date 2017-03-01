@@ -21,7 +21,7 @@ Given `"pwwkew"`, the answer is `"wke"`, with the length of 3. Note that the ans
 
 ## Python
 - 下面是我提交的AC代码，运行时间是`765ms`
-```Python
+```python
 class Solution(object):
     def lengthOfLongestSubstring(self, s):
         """
@@ -50,7 +50,7 @@ class Solution(object):
             return -1
 ```
 - 在评论区找到的优秀代码，运行时间是`82ms`
-```Python
+```python
 class Solution:
     # @return an integer
     def lengthOfLongestSubstring(self, s):

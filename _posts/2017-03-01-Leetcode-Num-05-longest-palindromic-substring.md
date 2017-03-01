@@ -27,7 +27,7 @@ Output: "bb"
 ```
 ## Python
 - 下面是我提交的AC代码，运行时间是`519ms`
-```Python
+```python
 class Solution(object):
     def longestPalindrome(self, s):
         """

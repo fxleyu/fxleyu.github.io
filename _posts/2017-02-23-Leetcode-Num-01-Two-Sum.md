@@ -23,7 +23,7 @@ return [0, 1].
 
 ## Python
 - 下面是我提交的AC代码，运行时间是`1215ms`
-```Python
+```python
 class Solution(object):
     def twoSum(self, nums, target):
         """
@@ -41,7 +41,7 @@ class Solution(object):
         return []
 ```
 - 在评论区找到的优秀代码，运行时间是`355ms`
-```Python
+```python
 class Solution(object):
     def twoSum(self, nums, target):
         if len(nums) <= 1:

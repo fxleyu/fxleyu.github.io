@@ -21,7 +21,7 @@ Output: 7 -> 0 -> 8
 
 ## Python
 - 下面是我提交的AC代码，运行时间是`199ms`
-```Python
+```python
 class Solution(object):
     def addTwoNumbers(self, l1, l2):
         """
@@ -54,7 +54,7 @@ class Solution(object):
         return preResult.next
 ```
 - 在评论区找到的优秀代码，运行时间是`138ms`
-```Python
+```python
 class Solution(object):
     def addTwoNumbers(self, l1, l2):
         """
