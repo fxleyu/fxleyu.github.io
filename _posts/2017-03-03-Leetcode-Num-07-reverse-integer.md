@@ -1,6 +1,6 @@
 ---
 layout   : post
-title    : "【LeetCode】 #6 Reverse Integer"
+title    : "【LeetCode】 #7 Reverse Integer"
 date     : 2017-03-03 23:30:00
 author   : fxleyu
 tags:
