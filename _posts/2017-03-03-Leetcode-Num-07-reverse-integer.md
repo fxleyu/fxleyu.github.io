@@ -1,7 +1,7 @@
 ---
 layout   : post
-title    : "【LeetCode】 #6 ZigZag Conversion"
-date     : 2017-03-02 23:30:00
+title    : "【LeetCode】 #6 Reverse Integer"
+date     : 2017-03-03 23:30:00
 author   : fxleyu
 tags:
     - LeetCode
@@ -35,6 +35,7 @@ class Solution(object):
             result = 0
         return result
 ```
+
 - 在评论区找到的其他代码，运行时间是`82ms`
 ```python
 class Solution(object):
