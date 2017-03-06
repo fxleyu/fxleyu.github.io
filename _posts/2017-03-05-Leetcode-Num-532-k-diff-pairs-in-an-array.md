@@ -1,6 +1,6 @@
 ---
 layout   : post
-title    : "【LeetCode】 #532 Lonely Pixel I"
+title    : "【LeetCode】 #532 K-diff Pairs in an Array"
 date     : 2017-03-05 22:29:00
 author   : fxleyu
 tags:
