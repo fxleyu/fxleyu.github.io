@@ -22,8 +22,8 @@ tags:
 由于国内不能访问GOOGLE，所以还需要利用第三方的服务来下载该插件。在这里我推荐一个网站，<http://chrome-extension-downloader.com/>。
 
 ## 参考
-* [**FIREFOX**] http://blog.csdn.net/dream_an/article/details/50280977
-* [**CHROME**]
+* **FIREFOX** http://blog.csdn.net/dream_an/article/details/50280977
+* **CHROME**
 http://www.ghacks.net/2017/02/15/local-cdn-for-chrome/
 
 
