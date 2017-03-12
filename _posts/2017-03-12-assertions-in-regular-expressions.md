@@ -31,6 +31,14 @@ $	 | 行的结尾
 # 环视
 > **环视**（lookaround）是一种非捕获分组，它根据某个模式之前或之后的内容匹配其他模式。环视也被称为**零宽度断言**（zero-length assertions）。
 
+Lookaround | Description
+-------|----------
+(?=X)  | X, via zero-width positive lookahead (正前瞻)
+(?!X)  | X, via zero-width negative lookahead (反前瞻)
+(?<=X) | X, via zero-width positive lookbehind (反前瞻)
+(?<!X) | X, via zero-width negative lookbehind (反后顾)
+
+
 环视包含如下四种：
 - 正前瞻（positive lookahead）
 - 反前瞻（negative lookahead）
