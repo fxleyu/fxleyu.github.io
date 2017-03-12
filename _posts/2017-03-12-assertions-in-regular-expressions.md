@@ -35,7 +35,7 @@ Lookaround | Description
 -------|----------
 (?=X)  | X, via zero-width positive lookahead (正前瞻)
 (?!X)  | X, via zero-width negative lookahead (反前瞻)
-(?<=X) | X, via zero-width positive lookbehind (反前瞻)
+(?<=X) | X, via zero-width positive lookbehind (正后顾)
 (?<!X) | X, via zero-width negative lookbehind (反后顾)
 
 
