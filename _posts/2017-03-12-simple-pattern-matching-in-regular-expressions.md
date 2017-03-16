@@ -7,6 +7,24 @@ tags:
     - RegEx
     - Java
 ---
+# Characters
+
+Characters | Description
+--------------|---------
+x      | The character x
+\\     | The backslash character
+\0n    | The character with octal value 0n (0 <= n <= 7)
+\0nn   | The character with octal value 0nn (0 <= n <= 7)
+\0mnn  | The character with octal value 0mnn (0 <= m <= 3, 0 <= n <= 7)
+\xhh   | The character with hexadecimal value 0xhh
+\uhhhh | The character with hexadecimal value 0xhhhh
+\t     | The tab character ('\u0009')
+\n     | The newline (line feed) character ('\u000A')
+\r     | he carriage-return character ('\u000D')
+\f     | The form-feed character ('\u000C')
+\a     | The alert (bell) character ('\u0007')
+\e     | The escape character ('\u001B')
+\cx    | The control character corresponding to x
 
 # 字符组（character class）
 字符组（character class），有时也称为字符集（character class）,定义了一组字符，其中任意字符都可能出现在匹配成功的字符串中。[character_class]
@@ -33,6 +51,7 @@ Predefined character classes  | Description
 \W | A non-word character: [^\w]
 
 ## POSIX character classes (US-ASCII only)
+
 POSIX character classes (US-ASCII only) | Description
 --------------|---------
 \p{Lower}  | A lower-case alphabetic character: [a-z]
@@ -41,7 +60,7 @@ POSIX character classes (US-ASCII only) | Description
 \p{Alpha}  | An alphabetic character:[\p{Lower}\p{Upper}]
 \p{Digit}  | A decimal digit: [0-9]
 \p{Alnum}  | An alphanumeric character: [\p{Alpha}\p{Digit}]
-\p{Punct}  | Punctuation: One of !"#$%&'()\*+,-./:;<=>?@[\^_`{|}~
+\p{Punct}  | 	Punctuation: One of !"#$%&'()*+,-./:;<=>?@[\]^_`{&#124;}~
 \p{Graph}  | A visible character: [\p{Alnum}\p{Punct}]
 \p{Print}  | A printable character: [\p{Graph}\x20]
 \p{Blank}  | A space or a tab: [ \t]
@@ -50,6 +69,7 @@ POSIX character classes (US-ASCII only) | Description
 \p{Space} | A whitespace character: [ \t\n\x0B\f\r]
 
 ## java.lang.Character
+
 java.lang.Character classes (simple java character type)  | Description
 --------|------
 \p{javaLowerCase}  | Equivalent to java.lang.Character.isLowerCase()
