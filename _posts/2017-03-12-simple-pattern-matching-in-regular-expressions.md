@@ -60,7 +60,7 @@ POSIX character classes (US-ASCII only) | Description
 \p{Alpha}  | An alphabetic character:[\p{Lower}\p{Upper}]
 \p{Digit}  | A decimal digit: [0-9]
 \p{Alnum}  | An alphanumeric character: [\p{Alpha}\p{Digit}]
-\p{Punct}  | 	Punctuation: One of !"#$%&'()*+,-./:;<=>?@\[\\\]^\_\`\{\|\}\~
+\p{Punct}  | 	Punctuation: One of !"#$%&'()\*+,-./:;<=>?@\[\\\]^\_\`\{\|\}\~
 \p{Graph}  | A visible character: [\p{Alnum}\p{Punct}]
 \p{Print}  | A printable character: [\p{Graph}\x20]
 \p{Blank}  | A space or a tab: [ \t]
