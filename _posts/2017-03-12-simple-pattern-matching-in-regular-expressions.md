@@ -7,24 +7,24 @@ tags:
     - RegEx
     - Java
 ---
-# Characters
+# 字符匹配
 
-Characters | Description
+字符 | 匹配
 --------------|---------
-x      | The character x
-\\\\   | The backslash character
-\\0n   | The character with octal value 0n (0 <= n <= 7)
-\\0nn  | The character with octal value 0nn (0 <= n <= 7)
-\\0mnn | The character with octal value 0mnn (0 <= m <= 3, 0 <= n <= 7)
-\xhh   | The character with hexadecimal value 0xhh
-\uhhhh | The character with hexadecimal value 0xhhhh
-\t     | The tab character ('\u0009')
-\n     | The newline (line feed) character ('\u000A')
-\r     | he carriage-return character ('\u000D')
-\f     | The form-feed character ('\u000C')
-\a     | The alert (bell) character ('\u0007')
-\e     | The escape character ('\u001B')
-\cx    | The control character corresponding to x
+x      | 字符 x
+\\\\   | 反斜线字符
+\\0n   | 带有八进制值 0 的字符 n (0 <= n <= 7)
+\\0nn  | 带有八进制值 0 的字符 nn (0 <= n <= 7)
+\\0mnn | 带有八进制值 0 的字符 mnn（0 <= m <= 3、0 <= n <= 7）
+\xhh   | 带有十六进制值 0x 的字符 hh
+\uhhhh | 带有十六进制值 0x 的字符 hhhh
+\t     | 制表符 ('\u0009')
+\n     | 新行（换行）符 ('\u000A')
+\r     | 回车符 ('\u000D')
+\f     | 换页符 ('\u000C')
+\a     | 报警 (bell) 符 ('\u0007')
+\e     | 转义符 ('\u001B')
+\cx    | 对应于 x 的控制符
 
 # 字符组（character class）
 字符组（character class），有时也称为字符集（character class）,定义了一组字符，其中任意字符都可能出现在匹配成功的字符串中。[character_class]
