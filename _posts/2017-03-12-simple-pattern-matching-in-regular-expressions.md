@@ -7,7 +7,12 @@ tags:
     - RegEx
     - Java
 ---
-# 字符匹配
+## 摘要
+本文将整理正则表达式的基础内容，其中字符、字符类、
+
+
+# 基础
+## 基本字符
 
 字符 | 匹配
 --------------|---------
@@ -26,56 +31,73 @@ x      | 字符 x
 \e     | 转义符 ('\u001B')
 \cx    | 对应于 x 的控制符
 
-# 字符组（character class）
-字符组（character class），有时也称为字符集（character class）,定义了一组字符，其中任意字符都可能出现在匹配成功的字符串中。[character_class]
+## Logical 运算符
 
-character class | Description
+运算符 | 描述
+------|-----
+XY    | X 后跟 Y
+X\|Y	| X 或 Y
+(X)	  | X，作为捕获组
+
+## 特殊构造（非捕获）
+
+特殊结构 | 描述
+--------|-----
+(?:X)              | X，作为非捕获组
+(?idmsux-idmsux)   | Nothing，但是将匹配标志i d m s u x on - off
+(?idmsux-idmsux:X) | X，作为带有给定标志 i d m s u x on - off
+(?=X)              | X，通过零宽度的正 lookahead (正前瞻)
+(?!X)              | X，通过零宽度的负 lookahead (反前瞻)
+(?<=X)             | X，通过零宽度的正 lookbehind (正后顾)
+(?<!X)             | X，通过零宽度的负 lookbehind (反后顾)
+(?>X)              | X，作为独立的非捕获组
+
+
+# 字符类（character class）
+**字符类**（character class）（有时也称为**字符类**），有时也称为字符集（character class）,定义了一组字符，其中任意字符都可能出现在匹配成功的字符串中。[character_class]
+
+## 0、普通字符类
+
+字符类 | 描述
 --------------|---------
-[abc]         | a, b, or c (simple class)
-[^abc]        | Any character except a, b, or c (negation)
-[a-zA-Z]      | a through z or A through Z, inclusive (range)
-[a-d[m-p]]   | a through d, or m through p: [a-dm-p] (union)
-[a-z&&[def]]  | d, e, or f (intersection)
-[a-z&&[^bc]]  | a through z, except for b and c: [ad-z] (subtraction)
-[a-z&&[^m-p]] | a through z, and not m through p: [a-lq-z] (subtraction)
+[abc]         | a、b 或 c（简单类）
+[^abc]        | 任何字符，除了 a、b 或 c（否定）
+[a-zA-Z]      | a 到 z 或 A 到 Z，两头的字母包括在内（范围）
+[a-d[m-p]]    | a 到 d 或 m 到 p：[a-dm-p]（并集）
+[a-z&&[def]]  | d、e 或 f（交集）
+[a-z&&[^bc]]  | a 到 z，除了 b 和 c：[ad-z]（减去）
+[a-z&&[^m-p]] | a 到 z，而非 m 到 p：[a-lq-z]（减去）
 
+## 1、预定义字符类
 
-Predefined character classes  | Description
+预定义字符类  | 描述
 --------------|---------
-.  | Any character (may or may not match line terminators)
-\d | A digit: [0-9]
-\D | A non-digit: [^0-9]
-\s | A whitespace character: [ \t\n\x0B\f\r]
-\S | A non-whitespace character: [^\s]
-\w | A word character: [a-zA-Z_0-9]
-\W | A non-word character: [^\w]
+.  | 任何字符（与行结束符可能匹配也可能不匹配）
+\d | 数字：[0-9]
+\D | 非数字： [^0-9]
+\s | 空白字符：[ \t\n\x0B\f\r]
+\S | 非空白字符：[^\s]
+\w | 单词字符：[a-zA-Z_0-9]
+\W | 非单词字符：[^\w]
 
-## POSIX character classes (US-ASCII only)
+## 2、POSIX 字符类
+POSIX（可移植操作系统接口，Portable Operating System Interface of UNIX，缩写为 POSIX）字符类是用于US-ASCII。
 
-POSIX character classes (US-ASCII only) | Description
+POSIX 字符类 | 描述
 --------------|---------
-\p{Lower}  | A lower-case alphabetic character: [a-z]
-\p{Upper}  | An upper-case alphabetic character:[A-Z]
-\p{ASCII}  | All ASCII:[\x00-\x7F]
-\p{Alpha}  | An alphabetic character:[\p{Lower}\p{Upper}]
-\p{Digit}  | A decimal digit: [0-9]
-\p{Alnum}  | An alphanumeric character: [\p{Alpha}\p{Digit}]
-\p{Punct}  | 	Punctuation: One of !"#$%&'()\*+,-./:;<=>?@\[\\\]^\_\`\{\|\}\~
-\p{Graph}  | A visible character: [\p{Alnum}\p{Punct}]
-\p{Print}  | A printable character: [\p{Graph}\x20]
-\p{Blank}  | A space or a tab: [ \t]
-\p{Cntrl}  | A control character: [\x00-\x1F\x7F]
-\p{XDigit} | A hexadecimal digit: [0-9a-fA-F]
-\p{Space} | A whitespace character: [ \t\n\x0B\f\r]
-
-## java.lang.Character
-
-java.lang.Character classes (simple java character type)  | Description
---------|------
-\p{javaLowerCase}  | Equivalent to java.lang.Character.isLowerCase()
-\p{javaUpperCase}  | Equivalent to java.lang.Character.isUpperCase()
-\p{javaWhitespace} | Equivalent to java.lang.Character.isWhitespace()
-\p{javaMirrored}   | Equivalent to java.lang.Character.isMirrored()
+\p{Lower}  | 小写字母字符：[a-z]
+\p{Upper}  | 大写字母字符：[A-Z]
+\p{ASCII}  | 所有 ASCII：[\x00-\x7F]
+\p{Alpha}  | 字母字符：[\p{Lower}\p{Upper}]
+\p{Digit}  | 十进制数字：[0-9]
+\p{Alnum}  | 字母数字字符：[\p{Alpha}\p{Digit}]
+\p{Punct}  | 标点符号：!"#$%&'()\*+,-./:;<=>?@[\\]^\_\`{\|}~
+\p{Graph}  | 可见字符：[\p{Alnum}\p{Punct}]
+\p{Print}  | 可打印字符：[\p{Graph}\x20]
+\p{Blank}  | 空格或制表符：[ \t]
+\p{Cntrl}  | 控制字符：[\x00-\x1F\x7F]
+\p{XDigit} | 十六进制数字：[0-9a-fA-F]
+\p{Space}  | 空白字符：[ \t\n\x0B\f\r]
 
 
 [character_class]:https://msdn.microsoft.com/en-us/library/20bw873z(v=vs.110).aspx
