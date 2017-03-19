@@ -7,14 +7,14 @@ tags:
     - RegEx
     - Java
 ---
-# 介绍
+# 一、介绍
 **断言**（**Assertion**），也被称为**零宽度断言**（**zero-width assertions**），本身不匹配字符，而是匹配字符串中的位置。
 
 **断言**又包含**锚位符**（**Anchor**）、**环视**（**Lookarounds**）。
 - **锚位符**，也被称为**边界**（**Boundary**），
 - **环视**，是一种非捕获分组，它根据某个模式之前或之后的内容匹配其他模式。
 
-# 边界
+# 二、边界
 
 Anchor | Description
 ---|-----
@@ -28,7 +28,7 @@ $	 | 行的结尾
 \z | 输入的结尾
 
 
-# 环视
+# 三、环视
 > **环视**（lookaround）是一种非捕获分组，它根据某个模式之前或之后的内容匹配其他模式。环视也被称为**零宽度断言**（zero-length assertions）。
 
 Lookaround | Description
@@ -45,15 +45,15 @@ Lookaround | Description
 - 正后顾（positive lookbehind）
 - 反后顾（negative lookbehind）
 
-## 正前瞻
+## 3.1 正前瞻
 
-## 反前瞻
+## 3.2 反前瞻
 
-## 正后顾
+## 3.3 正后顾
 
-## 反后顾
+## 3.4 反后顾
 
-## 应用
+## 四、应用
 密码强度匹配
 
-# 总结
+# 五、总结

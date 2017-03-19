@@ -8,10 +8,9 @@ tags:
     - Java
 ---
 ## 摘要
-本文将整理正则表达式的基础内容，其中字符、字符类、
+本文将整理正则表达式的基础内容，其中字符、字符类、逻辑运算符以及特殊结构等内容。
 
-
-# 基础
+# 字符
 ## 基本字符
 
 字符 | 匹配
@@ -31,30 +30,20 @@ x      | 字符 x
 \e     | 转义符 ('\u001B')
 \cx    | 对应于 x 的控制符
 
-## Logical 运算符
+## 元字符
+**元字符**（metacharacter）是一种特殊的字符，该字符被匹配器（Matcher）解析位特殊含义[[metacharacter]]。
 
-运算符 | 描述
-------|-----
-XY    | X 后跟 Y
-X\|Y	| X 或 Y
-(X)	  | X，作为捕获组
+在Java的API中，被支持的元字符有: `<([{\^-=$!|]})?/*+.>`
 
-## 特殊构造（非捕获）
+> **注意**: 在特定情况下，上述列表中的特殊字符并不被认为是元字符。
 
-特殊结构 | 描述
---------|-----
-(?:X)              | X，作为非捕获组
-(?idmsux-idmsux)   | Nothing，但是将匹配标志i d m s u x on - off
-(?idmsux-idmsux:X) | X，作为带有给定标志 i d m s u x on - off
-(?=X)              | X，通过零宽度的正 lookahead (正前瞻)
-(?!X)              | X，通过零宽度的负 lookahead (反前瞻)
-(?<=X)             | X，通过零宽度的正 lookbehind (正后顾)
-(?<!X)             | X，通过零宽度的负 lookbehind (反后顾)
-(?>X)              | X，作为独立的非捕获组
+在正则表达式中，有两种方式可以把元字符强制转换位普通字符：
+- 使用反斜线（`\`）来处理元字符
+- 使用`\Q`（开始位置）和`\E`（结束位置）来环绕元字符
 
 
 # 字符类（character class）
-**字符类**（character class）（有时也称为**字符类**），有时也称为字符集（character class）,定义了一组字符，其中任意字符都可能出现在匹配成功的字符串中。[character_class]
+**字符类**（character class）（有时也称为**字符类**），有时也称为字符集（character class）,定义了一组字符，其中任意字符都可能出现在匹配成功的字符串中[[character_class]]。
 
 ## 0、普通字符类
 
@@ -100,4 +89,34 @@ POSIX 字符类 | 描述
 \p{Space}  | 空白字符：[ \t\n\x0B\f\r]
 
 
+# 逻辑运算符
+
+运算符 | 描述
+------|-----
+XY    | X 后跟 Y
+X\|Y	| X 或 Y
+(X)	  | X，作为捕获组
+
+# 特殊构造（非捕获）
+
+特殊结构 | 描述
+--------|-----
+(?:X)              | X，作为非捕获组
+(?idmsux-idmsux)   | Nothing，但是将匹配标志i d m s u x on - off
+(?idmsux-idmsux:X) | X，作为带有给定标志 i d m s u x on - off
+(?=X)              | X，通过零宽度的正 lookahead (正前瞻)
+(?!X)              | X，通过零宽度的负 lookahead (反前瞻)
+(?<=X)             | X，通过零宽度的正 lookbehind (正后顾)
+(?<!X)             | X，通过零宽度的负 lookbehind (反后顾)
+(?>X)              | X，作为独立的非捕获组
+
+# 引用
+引用  | 描述
+------|------
+\  | Nothing，但是引用接下来的字符
+\Q | Nothing，但是引用所有字符，直到 \E
+\E | Nothing，但是结束从 \Q 开始的引用
+
+
 [character_class]:https://msdn.microsoft.com/en-us/library/20bw873z(v=vs.110).aspx
+[metacharacter]:http://docs.oracle.com/javase/tutorial/essential/regex/literals.html
