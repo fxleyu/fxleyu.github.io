@@ -47,22 +47,59 @@ public static PendingIntent getService(Context context, int requestCode, Intent 
 # 三、其他使用闹钟管理器的场景
 在上部分只是一个简单的闹钟管理器使用场景，在这部分将介绍其他的使用场景。
 ## 3.1 设置重复闹钟
+```java
+Intent intent = new Intent(this.mContext, TestReceiver.class);
+intent.putExtra("message", "Repeating Alarm");
+PendingIntent pi = this.getDistinctPendingIntent(intent, 2);
 
+AlarmManager am = (AlarmManager)this.mContext.getSystemService(Context.ALARM_SERVICE);
+am.setRepeating(AlarmManager.RTC_WAKEUP,
+    cal.getTimeInMillis(),
+    5*1000, //5 secs
+    pi);
+```
+其中`getDistinctPendingIntent`实现如下:
+```java
+protected PendingIntent getDistinctPendingIntent(Intent intent, int requestId) {
+    PendingIntent pi = PendingIntent.getBroadcast(
+            mContext, 	//context
+            requestId, 	//request id
+            intent, 		//intent to be delivered
+            0);
+
+    //pending intent flags
+    //PendingIntent.FLAG_ONE_SHOT);    	
+    return pi;
+}
+```
 ## 3.2 取消闹钟
 ```java
+Intent intent = new Intent(this.mContext, TestReceiver.class);
 PendingIntent pi = this.getDistinctPendingIntent(intent, 2);
 // Schedule the alarm!
-AlarmManager am =
-  (AlarmManager)
-     this.mContext.getSystemService(Context.ALARM_SERVICE);
+AlarmManager am = (AlarmManager) this.mContext.getSystemService(Context.ALARM_SERVICE);
 am.cancel(pi);
 ```
 ## 3.3 使用多个闹钟
+使用`requestCode`来限定不同的`PendingItent`，进而可以使用多个闹钟。
+```java
+AlarmManager am = (AlarmManager) mContext.getSystemService(Context.ALARM_SERVICE);
+
+am.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), getDistinctPendingIntent(intent,1));
+am.set(AlarmManager.RTC_WAKEUP, cal2.getTimeInMillis(), getDistinctPendingIntent(intent,2));
+am.set(AlarmManager.RTC_WAKEUP, cal3.getTimeInMillis(), getDistinctPendingIntent(intent,3));
+```
 
 # 四、闹钟管理器的注意事项
 1. 闹钟和`PendingIntent`是一一对应的。一个无法用于多个闹钟。最后一个闹钟会覆盖前面的闹钟。所以可以使用`PendingItent`来终止闹钟。
-
+2. 需要基于设备重启消息以及可能的时间改变消息来重新设置闹钟，以保证闹钟不会因为这些时间导致闹钟不生效或者出现错误。也就是需要监听如下广播:
+  - `android.intent.action.BOOT_COMPLETED`
+  - `android.intent.action.ACTION_TIME_CHANGED`
+  - `android.intent.action.ACTION_TIMEZONE_CHANGED`
 
 # 五、小结
+本文介绍了闹钟管理器在给定时刻和特定时间间隔运行代码。还指出了一些关于闹钟管理器的奇怪现象。
 
 # 参考资料
+- [1] [书籍] 精通 Android 3    
+- [2] [网址] https://developer.android.google.cn/reference/android/app/AlarmManager.html
