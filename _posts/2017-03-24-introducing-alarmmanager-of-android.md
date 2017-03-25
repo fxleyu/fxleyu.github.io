@@ -1,7 +1,7 @@
 ---
 layout   : post
 title    : "学习Android的闹钟管理器"
-date     : 2017-03-23 23:30:00
+date     : 2017-03-24 23:30:00
 author   : fxleyu
 tags:
     - Android
