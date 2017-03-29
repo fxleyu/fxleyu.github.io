@@ -21,6 +21,9 @@ TCP，Transmission Control Protocol，其中文全称是传输控制协议。该
 
 在通常情况下，把报文段中的第一个字节号称为序号（Sequence number，Seq）。而把期待对方传送的下一个字节号称为确认号（Acknowledgment number ，Ack）。
 
+接收窗口是对方发送的包含确认的报文段中所给出的值。   
+拥塞窗口是由网络为了避免拥塞而确定的值。
+
 为了平滑的完成TCP的操作，大多数的TCP实现必须完成如下四种计时器：
 - 重传计时器
 - 持久计时器
@@ -113,7 +116,63 @@ TCP 的连接过程被称为 三向握手（three-way handshake），其结构�
 
 
 # 五、TCP独特性
+## 5.1 流量控制
+**流量控制** 对源点在收到从终点发来的确认之前可以发送的数据量进行管制。
 
+TCP在缓存（用来暂时存放从应用程序传递来并准备发送的数据）上定义一个窗口。TCP 发送数据的多少由这个窗口协议定义。
+
+为了完成流量控制，TCP 使用**滑动窗口协议**。
+
+窗口可以展开、合拢或缩回。这三种活动受接收方而不是发送方控制，同时也却决于网络中的拥塞情况。展开窗口表示窗口右沿向右移动，也就是允许从缓存中发送更多新的字节；合拢窗口表示窗口左沿向右移，也就是表示某些字节被确认；缩回窗口表示窗口右沿向左移，这是非常不希望出现的情况。
+
+> 滑动窗口用来使传输更加有效，同时也用来控制数据的流动，使得终点不至于因数据过量而瘫痪。TCP 的滑动窗口使面向字节的。
+
+窗口大小取决于两个值的最小值：接收窗口（rwnd）和拥塞窗口（cwnd）。`wnd = min(rwnd,cwnd)`
+
+为了保证不会出现窗口缩回，必须保证
+> 新的ack + 新的rwnd >= 上一个ack + 上一个rwnd
+
+> 为了避免缩回发送端窗口，接收端必须等待，直到在缓存中由更多的空间可以使用。
+
+接收端可以用发送 rwnd 为0的报文段来暂时关闭窗口。（窗口关闭）
+
+关于TCP滑动窗口的一些要点：
+- 窗口大小是 rwnd 和 cwnd 中的较小的一个。
+- 源点并非必须要发送整个窗口大小的数据。
+- 接收端可以使窗口展开或合拢，但不应使它缩回。
+- 终点可以在任何时刻发送确认，只要这不会引起窗口的缩回。
+- 接收端可以暂时关闭窗口；但发送端永远可以在窗口关闭后发送一个字节的报文段（为了探测probing，用于防止死锁）
+
+糊涂窗口综合症；    
+在滑动窗口的操作中可能出现一个严重的问题，这就是发送应用程序产生数据很慢，或者接收应用消耗数据很慢，或者两者都有。不管是上述情况的哪一种，都使发送数据的报文端很小，这就引起操作效率的降低。因为每一个报文段至少由40字节的消耗（20字节的IP首部，20字节的TCP首部）。该问题称为糊涂窗口综合症。
+
+为了解决发送端的问题，出现了Nagle算法，该算法是一种 TCP 协议的优化。
+> A TCP/IP optimization called the Nagle Algorithm can also limit data transfer speed on a connection. The Nagle Algorithm is designed to reduce protocol overhead for applications that send small amounts of data, such as Telnet, which sends a single character at a time. Rather than immediately send a packet with lots of header and little data, the stack waits for more data from the application, or an acknowledgment, before proceeding.
+
+其算法具体描述如下：
+```
+if there is new data to send
+  if the window size >= MSS and available data is >= MSS
+    send complete MSS segment now
+  else
+    if there is unconfirmed data still in the pipe
+      enqueue data in the buffer until an acknowledge is received
+    else
+      send data immediately
+    end if
+  end if
+end if
+```
+其有满足：网络上由传送的数据（ack也算），或者当前没有数据
+
+为了解决接收端的问题：
+- **Clark解决方案** 在数据到达就发送确认，但在缓存以及由足够大的空间放入最大长度的报文段之前，或者缓存空间的一半以及变空之前，一直都宣布窗口值为零
+- **推迟确认** 当报文段到达时并不立即发送确认。优点：减少通信量；缺点：可能导致重发。
+
+这些方法都可以防止发送端窗口展开，防止多余数据传送。
+
+## 5.2 差错检测
+## 5.3 拥塞控制
 # 六、总结
 
 # 参考资料
