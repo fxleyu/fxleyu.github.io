@@ -101,3 +101,199 @@ public class Main {
 
 # 生成器
 意图：将一个复杂对象的构建与它的表示分离，使得同样的创建过程可以创建不同的表示。
+适用性：
+- 当创建复杂对象的算法应该独立于该对象的组成部分以及它们的装配方式时。
+- 当构造过程必须允许被构造的对象有不同的表示时。
+
+![Structure](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Builder_UML_class_diagram.svg/750px-Builder_UML_class_diagram.svg.png)
+
+```java
+/**
+ * Represents the product created by the builder.
+ */
+class Car {
+    private int wheels;
+    private String color;
+
+    public Car() {
+    }
+
+    @Override
+    public String toString() {
+        return "Car [wheels = " + wheels + ", color = " + color + "]";
+    }
+
+    public int getWheels() {
+        return wheels;
+    }
+
+    public void setWheels(final int wheels) {
+        this.wheels = wheels;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(final String color) {
+        this.color = color;
+    }
+}
+
+/**
+ * The builder abstraction.
+ */
+interface CarBuilder {
+    CarBuilder setWheels(final int wheels);
+
+    CarBuilder setColor(final String color);
+
+    Car build();
+}
+
+class CarBuilderImpl implements CarBuilder {
+    private Car car;
+
+    public CarBuilderImpl() {
+        car = new Car();
+    }
+
+    @Override
+    public CarBuilder setWheels(final int wheels) {
+        car.setWheels(wheels);
+        return this;
+    }
+
+    @Override
+    public CarBuilder setColor(final String color) {
+        car.setColor(color);
+        return this;
+    }
+
+    @Override
+    public Car build() {
+        return car;
+    }
+}
+
+public class CarBuildDirector {
+    private CarBuilder builder;
+
+    public CarBuildDirector(final CarBuilder builder) {
+        this.builder = builder;
+    }
+
+    public Car construct() {
+        return builder.setWheels(4).setColor("Red").build();
+    }
+
+    public static void main(final String[] arguments) {
+        CarBuilder builder = new CarBuilderImpl();
+        CarBuildDirector carBuildDirector = new CarBuildDirector(builder);
+        System.out.println(carBuildDirector.construct());
+
+```
+
+
+# 工厂方法（factory method）
+意图：定义一个用于创建对象的接口，让子类决定实例化哪一个类。工厂方法使一个类的实例化延迟到其子类。
+适用性：
+- 当一个类不知道它所必须创建的对象的类的时候。
+- 当一个类希望由它的子类来指定它所创建的对象的时候。
+- 当类将创建对象的职责委托给了多个帮助子类中的一个，并且你希望将哪一个帮助子类是代理者这一信息局部化的时候。
+![Structure](https://upload.wikimedia.org/wikipedia/commons/d/df/New_WikiFactoryMethod.png)
+
+```java
+public abstract class MazeGame {
+    private final List<Room> rooms = new ArrayList<>();
+
+    public MazeGame() {
+        Room room1 = makeRoom();
+        Room room2 = makeRoom();
+        room1.connect(room2);
+        rooms.add(room1);
+        rooms.add(room2);
+    }
+
+    abstract protected Room makeRoom();
+}
+
+public class MagicMazeGame extends MazeGame {
+    @Override
+    protected Room makeRoom() {
+        return new MagicRoom();
+    }
+}
+
+public class OrdinaryMazeGame extends MazeGame {
+    @Override
+    protected Room makeRoom() {
+        return new OrdinaryRoom();
+    }
+}
+
+MazeGame ordinaryGame = new OrdinaryMazeGame();
+MazeGame magicGame = new MagicMazeGame();
+```
+
+# 原型（prototype）
+意图：用原型实例来指定创建对象的种类，并且通过拷贝这些原型创建新的对象。
+![Structure](https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Prototype_UML.svg/900px-Prototype_UML.svg.png)
+
+```java
+// Prototype pattern
+
+	 public abstract class Prototype implements Cloneable {
+		 public Prototype clone() throws CloneNotSupportedException{
+			 return (Prototype) super.clone();
+		}
+	}
+
+	 public class ConcretePrototype1 extends Prototype {
+		@Override
+		 public Prototype clone() throws CloneNotSupportedException {
+			return super.clone();
+		}
+	}
+
+	public class ConcretePrototype2 extends Prototype {
+		@Override
+		public Prototype clone() throws CloneNotSupportedException {
+			return super.clone();
+		}
+	}
+```
+
+# 单件（singleton）
+意图：保证一个类仅有一个实例，并提供一个访问它的全局访问店。
+
+![class_diagram](https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Singleton_UML_class_diagram.svg/330px-Singleton_UML_class_diagram.svg.png)
+```java
+public final class Singleton {
+    private static final Singleton INSTANCE = new Singleton();
+
+    private Singleton() {}
+
+    public static Singleton getInstance() {
+        return INSTANCE;
+    }
+}
+
+// Lazy initialization
+public final class Singleton {
+    private static volatile Singleton instance = null;
+
+    private Singleton() {}
+
+    public static Singleton getInstance() {
+        if (instance == null) {
+            synchronized(Singleton.class) {
+                if (instance == null) {
+                    instance = new Singleton();
+                }
+            }
+        }
+        return instance;
+    }
+}
+```
