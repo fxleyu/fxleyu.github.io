@@ -1,3 +1,5 @@
+---
+layout   : post
 title    : "学习结构型模式"
 date     : 2017-04-05 22:40:00
 author   : fxleyu
