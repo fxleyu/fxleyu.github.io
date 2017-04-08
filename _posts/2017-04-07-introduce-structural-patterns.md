@@ -5,11 +5,11 @@ date     : 2017-04-05 22:40:00
 author   : fxleyu
 tags:
     - 设计模式
--------
+---
 
 结构性模式：
 - 适配器（adapter）
-- 桥接模式（bridge）
+- 桥接（bridge）
 - 组合（composite）
 - 装饰（decorator）
 - 外观（facade）
@@ -197,7 +197,199 @@ public class Program {
 }
 ```
 
+# 装饰
+意图：动态地给一个对象添加一些额外的职责。就增加功能来说，装饰模式相对于生成子类更为灵活。
+
+适用性：
+- 在不影响其他对象的情况下，以动态、透明的方式给单个对象添加职责。
+- 处理那些可以撤销的职责。
+- 当不能采用生成子类的方法进行扩充时。一种情况是，可以有大量独立的扩展，为支持每一个组合将产生大量的子类，使得子类数目呈现爆炸性增长。另一种情况可能是因为类定义被隐藏，或类定义不能用于生成子类。
+
+![Decorator_UML_class_diagram](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Decorator_UML_class_diagram.svg/960px-Decorator_UML_class_diagram.svg.png)
+
+![class_diagram](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/UML2_Decorator_Pattern.png/600px-UML2_Decorator_Pattern.png)
+
+## 代码实例一
+
+```java
+// The Window interface class
+public interface Window {
+    void draw(); // Draws the Window
+    String getDescription(); // Returns a description of the Window
+}
+
+// Implementation of a simple Window without any scrollbars
+class SimpleWindow implements Window {
+    public void draw() {
+        // Draw window
+    }
+
+    public String getDescription() {
+        return "simple window";
+    }
+}
+
+// abstract decorator class - note that it implements Window
+abstract class WindowDecorator implements Window {
+    protected Window windowToBeDecorated; // the Window being decorated
+
+    public WindowDecorator (Window windowToBeDecorated) {
+        this.windowToBeDecorated = windowToBeDecorated;
+    }
+    public void draw() {
+        windowToBeDecorated.draw(); //Delegation
+    }
+    public String getDescription() {
+        return windowToBeDecorated.getDescription(); //Delegation
+    }
+}
+
+// The first concrete decorator which adds vertical scrollbar functionality
+class VerticalScrollBarDecorator extends WindowDecorator {
+    public VerticalScrollBarDecorator (Window windowToBeDecorated) {
+        super(windowToBeDecorated);
+    }
+
+    @Override
+    public void draw() {
+        super.draw();
+        drawVerticalScrollBar();
+    }
+
+    private void drawVerticalScrollBar() {
+        // Draw the vertical scrollbar
+    }
+
+    @Override
+    public String getDescription() {
+        return super.getDescription() + ", including vertical scrollbars";
+    }
+}
+
+// The second concrete decorator which adds horizontal scrollbar functionality
+class HorizontalScrollBarDecorator extends WindowDecorator {
+    public HorizontalScrollBarDecorator (Window windowToBeDecorated) {
+        super(windowToBeDecorated);
+    }
+
+    @Override
+    public void draw() {
+        super.draw();
+        drawHorizontalScrollBar();
+    }
+
+    private void drawHorizontalScrollBar() {
+        // Draw the horizontal scrollbar
+    }
+
+    @Override
+    public String getDescription() {
+        return super.getDescription() + ", including horizontal scrollbars";
+    }
+}
+
+public class DecoratedWindowTest {
+    public static void main(String[] args) {
+        // Create a decorated Window with horizontal and vertical scrollbars
+        Window decoratedWindow = new HorizontalScrollBarDecorator (
+                new VerticalScrollBarDecorator (new SimpleWindow()));
+
+        // Print the Window's description
+        System.out.println(decoratedWindow.getDescription());
+    }
+}
+```
+
+## 代码实例二
+
+```java
+// The interface Coffee defines the functionality of Coffee implemented by decorator
+public interface Coffee {
+    public double getCost(); // Returns the cost of the coffee
+    public String getIngredients(); // Returns the ingredients of the coffee
+}
+
+// Extension of a simple coffee without any extra ingredients
+public class SimpleCoffee implements Coffee {
+    @Override
+    public double getCost() {
+        return 1;
+    }
+
+    @Override
+    public String getIngredients() {
+        return "Coffee";
+    }
+}
+
+// Abstract decorator class - note that it implements Coffee interface
+public abstract class CoffeeDecorator implements Coffee {
+    protected final Coffee decoratedCoffee;
+
+    public CoffeeDecorator(Coffee c) {
+        this.decoratedCoffee = c;
+    }
+
+    public double getCost() { // Implementing methods of the interface
+        return decoratedCoffee.getCost();
+    }
+
+    public String getIngredients() {
+        return decoratedCoffee.getIngredients();
+    }
+}
+
+// Decorator WithMilk mixes milk into coffee.
+// Note it extends CoffeeDecorator.
+class WithMilk extends CoffeeDecorator {
+    public WithMilk(Coffee c) {
+        super(c);
+    }
+
+    public double getCost() { // Overriding methods defined in the abstract superclass
+        return super.getCost() + 0.5;
+    }
+
+    public String getIngredients() {
+        return super.getIngredients() + ", Milk";
+    }
+}
+
+// Decorator WithSprinkles mixes sprinkles onto coffee.
+// Note it extends CoffeeDecorator.
+class WithSprinkles extends CoffeeDecorator {
+    public WithSprinkles(Coffee c) {
+        super(c);
+    }
+
+    public double getCost() {
+        return super.getCost() + 0.2;
+    }
+
+    public String getIngredients() {
+        return super.getIngredients() + ", Sprinkles";
+    }
+}
+
+public class Main {
+    public static void printInfo(Coffee c) {
+        System.out.println("Cost: " + c.getCost() + "; Ingredients: " + c.getIngredients());
+    }
+
+    public static void main(String[] args) {
+        Coffee c = new SimpleCoffee();
+        printInfo(c);
+
+        c = new WithMilk(c);
+        printInfo(c);
+
+        c = new WithSprinkles(c);
+        printInfo(c);
+    }
+}
+```
 # 外观（facade）
+
 意图：为子系统中的一组接口提供一个一致的界面，外观模式定义了一个高层接口，这个接口使得这一子系统更加容易使用。
 
 适用性：
