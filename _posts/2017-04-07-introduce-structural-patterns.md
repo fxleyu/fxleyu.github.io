@@ -48,6 +48,18 @@ public class AdapteeToClientAdapter implements Adapter {
 
 # 桥接
 
+意图：将抽象部分与它的实现部分分离，使它们都可以独立地变化。
+适用性：
+- 你不希望在抽象和它的实现部分之间有一个固定的绑定。例如这种情况可能是因为，在程序运行时刻实现部分应可以被选择或者切换。
+- 类的抽象已经它的实现都应该可以通过生成子类的方式加以扩充。这时桥接模式使你可以对不同的抽象接口和实现部分进行组合，并分别对它们进行扩充。
+- 对一个抽象的实现部分的修改应对客户不产生影响，即客户的代码不需要重新编译。
+
+![Structure](https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Bridge_UML_class_diagram.svg/750px-Bridge_UML_class_diagram.svg.png)
+
+
+![LePUS3](https://upload.wikimedia.org/wikipedia/commons/a/a8/Bridge_pattern_in_LePUS3.1.gif)
+
+
 ```java
 /** "Implementor" */
 interface DrawingAPI {
