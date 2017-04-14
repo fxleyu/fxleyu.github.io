@@ -41,3 +41,25 @@ else if j < str2.length
     print ...
 ```
 该思路还是有问题的，待进一步考虑
+
+### 进一步的解决方案
+对于字符串的**差异运算**。    
+```
+INPUT: str1, str2
+
+init list
+for item1, i ： str1
+    for item2, j : str2
+        if item == item2
+            list.add(i,j)
+// 这里的差异运算就转换求最长的子队列长度
+// 要求队列中的任意元组，其元素均要大于排在其前面的元素大小
+// list = [(1,2), (1,3), (1,4)]
+init result
+for (i,j) : list:
+    if isUse (i,j) list
+        result.add(i,j)
+
+isUse (i,j) list
+  next = (i+1, j+)
+```
