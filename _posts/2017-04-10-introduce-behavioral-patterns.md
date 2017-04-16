@@ -20,31 +20,380 @@ tags:
 - 模板方法（template method）
 - 访问者（visitor）
 
-# 责任链
-意图：使多个对象都有机会处理请求，从而避免请求的发送者和接收者之间的耦合关系。将这些对象连成一条链，并沿着这条链传递改请求，直到有一个对象处理它为止。
+# 一、责任链
+责任链模式是一种对象行为型模式。线性处理。
 
-适用性：
+意图：使多个对象都有机会处理请求，从而避免请求的发送者和接收者之间的耦合关系。将这些对象
+连成一条链，并沿着这条链传递改请求，直到有一个对象处理它为止。
+
+适用性：    
 - 有多个的对象可以处理一个请求，哪个对象处理改请求运行时刻自动确定。
 - 你想在不明确接收者的情况下，向多个对象中的一个提交一个请求。
 - 可处理一个请求的对象集合应被动态的指定。
 
+## Java 实现
+```java
+abstract class PurchasePower {
+    protected static final double BASE = 500;
+    protected PurchasePower successor;
 
-# 命令
-意图：将一个请求封装为一个对象，从而使你可用不同的请求对客户进行参数化；对请求排队或记录请求日志、以及支持可撤销的操作。别名为动作（action），事务（transaction）
+    abstract protected double getAllowable();
+    abstract protected String getRole();
+
+    public void setSuccessor(PurchasePower successor) {
+        this.successor = successor;
+    }
+
+    public void processRequest(PurchaseRequest request){
+        if (request.getAmount() < this.getAllowable()) {
+            System.out.println(this.getRole() + " will approve $" + request.getAmount());
+        } else if (successor != null) {
+            successor.processRequest(request);
+        }
+    }
+}
+
+class ManagerPPower extends PurchasePower {
+
+    protected double getAllowable() {
+        return BASE * 10;
+    }
+
+    protected String getRole() {
+        return "Manager";
+    }
+}
+
+class DirectorPPower extends PurchasePower {
+
+    protected double getAllowable() {
+        return BASE * 20;
+    }
+
+    protected String getRole() {
+        return "Director";
+    }
+}
+
+class VicePresidentPPower extends PurchasePower {
+
+    protected double getAllowable() {
+        return BASE * 40;
+    }
+
+    protected String getRole() {
+        return "Vice President";
+    }
+}
+
+class PresidentPPower extends PurchasePower {
+
+    protected double getAllowable() {
+        return BASE * 60;
+    }
+
+    protected String getRole() {
+        return "President";
+    }
+}
+
+class PurchaseRequest {
+
+    private double amount;
+    private String purpose;
+
+    public PurchaseRequest(double amount, String purpose) {
+        this.amount = amount;
+        this.purpose = purpose;
+    }
+
+    public double getAmount() {
+        return this.amount;
+    }
+
+    public void setAmount(double amount)  {
+        this.amount = amount;
+    }
+
+    public String getPurpose() {
+        return this.purpose;
+    }
+    public void setPurpose(String purpose) {
+        this.purpose = purpose;
+    }
+}
+```
+
+## 实例
+- Android 中的事件分发机制（待确认）
+- UI 中的帮助处理模块
+
+# 二、命令
+命令模式是一种对象行为型模式。网状处理。
+
+意图：将一个请求封装为一个对象，从而使你可用不同的请求对客户进行参数化；对请求排队或记录
+请求日志、以及支持可撤销的操作。别名为动作（action），事务（transaction）
 
 适用性：
+- 像上面讨论的 MenuItem 对象那样，抽象处待执行的动作以参数化某对象。你可用过程语言中的
+回调（callback）函数表示这种参数化机制。
+- 在不同的时刻指定、排序和执行请求。
+- 支持取消操作。
+- 支持修改日志，这样当系统崩溃时，这些修改可用被重做一遍。
+- 用构建在原语操作上的高层操作构建一个系统。这样一种结构在支持事务（transaction）的信息系统中很常见。
+
+> 所谓回调函数是指函数先在某处注册，而它将在稍后某个需要的时候被调用。命令模式是回调机制
+的一个面向对象的替代品。
+
+## 结构
+![命令模式_结构](https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Command_pattern.svg/1050px-Command_pattern.svg.png)
+
+## java实例
+```java
+/** The Command interface */
+public interface Command {
+   void execute();
+}
+
+/** The Invoker class */
+public class Switch {
+   private List<Command> history = new ArrayList<Command>();
+
+   public void storeAndExecute(final Command cmd) {
+      this.history.add(cmd); // optional
+      cmd.execute();
+   }
+}
+
+/** The Receiver class */
+public class Light {
+   public void turnOn() {
+      System.out.println("The light is on");
+   }
+
+   public void turnOff() {
+      System.out.println("The light is off");
+   }
+}
+
+/** The Command for turning on the light - ConcreteCommand #1 */
+public class FlipUpCommand implements Command {
+   private Light theLight;
+
+   public FlipUpCommand(final Light light) {
+      this.theLight = light;
+   }
+
+   @Override    // Command
+   public void execute() {
+      theLight.turnOn();
+   }
+}
+
+/** The Command for turning off the light - ConcreteCommand #2 */
+public class FlipDownCommand implements Command {
+   private Light theLight;
+
+   public FlipDownCommand(final Light light) {
+      this.theLight = light;
+   }
+
+   @Override    // Command
+   public void execute() {
+      theLight.turnOff();
+   }
+}
+
+/* The test class or client */
+public class PressSwitch {
+   public static void main(final String[] arguments){
+      // Check number of arguments
+      if (arguments.length != 1) {
+         System.err.println("Argument \"ON\" or \"OFF\" is required.");
+         System.exit(-1);
+      }
+
+      final Light lamp = new Light();
+      final Command switchUp = new FlipUpCommand(lamp);
+      final Command switchDown = new FlipDownCommand(lamp);
+      final Switch mySwitch = new Switch();
+      switch(arguments[0]) {
+         case "ON":
+            mySwitch.storeAndExecute(switchUp);
+            break;
+         case "OFF":
+            mySwitch.storeAndExecute(switchDown);
+            break;
+         default:
+            System.err.println("Argument \"ON\" or \"OFF\" is required.");
+            System.exit(-1);
+      }
+   }
+}
+```
+
+```java
+/**
+ * The Command functional interface.<br/>
+ */
+@FunctionalInterface
+public interface Command {
+	public void apply();
+}
+
+public final class CommandFactory {
+	private final HashMap<String, Command>	commands;
+
+	private CommandFactory() {
+		commands = new HashMap<String,Command>();
+	}
+
+	public void addCommand(final String name, final Command command) {
+		commands.put(name, command);
+	}
+
+	public void executeCommand(String name) {
+		if (commands.containsKey(name)) {
+			commands.get(name).apply();
+		}
+	}
+
+	public void listCommands() {
+		System.out.println("Enabled commands: " + commands.keySet().stream().collect(Collectors.joining(", ")));
+	}
+
+	/* Factory pattern */
+	public static CommandFactory init() {
+		final CommandFactory cf = new CommandFactory();
+
+		// commands are added here using lambdas. It is also possible to dynamically add commands without editing the code.
+		cf.addCommand("Light on", () -> System.out.println("Light turned on"));
+		cf.addCommand("Light off", () -> System.out.println("Light turned off"));
+
+		return cf;
+	}
+}
+
+public final class Main {
+	public static void main(final String[] arguments) {
+		final CommandFactory cf = CommandFactory.init();
+
+		cf.executeCommand("Light on");
+		cf.listCommands();
+	}
+}
+```
+
+## 实例
+- 监听器
 
 
-# 解释器
-意图：给定一个语言，定义它的文法的一种表示，并定义一个解释器，这个解释器使用改表示来解释语言中的句子。
+# 三、解释器
+意图：给定一个语言，定义它的文法的一种表示，并定义一个解释器，这个解释器使用改表示来解释
+语言中的句子。
 
 适用性：
 - 该文法简单对于复杂的文法，文法的类层次变得庞大而无法管理。
-- 效率不是一个关键问题。最高效的解释器通常不是通过直接解释语法分析树实现的，而是首先将它们转换成另一种形式。
+- 效率不是一个关键问题。最高效的解释器通常不是通过直接解释语法分析树实现的，而是首先将它
+们转换成另一种形式。
 
+## 结构
+![解释器_结构](https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Interpreter_UML_class_diagram.svg/804px-Interpreter_UML_class_diagram.svg.png)
 
-# 迭代器
-意图：提供一种方法顺序访问一个聚合对象中各个元素，而又不需暴露该对象的内部表示。别名，游标（cursor）。
+## java实例
+```java
+interface Expression {
+    public int interpret(final Map<String, Expression> variables);
+}
+
+class Number implements Expression {
+    private int number;
+    public Number(final int number)       { this.number = number; }
+    public int interpret(final Map<String, Expression> variables)  { return number; }
+}
+
+class Plus implements Expression {
+    Expression leftOperand;
+    Expression rightOperand;
+    public Plus(final Expression left, final Expression right) {
+        leftOperand = left;
+        rightOperand = right;
+    }
+
+    public int interpret(final Map<String, Expression> variables) {
+        return leftOperand.interpret(variables) + rightOperand.interpret(variables);
+    }
+}
+
+class Minus implements Expression {
+    Expression leftOperand;
+    Expression rightOperand;
+    public Minus(final Expression left, final Expression right) {
+        leftOperand = left;
+        rightOperand = right;
+    }
+
+    public int interpret(final Map<String, Expression> variables) {
+        return leftOperand.interpret(variables) - rightOperand.interpret(variables);
+    }
+}
+
+class Variable implements Expression {
+    private String name;
+    public Variable(final String name)       { this.name = name; }
+    public int interpret(final Map<String, Expression> variables) {
+        if (null == variables.get(name)) return 0; // Either return new Number(0).
+        return variables.get(name).interpret(variables);
+    }
+}
+
+class Evaluator implements Expression {
+    private Expression syntaxTree;
+
+    public Evaluator(final String expression) {
+        final Stack<Expression> expressionStack = new Stack<Expression>();
+        for (final String token : expression.split(" ")) {
+            if (token.equals("+")) {
+                final Expression subExpression = new Plus(expressionStack.pop(), expressionStack.pop());
+                expressionStack.push(subExpression);
+            } else if (token.equals("-")) {
+                // it's necessary remove first the right operand from the stack
+                final Expression right = expressionStack.pop();
+                // ..and after the left one
+                final Expression left = expressionStack.pop();
+                final Expression subExpression = new Minus(left, right);
+                expressionStack.push(subExpression);
+            } else
+                expressionStack.push(new Variable(token));
+        }
+        syntaxTree = expressionStack.pop();
+    }
+
+    public int interpret(final Map<String, Expression> context) {
+        return syntaxTree.interpret(context);
+    }
+}
+
+public class InterpreterExample {
+    public static void main(final String[] args) {
+        final String expression = "w x z - +";
+        final Evaluator sentence = new Evaluator(expression);
+        final Map<String, Expression> variables = new HashMap<String, Expression>();
+        variables.put("w", new Number(5));
+        variables.put("x", new Number(10));
+        variables.put("z", new Number(42));
+        final int result = sentence.interpret(variables);
+        System.out.println(result);
+    }
+}
+```
+
+## 实例
+- 正则表达式
+
+# 四、迭代器
+意图：提供一种方法顺序访问一个聚合对象中各个元素，而又不需暴露该对象的内部表示。别名，游
+标（cursor）。
 
 适用性：
 - 访问一个聚合对象的内容而无需暴露它的内部表示。
@@ -52,7 +401,7 @@ tags:
 - 为遍历不同聚类结构的聚合结构提供一个统一的实现（即，支持多态迭代）。
 
 
-# 中介者
+# 五、中介者
 意图：用一个中介对象来封装一系列的对象交互。中介者使各对象不需要显式地相互引用，从而使其耦合松散，而且可用独立地改变它们之前的交互。
 
 适用性：
@@ -60,7 +409,7 @@ tags:
 - 一个对象引用其他很多对象并且直接与这些对象通信，导致难以复用该对象。
 - 想定制一个分布在多个类中的行为，而不想生成太多的子类。
 
-# 备忘录
+# 六、备忘录
 意图：在不破坏封装的前提下，捕获一个对象的内部状态，并在该对象之外保存这个状态。这样以后就可将该对象恢复到原先保存的状态。
 
 适用性：
