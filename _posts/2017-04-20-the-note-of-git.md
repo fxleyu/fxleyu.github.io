@@ -39,3 +39,27 @@ git diff
 git diff HEAD
 ```
 ![pic_base](http://wx4.sinaimg.cn/mw690/5f4b7840ly1fetl98x8lcj20r70pvjtc.jpg)
+
+# 分支的操作
+```
+# 查看分支一览表
+git branch
+
+# 创建、切换分支
+git checkout -b branch-name
+## 等同于
+git branch branch-name
+git checkout branch-name
+
+# 切换分支
+git checkout branch-name
+## 切换到上一个分支
+git checkout -
+
+# 合并分支
+git merge branch-name
+
+git merge --no-ff branch-name
+
+git log --graph
+```
