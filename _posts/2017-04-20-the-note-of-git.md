@@ -85,3 +85,18 @@ git commit --amend
 ## 压缩最近两次的提交记录
 git rabase -i HEAD~2
 ```
+
+# 与远程交互
+```
+# 添加远程仓库
+git remote add origin git@github.com:fxleyu/git-tutorial.git
+
+git push -u origin master
+
+# 获取远程仓库
+git clone git@github.com:fxleyu/git-tutorial.git
+
+# 获取远程分支
+git checkout -b feature-A origin/feature-A
+
+```
