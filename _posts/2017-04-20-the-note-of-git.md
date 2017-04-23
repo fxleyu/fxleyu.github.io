@@ -25,6 +25,11 @@ git add .
 git commit -m "UPDATE"
 git commit
 
+git commit -am
+等同于
+git add .
+git commit -m
+
 # 查看日志
 git log
 git log --pretty=short
@@ -62,4 +67,21 @@ git merge branch-name
 git merge --no-ff branch-name
 
 git log --graph
+```
+
+# 更改提交的操作
+```
+# git  reset 回溯历史版本
+## 让仓库的HEAD、暂存区、当前工作树回溯到指定状态(使用哈希值)
+git reset --hard fd0xxxxxxxxxxxxx
+
+## 查看当前仓库执行过的操作的日志
+git reflog
+
+# 修改上一条提交信息
+git commit --amend
+
+# 压缩历史
+## 压缩最近两次的提交记录
+git rabase -i HEAD~2
 ```
