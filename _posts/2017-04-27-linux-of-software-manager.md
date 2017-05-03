@@ -8,6 +8,7 @@ tags:
 ---
 
 # LAMP 环境搭建
+LAMP 是 Linux Apache MySQL PHP 的缩写，其共同组成了一个运行 PHP
 
 # LNMP 环境搭建
 
