@@ -7,7 +7,6 @@ tags:
     - 编程文化
 ---
 ### 1、关心你的技艺
-Care About Your Craft
 
 ### 2、思考！你的工作
 
