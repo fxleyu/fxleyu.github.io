@@ -126,12 +126,20 @@ tags:
 ### 59、昂贵的工具不一定能制作出更好的设计
 
 ### 60、围绕功能组织团队
+Organize teams around functionality.    
+不要把设计师与编码员分开，也不要把测试员与数据建模员分开。按照你构建代码的方式构建团队。
 
 ### 61、不要使用手工流程
+Don't use manual procedures.    
+shell脚本或批文件会一次次地以同一顺序执行相同的指令。
 
 ### 62、早测试，常测试，自动化测试
+Test early, test often, test automatically.    
+与呆在书架上的测试计划相比，每次构建时运行的测试要有效得多。
 
 ### 63、要到通过全部测试，编码才算完成
+Coding aren't done, util all the tests run.    
+就是这样。
 
 ### 64、通过“蓄意破坏”测试你的测试
 
@@ -146,6 +154,8 @@ tags:
 ### 69、温和地超出预期
 
 ### 70、在你的作品上签名
+Sign your work    
+过去时代的手艺人为能在他们的作品上签名而自豪。你也应该如此。
 
 # 检查清单
 
