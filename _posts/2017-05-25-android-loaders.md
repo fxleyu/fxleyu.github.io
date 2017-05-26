@@ -15,3 +15,4 @@ tags:
 # 加载器详解
 
 # 总结
+- CursorLoader 获取的 Cursor 不要在 Cursor 外使用
