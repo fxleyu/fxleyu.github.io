@@ -14,3 +14,7 @@ tags:
 - Android Loaders 机制学习
 - Android KeyStore 内容学习
 - 书籍《程序员修炼之道》
+
+总结：
+只看了 Android Loaders 的源码实现，以及一点 KeyStore 内容。书籍没有看。    
+哎，玩了三天的 王者荣耀，也是醉了。
