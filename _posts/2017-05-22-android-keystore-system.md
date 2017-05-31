@@ -9,7 +9,15 @@ tags:
 # 什么是密钥库
 密钥库系统由 KeyChain API 以及在 Android 4.3（API 级别 18）中引入的 Android 密钥库提
 供程序功能使用。
-Android 的加密系统，是独立与JDK的，其Java只是定义了spi而已
+Android 的加密系统，是独立与JDK的，其Java只是定义了spi而已。
+
+
+```java
+KeyPairGenerator
+// frameworks/base/keystore
+android.security.keystore.AndroidKeyStoreKeyPairGeneratorSpi
+
+```
 
 # 基本知识
 1、加密模型
