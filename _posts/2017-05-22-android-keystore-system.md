@@ -135,6 +135,6 @@ Intent createSystemInstallIntent(final Context context) {
 ```java
 android.security.KeyStore.put();
 ```
-## 2、设置安全模式为None
+## 2、设置安全模式为 None
 
 # 总结
