@@ -7,3 +7,8 @@ tags:
     - Java
     - 基础
 ---
+
+- 基本的并发使用
+synchronize
+Lock
+voli
