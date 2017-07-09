@@ -9,7 +9,7 @@ title: About
 ## Java
 - [x] JavaSE，精通
 - [x] Android，熟悉
-- [ ] JVM
+- [x] JVM
 
 ## 数据库
 - [x] SQL熟悉
