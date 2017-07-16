@@ -54,3 +54,30 @@ Java语言被设计为类型安全和容易使用。它提供了自动内存管�
 编译器将Java程序翻译为一种独立于机器的字节码表示。被调用字节码验证器去确保只有合法的字节码才能在Java运行时中执行。它依照Java语言规范检查字节码，确保没违反Java语言规则或命名空间的限制。验证器也检查内存管理违规，栈下溢或溢出和非法数据类型转换。一旦字节码验证,Java运行时准备执行。
 
 # 三、基础安全架构
+Java平台定义了一个APIs集合。该集合包含主要的安全区域，其中又加密、PKI、认证、安全通信和访问控制。这些APIs允许开发者很容易把安全整合到应用代码种。这些APIs依据如下原则设计：
+- 1、实现的独立性
+> 应用无需实现安全组件。这些应用只需请求Java平台的安全服务即可。Providers实现这些安全服务。他们通过标准接口嵌入到Java平台中。为了安全功能，一个应用也许会依赖多个独立的providers。
+
+- 2、实现的互用性
+> 在应用之间，Providers具有互用性。特别地，一个应用不会绑定到一个特定的Provider，一个Provider也不会绑定到一个特定的应用。
+
+- 3、可扩展的算法
+> Java平台包含一些内置的Provider。这些Porvider实现了安全服务 基础内容。在今天，这些安全服务被广泛使用。但是，一些应用也许依赖新兴的标准，而不是依据被实现的。Java平台支持为实现这些服务而定制的Provider去安装。
+
+## 3.1 安全Provider
+在Java平台中，`java.security.Provider`类封装了安全Provider的概念。它指明Provider的名字，并列出被实现的安全服务。也许许多Provider被同时配置，并按特定偏好顺序被列出。当安全服务被请求，实现服务的高优先级的Provider被选择。
+
+
+应用依赖相关的`getInstance`方法来获取来自潜在Provider的安全服务。举个例子，信息摘要的创建可以描述为Provider提供的一种类型的服务。（第四章讨论信息摘要和其它密码服务。）一个应用调用`java.security.MessageDigest`类的`getInstance`方法去获取一种特定的信息摘要算法的实现，例如MD5。
+```java
+MessageDigest md = MessageDigest.getInstance("MD5");
+```
+程序也许可以通过指定Provider名字来指定选择一种特定Provider的实现。
+```java
+MessageDigest md = MessageDigest.getInstance("MD5", "ProviderC");
+```
+
+## 3.2 文件位置
+Java安全的某一方面可以使用设置安全属性来定制。这些方面在本文中被提及过，包含配置Provider。也许你静态的在安全属性文件中配置安全属性。安全属性文件默认是在被安装的Java运行环境（JRE）目录的 *lib/security* 目录下的 *java.security* 文件。安全属性可以通过调用`java.security.Security`类的适当方法来动态配置。
+
+本文中提及的工具和命令均在`~jre/bin`目录下。`~jre`表示JRE的安装目录。第五章提及的`cacert`文件在`~jre/lib/security`目录下。
