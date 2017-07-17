@@ -76,8 +76,15 @@ MessageDigest md = MessageDigest.getInstance("MD5");
 ```java
 MessageDigest md = MessageDigest.getInstance("MD5", "ProviderC");
 ```
+图1和图2阐明请求一个MD5信息摘要的实现设置。两幅图均显式了三个实现信息摘要算法的Provider。三个Providr从左到右（1到3）按偏好进行排序。在图1中，应用没有指定Provider名字进行请求一个MD5算法实现。这些Provider按照优先序列继续搜索，第一个实现该算法的Provider，ProviderB，被返回。在图2中，应用请求一个被ProviderC实现的MD5算法实现。这时，虽然有较高优先序列的ProviderB也提供一个MD5实现，但是ProviderC也会被返回。
+
+![Test](http://imglf2.nosdn.127.net/img/U2Fvb1A0U2JqeGNHQTcwV09zSXd5c3NxQ2xwTm5aQUN5RXo2YW1EMlIrM2dCNVBZVUZSYlRRP)
+
+Sun公司实现的Java平台中包含很多预先配置的默认Provider。这些Provider提供了可以被应用使用的安全服务的基础集合。注意，其它Java平台供应商也许会包含不同的，封装特定安全服务集合的Provider集合。本文提及的默认内置的Provider，其均是指Sun公司实现的。
+
+以下章节里包含在不同安全区域（加密、认证等）的相关安全服务的描述。这些服务被默认的Provider提供。附录C表中简要说明了所有的默认Provider。
 
 ## 3.2 文件位置
 Java安全的某一方面可以使用设置安全属性来定制。这些方面在本文中被提及过，包含配置Provider。也许你静态的在安全属性文件中配置安全属性。安全属性文件默认是在被安装的Java运行环境（JRE）目录的 *lib/security* 目录下的 *java.security* 文件。安全属性可以通过调用`java.security.Security`类的适当方法来动态配置。
 
-本文中提及的工具和命令均在`~jre/bin`目录下。`~jre`表示JRE的安装目录。第五章提及的`cacert`文件在`~jre/lib/security`目录下。
+本文中提及的工具和命令均在`~jre/bin`目录下。`~jre`表示JRE的安装目录。第五章提及的`cacert`文件在`···`目录下。
