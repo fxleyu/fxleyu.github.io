@@ -78,7 +78,7 @@ MessageDigest md = MessageDigest.getInstance("MD5", "ProviderC");
 ```
 图1和图2阐明请求一个MD5信息摘要的实现设置。两幅图均显式了三个实现信息摘要算法的Provider。三个Providr从左到右（1到3）按偏好进行排序。在图1中，应用没有指定Provider名字进行请求一个MD5算法实现。这些Provider按照优先序列继续搜索，第一个实现该算法的Provider，ProviderB，被返回。在图2中，应用请求一个被ProviderC实现的MD5算法实现。这时，虽然有较高优先序列的ProviderB也提供一个MD5实现，但是ProviderC也会被返回。
 
-![Test](http://imglf2.nosdn.127.net/img/U2Fvb1A0U2JqeGNHQTcwV09zSXd5c3NxQ2xwTm5aQUN5RXo2YW1EMlIrM2dCNVBZVUZSYlRRP)
+![Test](http://wx3.sinaimg.cn/large/5f4b7840ly1fhn75e1p6ej212m0lptc2.jpg)
 
 Sun公司实现的Java平台中包含很多预先配置的默认Provider。这些Provider提供了可以被应用使用的安全服务的基础集合。注意，其它Java平台供应商也许会包含不同的，封装特定安全服务集合的Provider集合。本文提及的默认内置的Provider，其均是指Sun公司实现的。
 
