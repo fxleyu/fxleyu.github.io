@@ -1,11 +1,31 @@
 ---
 layout   : post
-title    : "Android 密钥库系统学习"
+title    : "Android KeyStore学习"
 date     : 2017-05-22 23:24:00
 author   : fxleyu
 tags:
     - Android
 ---
+Android KeyStore是Android系统对于Java安全架构的自定义实现。KeyStore是通过实现Provider接口的方式来实现的。
+
+
+```
+// ~/system/security/keystore/key_store_service.cpp 是Android KeyStore具体逻辑的实现
+
+// ~/frameworks/base/keystore 是KeyStore实现Java安全架构的接口。
+
+// ~/frameworks/base/core/java/com/android/internal/os/ZygoteInit.java 是把Android KeyStore配置到Android VM中。
+
+// /data/misc/keystore/...  存储位置
+
+//
+
+
+供程序功能使用。
+```
+
+
+
 # 什么是密钥库
 密钥库系统由 KeyChain API 以及在 Android 4.3（API 级别 18）中引入的 Android 密钥库提
 供程序功能使用。
