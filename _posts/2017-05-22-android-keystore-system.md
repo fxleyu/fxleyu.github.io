@@ -9,7 +9,7 @@ tags:
 Android KeyStore是Android系统对于Java安全架构的自定义实现。KeyStore是通过实现Provider接口的方式来实现的。
 
 
-```
+```java
 // ~/system/security/keystore/key_store_service.cpp 是Android KeyStore具体逻辑的实现
 
 // ~/frameworks/base/keystore 是KeyStore实现Java安全架构的接口。
@@ -17,11 +17,6 @@ Android KeyStore是Android系统对于Java安全架构的自定义实现。KeySt
 // ~/frameworks/base/core/java/com/android/internal/os/ZygoteInit.java 是把Android KeyStore配置到Android VM中。
 
 // /data/misc/keystore/...  存储位置
-
-//
-
-
-供程序功能使用。
 ```
 
 
