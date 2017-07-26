@@ -19,6 +19,10 @@ Android KeyStore是Android系统对于Java安全架构的自定义实现。KeySt
 // /data/misc/keystore/...  存储位置
 ```
 
+- 安装证书/密钥
+- 去除锁屏保护
+- 删除证书/密钥
+
 
 
 # 什么是密钥库
