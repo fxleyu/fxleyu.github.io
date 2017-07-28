@@ -26,7 +26,8 @@ Android KeyStore是Android系统对于Java安全架构的自定义实现。KeySt
 
 **删除未加密密钥的调用堆栈**（从点击“YES,REMOVE”，到未加密密钥删除）
 ```java
-com.android.settings.ChrooseLockGeneric$ChrooseLockGenericFragment$FactoryResetProtectionWarningDialog.$1.DialogInterface.OnClickListener.onClick(); 
+com.android.settings.ChrooseLockGeneric$ChrooseLockGenericFragment$FactoryResetProtectionWarningDialog
+        .$1.DialogInterface.OnClickListener.onClick(); 
 com.android.settings.ChrooseLockGeneric$ChrooseLockGenericFragment.setUnlockMethod();
 com.android.settings.ChrooseLockGeneric$ChrooseLockGenericFragment.updateUnlockMethodAndFinish();
 com.android.internal.widget.LockPatternUtils.clearLock();
