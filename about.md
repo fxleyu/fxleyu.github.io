@@ -2,7 +2,7 @@
 layout: page
 title: About
 ---
-> 当前在学习Git，回顾已经学习到的。
+> 对自己很失望。
 
 
 # 专业技能
