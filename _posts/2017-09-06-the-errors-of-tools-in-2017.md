@@ -16,7 +16,7 @@ NETSTAT -ano
 
 # 使用`adb install -r`重新安装应用时，报`[INSTALL_FAILED_MISSING_SHARED_LIBRARY]`错误
 这是由于在 AndroidManifest.xml 文件中，使用了`uses-library`属性导致，可以移除该属性或者设置其为false。
-如下：
+如下[MISSING_LIBRARY][USES_LIBRARY]：
 ```xml
 <uses-library
         android:name="com.xxx.xx.xxx"
@@ -25,6 +25,6 @@ NETSTAT -ano
 
 
 
-[SVN_ERROR] http://www.cnblogs.com/TeyGao/p/3539279.html
-[MISSING_LIBRARY] https://stackoverflow.com/questions/5375919/getting-error-msg-install-failed-missing-shared-library 
-[USES_LIBRARY] https://developer.android.google.cn/guide/topics/manifest/uses-library-element.html
+[SVN_ERROR](http://www.cnblogs.com/TeyGao/p/3539279.html)    
+[MISSING_LIBRARY](https://stackoverflow.com/questions/5375919/getting-error-msg-install-failed-missing-shared-library)    
+[USES_LIBRARY](https://developer.android.google.cn/guide/topics/manifest/uses-library-element.html)    
