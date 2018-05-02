@@ -30,6 +30,7 @@ tags:
 - [ ] [Java编程思想](https://book.douban.com/subject/2130190/)
 - [ ] [Effective Java 中文版](https://book.douban.com/subject/3360807/)
 - [ ] [Java性能优化权威指南](https://book.douban.com/subject/25828043/)
+- [ ] [Spring 入门经典](https://book.douban.com/subject/26652876/)
 
 ## Python
 - [ ] [Python开发实战](https://book.douban.com/subject/25880219/)
