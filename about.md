@@ -8,14 +8,7 @@ title: About
 # 项目信息
 ## 2018.02 - 今 互联网企业 服务端（接入端）开发
 ### 技术栈
-- Java
-- Spring
-- Redis
-- ZooKeeper
-- ActiveMQ
-- Kafka
-- Git
-- Maven
+**Java / Spring / Redis / ZooKeeper / ActiveMQ / Kafka / Git / Maven**
 
 ### 工作内容
 - 日常处理线上问题（代码异常、数据异常等）处理
@@ -24,9 +17,7 @@ title: About
 
 ## 2015.07 - 2018.01 通讯企业 Android 平台开发
 ### 技术栈
-- Java
-- Android
-- SVN
+**Java / Android / SVN / Linux**
 
 ### 项目内容
 Android 手机平台应用维护。依照时间顺序依次处理过 Email（SMTP、IMAP、POP3）、Exchange、DownloadManager、Calendar、Phone 等多个模块。
@@ -35,13 +26,7 @@ Android 手机平台应用维护。依照时间顺序依次处理过 Email（SMT
 - 日常故障处理（基于故障驱动）
 - 平台基线需求实现
 
-愿自己成为一个博学的绅士。
 
-> 凡你能说的，你说清楚；凡你不能说清楚的，留给沉默。
-
-
-好累，希望自己可以搞定。
-> 我是否应该选择自定义人生？也许这句话就决定了我的选择。
 
 # 自我评价
 - 会做一些有利于团队发展的事情。
@@ -49,6 +34,13 @@ Android 手机平台应用维护。依照时间顺序依次处理过 Email（SMT
 
 加油勒宇，你是最优者！
 
+愿自己成为一个博学的绅士。
+
+> 凡你能说的，你说清楚；凡你不能说清楚的，留给沉默。
+
+
+好累，希望自己可以搞定。
+> 我是否应该选择自定义人生？也许这句话就决定了我的选择。
 
 
 # 专业技能
@@ -61,6 +53,7 @@ Android 手机平台应用维护。依照时间顺序依次处理过 Email（SMT
 - [x] SQL熟悉
 - [ ] SQL理论，例如SQL范式
 - [ ] mybatis
+- [ ] Redis
 
 ## Linux
 - [x] 基本操作熟悉
