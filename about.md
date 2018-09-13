@@ -8,7 +8,7 @@ title: About
 # 项目信息
 ## 2018.02 - 今 互联网企业 服务端（接入端）开发
 ### 技术栈
-**Java / Spring / Redis / ZooKeeper / ActiveMQ / Kafka / Git / Maven**
+**Java / Spring / Redis / ZooKeeper / ActiveMQ / Git / Maven**
 
 ### 工作内容
 - 日常处理线上问题（代码异常、数据异常等）处理
