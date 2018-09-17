@@ -1,7 +1,7 @@
 ---
 layout   : post
 title    : "Hello, Unsafe 和 LockSupport"
-date     : 2018-09-14 00:07:10
+date     : 2018-09-15 00:07:10
 author   : fxleyu
 tags:
     - Java
@@ -172,3 +172,4 @@ public class LockSupport {
 ```
 # 参考
 - [1](http://www.cnblogs.com/chenpi/p/5389254.html) http://www.cnblogs.com/chenpi/p/5389254.html
+- [2](Java 文档)  http://download.oracle.com/technetwork/java/javase/6/docs/zh/api/index.html?java/util/concurrent/locks/package-summary.html
