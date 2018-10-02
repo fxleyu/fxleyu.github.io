@@ -94,6 +94,21 @@ Happens-Before 的规则包括：
 
 除了不可变对象以外，使用被另一个线程初始化的对象通常都是不安全的，除非对象的发布操作是在
 使用该对象的线程开始使用之前执行。
+```java
+@NotThreadSafe
+public class UnsafeLazyInitialization {
+  private static Resource resource;
+  public static Resource getInstance() {
+    if (resource == null) {
+      resource = new Resource();
+    }
+    return resource;
+  }
+}
+```
+上述例子中，存在多次创建的实例的问题，此外，还可能导致另外一个线程使用被部分构造的
+`Resource` 实例的引用。（原因是另外一个线程可能看到先对 `resource` 赋值，再初始化的
+问题。出现这种原因是由于线程间没有 Happens-Before 关系）
 
 ### 2.2 安全的发布
 事实上，Happens-Before 比安全发布提供了更强可见性与顺序性保证。如果将 X 从线程 A 安全地
@@ -105,10 +120,87 @@ Happens-Before 排序是在内存级别上操作的，它是一种“并发级�
 接近程序设计。
 
 ### 2.3 安全初始化模式
+- 线程安全的延迟初始化
+```java
+@ThreadSafe
+public class SafeLazyInitialization {
+  private static Resource resource;
+  public synchronized static Resource getInstance() {
+    if (resource == null) {
+      resource = new Resource();
+    }
+    return resource;
+  }
+}
+```
+
+- 提前初始化(Eager Initialization)
+```java
+@ThreadSafe
+public class EagerInitialization {
+  private static Resource resource = new Resource();
+  public static Resource getInstance() {
+    return resource;
+  }
+}
+```
+
+- 延迟初始化占位（Holder）类模式
+```java
+@ThreadSafe
+public class ResourceFactory {
+  private static class ResourceHolder {
+    public static Resource resource = new Resource();
+  }
+
+  public static Resource getInstance() {
+    return ResourceHolder.resource;
+  }
+}
+```
 
 ### 2.4 双重检查加锁
+```java
+// 存储未安全发布的问题（也就是其他线程可能存在使用为初始化完成的类）
+@NotThreadSafe
+public class DoubleCheckedLocking {
+  private static Resource resource;
+  public static Resource getInstance() {
+    if (resource == null) {
+      synchronized (DoubleCheckedLocking.class) {
+        if (resource == null) {
+          resource = new Resource();
+        }
+      }
+    }
+    return resource;
+  }
+}
+```
+
+```java
+@ThreadSafe
+public class DoubleCheckedLocking {
+  private volatile static Resource resource;
+  public static Resource getInstance() {
+    if (resource == null) {
+      synchronized (DoubleCheckedLocking.class) {
+        if (resource == null) {
+          resource = new Resource();
+        }
+      }
+    }
+    return resource;
+  }
+}
+```
 
 ## 3 初始化过程中的安全性
+如果能确保初始化过程的安全性，那么就可以使得被正确构造的不可变对象再没有被同步的情况下
+也能安全地在多个线程之间共享，而不管它们是如何发布的，甚至通过某些数据竞争来发布。
+
+初始化安全性只能保证通过 `final` 域可达性的值从构造过程完成时开始的可见性，对于通过非 `final`
+域可达性的值，或者其他在构造过程完成后可能改变的值，必须采用同步来确保可见性。
 
 ## 小结
 Java 内存模型说明了某个线程的内存操作在哪些情况下对于其他线程是可见的。其中包括确保这些
