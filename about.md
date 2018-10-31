@@ -72,6 +72,11 @@ Android 手机平台应用维护。依照时间顺序依次处理过 Email（SMT
 - [x] 基本操作熟悉
 - [ ] shell
 
+## 分布式组件
+- [ ] ZooKeeper
+- [ ] Redis
+- [ ] Kafka
+
 ## 分布式相关
 - [ ] 服务框架
 - [ ] 数据访问层
