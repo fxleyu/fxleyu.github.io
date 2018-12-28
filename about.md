@@ -8,10 +8,10 @@ title: About
 ## 1 ZTE
 ### 1、优秀实践
 - 每日构建
-- commit 规范
-- 波及分析
-- 工作日的 Monkey 测试
-- 构建自测的 check list
+- commit 规范(波及分析)
+- Monkey 测试
+- Checklist
+- 文档总结
 
 ### 2、思维
 - 敬畏每一行代码
