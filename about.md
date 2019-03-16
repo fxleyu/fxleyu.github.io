@@ -2,6 +2,10 @@
 layout: page
 title: About
 ---
+# 技能
+- 熟悉 Java
+- 了解 JVM
+
 # 职业经历
 时间  | 公司 | 部门 | 职位
 ---|--|---|---
