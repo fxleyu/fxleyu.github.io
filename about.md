@@ -4,7 +4,10 @@ title: About
 ---
 # 技能
 - 熟悉 Java
+- 熟悉 Spring、Self4L框架
 - 了解 JVM
+- 了解 Linux 系统及基本操作
+- 了解 Redis、ZooKeeper服务
 
 # 职业经历
 时间  | 公司 | 部门 | 职位
