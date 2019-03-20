@@ -7,7 +7,8 @@ title: About
 - 熟悉 Spring、Self4L框架
 - 了解 JVM
 - 了解 Linux 系统及基本操作
-- 了解 Redis、ZooKeeper服务
+- Redis，熟悉基本操作、理解其基本原理
+- ZooKeeper服务
 
 # 职业经历
 时间  | 公司 | 部门 | 职位
