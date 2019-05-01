@@ -18,7 +18,7 @@ tags:
 
 ## 2、基本的线程机制
 
-```
+```java
 // 1
 Runnable task = ...;
 new Thread(task).start();
@@ -117,7 +117,7 @@ Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() 
 - 基本上所有的并发模式在解决线程冲突问题的时候，都是采用*序列化访问共享资源*的方案。这意味着在给定时刻只允许一个任务访问资源。通常这是通过在代码前面加上一条锁语句来实现的，这就使得在一段时间内只有一个任务可以运行这段代码。因为锁语句产生了一种相互排斥的效果，所以这种机制常常被称为*互斥量（mutex）*
 - 所有对象都自动含有单一的锁（也称为监视器）。当在对象上调用`synchronized`方法的时候，此对象都被加锁，这时候该对象上的其他`synchronized`方法只有等到前一个方法调用完毕并释放了锁后才能被调用。
 - ReentrantLock允许你尝试着获取但最终未获取锁。
-```
+```java
 // 1 synchronized
 public void synchronized method() {
     // ...
@@ -145,7 +145,7 @@ public void method() {
 
 - 原子类
 - 防止多个线程同时访问方法内部的部分代码而不是防止访问整个方法，分离出来的代码块被称为*临界区（critical section）*
-```
+```java
 // 5 也被称为 同步控制块
 synchronized(object) {
     // todo
@@ -166,7 +166,7 @@ ThreadLocal
 - - 任务试图在摸个对象上调用其同步控制方法，但是对象锁不可用，因为另外一个任务以及获取了这个锁
 - 中断
 > Thread类包含interrupt()方法，因此你可以终止被阻塞的任务，这个方法将设置线程的中断状态。如果一个线程已经被阻塞，或者试图执行一个阻塞操作，那么设置这个线程的中断状态将抛出InterruptedException。当抛出该异常或者任务调用Thread.interrupted()时，中断状态将被复位。
-```
+```java
 Thread.interrupt();
 
 Executor.shutdownNow();
@@ -174,7 +174,7 @@ Executor.shutdownNow();
 Future.cancel();
 ```
 - 被互斥阻塞
-```
+```java
 // 具有中断能力的锁
 Lock lock = new ReentrantLock();
 try {
@@ -183,7 +183,7 @@ try {
 }
 ```
 - 检查中断
-```
+```java
 while (!Thread.interrupted()) {
 
 }
@@ -195,7 +195,7 @@ while (!Thread.interrupted()) {
 - 调用`sleep()`的时候锁并没有被释放。当一个任务在方法中遇到对`wait()`的调用的时候，线程的执行被挂起，对象上的锁被释放。
 - 只有在同步控制方法或同步控制块里调用`wait()、notify()、notifyAll()`
 - 为了使用`notify()`，所有任务必须等待相同的条件，因为如果你有多个任务在等待不同条件，那么你就不会知道是否唤醒了恰当的任务。
-```
+```java
 // wait() 在while循环中，防止信号错失
 synchronized(this) {
     while(contions) {
@@ -242,7 +242,7 @@ PipedReader reader = new PipedReader(writer);
 
 ## 7、新类库中的构件
 - `CountDownLatch`被设计为只触发一次，计数数值不能被重置
-```
+```java
 CountDownLatch latch = new CountDownLatch(N);
 
 // 等待计数归零
@@ -267,7 +267,7 @@ barrier.await();
 - PriorityBlockingQueue
 - ScheduledExecutor
 - Semaphore 正常的锁在任何时刻都只允许一个任务访问一项资源，而*计数信号量*允许n个任务同时访问这个资源。
-```
+```java
 Semaphor semaphor = new Semaphor(N, true);
 
 semaphor.acquire();
@@ -275,7 +275,7 @@ semaphor.acquire();
 semaphor.release();
 ```
 - Exchanger
-```
+```java
 Exchanger<List> exchanger = new Exchanger<List>();
 
 list = exchanger.exchange(list);
