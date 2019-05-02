@@ -5,7 +5,6 @@ date     : 2018-09-17 22:12:00
 author   : fxleyu
 tags:
     - Java
-    - 多线程
     - 源码阅读
 ---
 # ReentrantLock
@@ -51,7 +50,7 @@ protected final boolean tryAcquire(int acquires) {
         return true;
     }
     return false;
-} 
+}
 ```
 
 ### 非公平锁

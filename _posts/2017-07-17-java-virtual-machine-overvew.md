@@ -4,7 +4,6 @@ title    : "Java虚拟机概览"
 date     : 2017-07-17 22:52:00
 author   : fxleyu
 tags:
-    - Java
     - JVM
 ---
 > 本文是Java性能优指南（Java Performnce）第五章的阅读笔记。

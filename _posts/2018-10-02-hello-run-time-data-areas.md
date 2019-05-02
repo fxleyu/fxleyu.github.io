@@ -4,7 +4,6 @@ title    : "初探 Java 运行时数据区域"
 date     : 2018-10-02 14:44:58
 author   : fxleyu
 tags:
-    - Java
     - JVM
 ---
 Java 虚拟机在执行 Java 程序的过程中会把它所管理的内存划分为若干个不同的数据区域。这些
@@ -62,7 +61,7 @@ Java 虚拟机规范对方法区的限制非常宽松，除了和 Java 堆一样
 
 在 JDK 1.4 中新加入了 NIO（New Input/Output）类，引入了一种基于通道（Channel）与缓冲区（Buffer）的 I/O 方式，它可以使用 Native 函数库直接分配堆外内存，然后通过一个存在在 Java 堆中的 DirectByteBuffer 对象作为这块内存的引用进行操作。这样能在一些场景中显著提高性能，因为避免了在 Java 堆和 Native 堆中来回复制数据。
 
-显然，本机直接内存的分配不受到 Java 堆大小的限制，但是，既然是内存，肯定还是会受到本机总内存（包括 RAM 以及 SWAP 区或者分页文件）大小以及处理器寻址空间的限制。服务器管理员在配置虚拟机参数时，会更具实际内存设置 -Xmx 等参数信息，但经常忽略直接内存，使得各个内存区域总和大于物理内存的限制，从而导致动态扩展时出现 OutOfMemoryError 异常。 
+显然，本机直接内存的分配不受到 Java 堆大小的限制，但是，既然是内存，肯定还是会受到本机总内存（包括 RAM 以及 SWAP 区或者分页文件）大小以及处理器寻址空间的限制。服务器管理员在配置虚拟机参数时，会更具实际内存设置 -Xmx 等参数信息，但经常忽略直接内存，使得各个内存区域总和大于物理内存的限制，从而导致动态扩展时出现 OutOfMemoryError 异常。
 
 # 参考
 - [Java Virtual Machine Specification (The Structure of the Java Virtual Machine)](https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-2.html#jvms-2.5)

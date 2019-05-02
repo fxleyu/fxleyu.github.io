@@ -4,7 +4,7 @@ title    : "试用期个人总结"
 date     : 2018-05-05 17:01:00
 author   : fxleyu
 tags:
-    - 随笔
+    - 个人总结
 ---
 
 

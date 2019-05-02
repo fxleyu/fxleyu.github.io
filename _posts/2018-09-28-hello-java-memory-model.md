@@ -5,8 +5,7 @@ subtitle : "读书笔记"
 date     : 2018-09-28 23:17:03
 author   : fxleyu
 tags:
-    - Java
-    - JMM
+    - JVM
 ---
 Java 虚拟机规范中试图定义一种 Java 内存模型（Java Memory Model， JMM）来屏蔽各种硬件
 和操作系统的内存访问差异，以实现让 Java 程序在各种平台下都能达到一致的内存访问效果。[2]
