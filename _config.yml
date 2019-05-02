@@ -1,10 +1,11 @@
 # Site settings
 title: FXLEYU
+SEOTitle: 朱智慧的博客 | fxleyu Blog
 header-img: img/home-bg.jpg
-email: fxleyu@gmail.com
-description: "FXLEYU"
-keyword: "fxleyu, 风雪乐雨, 朱智慧, 博客, 个人网站, Android"
-# url: "https://huangxuan.me"              # your host, for absolute URL
+email: fxleyu@qq.com
+description: "I walk slowly, like one who comes from so far away he doesn’t expect to arrive. ——Jorge Luis Borges"
+keyword: "fxleyu, 风雪乐雨, 朱智慧, 博客, 个人网站, Android, Java, 后端"
+url: "https://fxleyu.github.io"              # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
 
 
