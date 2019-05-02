@@ -59,6 +59,7 @@ tags:
 
 ## 结束或是开始
 想起马斯洛需求层次理论，安逸、舒适、具有格调的生活只是低级别的需求，所谓使命才是高级别需求。
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/MaslowsHierarchyOfNeeds.svg/450px-MaslowsHierarchyOfNeeds.svg.png)
 
 以我平庸的资质，基本告别了实现高级别需求的可能。
 
