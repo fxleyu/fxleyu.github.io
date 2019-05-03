@@ -33,6 +33,8 @@ TCP，Transmission Control Protocol，其中文全称是传输控制协议。该
 # 三、数据结构
 ![tcp](http://wx4.sinaimg.cn/mw1024/5f4b7840ly1fe2y9q0qglj20x70d9ab2.jpg)
 
+![image](http://condor.depaul.edu/jkristof/technotes/tcp-segment-format.jpg)
+
 - 来源连接端口（16位长）－辨识发送连接端口
 - 目的连接端口（16位长）－辨识接收连接端口
 - 序列号（seq，32位长）
@@ -173,6 +175,12 @@ end if
 
 ## 5.2 差错检测
 ## 5.3 拥塞控制
+Congestion control
+
+> Modern implementations of TCP contain four intertwined algorithms: slow-start, congestion avoidance, fast retransmit, and fast recovery (RFC 5681). 
+
+![image](http://img.blog.csdn.net/20130801220615250)
+
 # 六、总结
 
 # 参考资料
