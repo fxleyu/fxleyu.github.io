@@ -7,6 +7,8 @@ tags:
     - Linux
 ---
 # 相对路径与绝对路径
+
+```
 ## cd
 
 ## mkdir
@@ -15,7 +17,9 @@ tags:
 
 ## rm
 
+
 # 环境变量PATH
+
 ## echo
 
 ## cp
@@ -47,9 +51,9 @@ tags:
 ## chown
 
 ## chmod
-```
+
 chmod 750 test
-```
+
 
 ## umask
 
@@ -69,3 +73,34 @@ chmod 750 test
 # 文件系统
 
 # 文件类型
+```
+
+# 一、查看磁盘信息
+
+```
+## df
+
+## du
+```
+
+# 二、磁盘分区和格式化
+
+```
+## fdisk
+
+## mke2fs
+
+## e2label
+```
+
+# 三、挂载/卸载磁盘
+
+```
+## mount
+
+## blkid
+
+## umount
+```
+
+# 建立一个swap文件增加虚拟内存
