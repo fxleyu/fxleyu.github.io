@@ -10,6 +10,7 @@
         background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}');
         background: {{ page.header-bg-css }};
     }
+
     {% if page.header-mask %}
     header.intro-header .header-mask{
         width: 100%;
@@ -57,7 +58,7 @@
         overflow: hidden;
     }
     header.intro-header .container{
-        visibility: hidden;
+        visibility: hidden; 
     }
     header iframe{
         width: 100%;
