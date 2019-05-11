@@ -2,6 +2,7 @@
 layout: page
 title: About
 ---
+
 # 技能
 - 熟悉 Java
 - 熟悉 Spring、Self4L框架
@@ -11,6 +12,7 @@ title: About
 - ZooKeeper服务
 
 # 职业经历
+
 时间  | 公司 | 部门 | 职位
 ---|--|---|---
 2018.02 - ？       | 京东商城 | 前台产品研发部 | 软件开发工程师    
