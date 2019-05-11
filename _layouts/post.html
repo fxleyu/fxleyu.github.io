@@ -24,8 +24,8 @@ layout: default
                 {% if page.multilingual %}
                 <!-- Language Selector -->
                 <select class="sel-lang" onchange= "onLanChange(this.options[this.options.selectedIndex].value)">
-                    <option value="0" selected> ÖÐÎÄ Chinese </option>
-                    <option value="1"> Ó¢ÎÄ English </option>
+                    <option value="0" selected> ä¸­æ–‡ Chinese </option>
+                    <option value="1"> è‹±æ–‡ English </option>
                 </select>
                 {% endif %}
 
@@ -53,17 +53,17 @@ layout: default
                 <hr style="visibility: hidden;">
 
                 {% if site.disqus_username %}
-                <!-- disqus ÆÀÂÛ¿ò start -->
+                <!-- disqus è¯„è®ºæ¡† start -->
                 <div class="comment">
                     <div id="disqus_thread" class="disqus-thread"></div>
                 </div>
-                <!-- disqus ÆÀÂÛ¿ò end -->
+                <!-- disqus è¯„è®ºæ¡† end -->
                 {% endif %}
 
                 {% if site.netease_comment %}
-                <!-- ÍøÒ×ÔÆ¸úÌû ÆÀÂÛ¿ò start -->
+                <!-- ç½‘æ˜“äº‘è·Ÿå¸– è¯„è®ºæ¡† start -->
                 <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
-                <!-- ÍøÒ×ÔÆ¸úÌû ÆÀÂÛ¿ò end -->
+                <!-- ç½‘æ˜“äº‘è·Ÿå¸– è¯„è®ºæ¡† end -->
                 {% endif %}
             </div>  
 
@@ -106,7 +106,7 @@ layout: default
 {% endif %}
 
 {% if site.netease_comment %}
-<!-- ÍøÒ×ÔÆ¸úÌûJS´úÂë start -->
+<!-- ç½‘æ˜“äº‘è·Ÿå¸–JSä»£ç  start -->
 <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
 <script>
   var cloudTieConfig = {
@@ -118,12 +118,12 @@ layout: default
   var yunManualLoad = true;
   Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true);
 </script>
-<!-- ÍøÒ×ÔÆ¸úÌûJS´úÂë end -->
+<!-- ç½‘æ˜“äº‘è·Ÿå¸–JSä»£ç  end -->
 {% endif %}
 
 
 {% if site.disqus_username %}
-<!-- disqus ¹«¹²JS´úÂë start (Ò»¸öÍøÒ³Ö»Ðè²åÈëÒ»´Î) -->
+<!-- disqus å…¬å…±JSä»£ç  start (ä¸€ä¸ªç½‘é¡µåªéœ€æ’å…¥ä¸€æ¬¡) -->
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "{{site.disqus_username}}";
@@ -136,7 +136,7 @@ layout: default
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
 </script>
-<!-- disqus ¹«¹²JS´úÂë end -->
+<!-- disqus å…¬å…±JSä»£ç  end -->
 {% endif %}
 
 
