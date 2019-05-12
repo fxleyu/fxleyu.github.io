@@ -15,9 +15,9 @@ tags:
 的大多数同步器的一个有用基础。
 
 ## 属性与数据结构
-![](.\img\2019-05\AQS_field.jpg)
+![](img\2019-05\AQS_field.jpg)
 
-![](.\img\2019-05\AQS_struct.jpg)
+![](img\2019-05\AQS_struct.jpg)
 
 
 # 其他并发组件

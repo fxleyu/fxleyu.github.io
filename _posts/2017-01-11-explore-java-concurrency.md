@@ -306,6 +306,6 @@ list = exchanger.exchange(list);
 ## 10、活动对象
 
 ## 线程状态转换
-![](.\img\2019-05\Thread_State.jpg)
+![](img\2019-05\Thread_State.jpg)
 
 ## 总结
