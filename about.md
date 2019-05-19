@@ -4,7 +4,7 @@ title: About
 ---
 
 # 技能
-- 熟悉 Java
+- 熟悉 Java, Java 并发
 - 熟悉 Spring、Self4L框架
 - 了解 JVM
 - 了解 Linux 系统及基本操作
