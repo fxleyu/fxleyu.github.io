@@ -11,6 +11,9 @@ title: About
 - Redis，熟悉基本操作、理解其基本原理
 - ZooKeeper服务
 
+## 新增技术栈
+- Spring Boot
+
 # 职业经历
 
 时间  | 公司 | 部门 | 职位
