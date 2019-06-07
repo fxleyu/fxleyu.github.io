@@ -3,6 +3,11 @@ layout: page
 title: About
 ---
 
+> 对自己的要求：
+>    1. 善于总结
+>    2. 对所做事情有自己的思考
+>    3. 在对技术进行驱动的同时，考虑业务
+
 # 技能
 - 熟悉 Java, Java 并发
 - 熟悉 Spring、Self4L框架
