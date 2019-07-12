@@ -52,9 +52,10 @@ tags:
 27 | 技术 | [重构与模式](https://book.douban.com/subject/5360962/) | - | 未读 | - | - |
 28 | 技术 | [代码大全](https://book.douban.com/subject/1477390/) | - | 未读 | - | - |
 29 | 技术 | [代码整洁之道](https://book.douban.com/subject/4199741/) | - | 未读 | - | - |
-30 | 技术 | [计算机程序设计艺术 卷1](https://book.douban.com/subject/5258931/) | 基本算法 | 未读 | - | - |
-31 | 技术 | [计算机程序设计艺术 卷2](https://book.douban.com/subject/5258932/) | 半数值算法 | 未读 | - | - |
-32 | 技术 | [计算机程序设计艺术 卷3](https://book.douban.com/subject/5258933/) | 排序与查找 | 未读 | - | - |
-33 | 技术 | [计算机程序设计艺术 卷4A](https://book.douban.com/subject/7564419/) | 组合算法（一） | 未读 | - | - |
-34 | 技术 | [30天自制操作系统](https://book.douban.com/subject/11530329/)| - | 未读 | - | - |
-35 | 技术 | [GitHub入门与实践](https://book.douban.com/subject/26462816/)| - | 未读 | - | - |
+30 | 技术 | [架构整洁之道](https://book.douban.com/subject/30333919/) | - | 在读 | - | - |
+31 | 技术 | [计算机程序设计艺术 卷1](https://book.douban.com/subject/5258931/) | 基本算法 | 未读 | - | - |
+32 | 技术 | [计算机程序设计艺术 卷2](https://book.douban.com/subject/5258932/) | 半数值算法 | 未读 | - | - |
+33 | 技术 | [计算机程序设计艺术 卷3](https://book.douban.com/subject/5258933/) | 排序与查找 | 未读 | - | - |
+34 | 技术 | [计算机程序设计艺术 卷4A](https://book.douban.com/subject/7564419/) | 组合算法（一） | 未读 | - | - |
+35 | 技术 | [30天自制操作系统](https://book.douban.com/subject/11530329/)| - | 未读 | - | - |
+36 | 技术 | [GitHub入门与实践](https://book.douban.com/subject/26462816/)| - | 未读 | - | - |
