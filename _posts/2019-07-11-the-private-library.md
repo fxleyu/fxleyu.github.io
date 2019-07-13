@@ -33,7 +33,7 @@ tags:
 8 | 技术 | [好学的C++](https://book.douban.com/subject/7063668/) | - | 未读 | - | - |
 9 | 技术 | [TCP/IP协议族](https://book.douban.com/subject/1801180/) | - | 未读 | - | - |
 10 | 技术 | [Java编程思想](https://book.douban.com/subject/2130190/) | - | 已读 | 4 | 3 |
-11 | 技术 | [Effective Java 中文版](https://book.douban.com/subject/3360807/) | - | 4 | 3 | - |
+11 | 技术 | [Effective Java 中文版](https://book.douban.com/subject/3360807/) | - | 已读 | 4 | 3 |
 12 | 技术 | [Java性能优化权威指南](https://book.douban.com/subject/25828043/) | - | 未读 | - | - |
 13 | 技术 | [Spring 入门经典](https://book.douban.com/subject/26652876/) | - | 已读 | - | - |
 14 | 技术 | [Python开发实战](https://book.douban.com/subject/25880219/) | - | 未读 | - | - |
@@ -52,7 +52,7 @@ tags:
 27 | 技术 | [重构与模式](https://book.douban.com/subject/5360962/) | - | 未读 | - | - |
 28 | 技术 | [代码大全](https://book.douban.com/subject/1477390/) | - | 未读 | - | - |
 29 | 技术 | [代码整洁之道](https://book.douban.com/subject/4199741/) | - | 未读 | - | - |
-30 | 技术 | [架构整洁之道](https://book.douban.com/subject/30333919/) | - | 在读 | - | - |
+30 | 技术 | [架构整洁之道](https://book.douban.com/subject/30333919/) | - | 在读 | 4 | 3 |
 31 | 技术 | [计算机程序设计艺术 卷1](https://book.douban.com/subject/5258931/) | 基本算法 | 未读 | - | - |
 32 | 技术 | [计算机程序设计艺术 卷2](https://book.douban.com/subject/5258932/) | 半数值算法 | 未读 | - | - |
 33 | 技术 | [计算机程序设计艺术 卷3](https://book.douban.com/subject/5258933/) | 排序与查找 | 未读 | - | - |
