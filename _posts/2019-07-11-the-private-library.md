@@ -59,5 +59,5 @@ tags:
 34 | 技术 | [计算机程序设计艺术 卷4A](https://book.douban.com/subject/7564419/) | 组合算法（一） | 未读 | - | - |
 35 | 技术 | [30天自制操作系统](https://book.douban.com/subject/11530329/)| - | 未读 | - | - |
 36 | 技术 | [GitHub入门与实践](https://book.douban.com/subject/26462816/)| - | 未读 | - | - |
-37 | 分布式 | [大型网站系统与 Java 中间件实践](https://book.douban.com/subject/25867042/) | - | 已读 | 4 | 3 | 20190715 第二遍开始阅读
-
+37 | 分布式 | [大型网站系统与 Java 中间件实践](https://book.douban.com/subject/25867042/) | - | 已读 | 4 | 3 | 第二遍 20190715 - 20190721
+38 | 分布式 | [亿级流量网站架构核心技术](https://book.douban.com/subject/26999243/) | 跟开涛学搭建高可用高并发系统 | 已读 | 3 | 3 | 第二遍 20190721 - 
