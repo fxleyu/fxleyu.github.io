@@ -52,13 +52,14 @@ tags:
 27 | 技术 | [重构与模式](https://book.douban.com/subject/5360962/) | - | 未读 | - | - |
 28 | 技术 | [代码大全](https://book.douban.com/subject/1477390/) | - | 未读 | - | - |
 29 | 技术 | [代码整洁之道](https://book.douban.com/subject/4199741/) | - | 未读 | - | - |
-30 | 技术 | [架构整洁之道](https://book.douban.com/subject/30333919/) | - | 已读 | 4 | 3 | 20190714 完成第一遍，由于知识缺乏，其中有些概念没有明白。
-31 | 技术 | [计算机程序设计艺术 卷1](https://book.douban.com/subject/5258931/) | 基本算法 | 未读 | - | - |
-32 | 技术 | [计算机程序设计艺术 卷2](https://book.douban.com/subject/5258932/) | 半数值算法 | 未读 | - | - |
-33 | 技术 | [计算机程序设计艺术 卷3](https://book.douban.com/subject/5258933/) | 排序与查找 | 未读 | - | - |
-34 | 技术 | [计算机程序设计艺术 卷4A](https://book.douban.com/subject/7564419/) | 组合算法（一） | 未读 | - | - |
-35 | 技术 | [30天自制操作系统](https://book.douban.com/subject/11530329/)| - | 未读 | - | - |
-36 | 技术 | [GitHub入门与实践](https://book.douban.com/subject/26462816/)| - | 未读 | - | - |
-37 | 分布式 | [大型网站系统与 Java 中间件实践](https://book.douban.com/subject/25867042/) | - | 已读 | 4 | 3 | 第二遍 20190715 - 20190721
-38 | 分布式 | [亿级流量网站架构核心技术](https://book.douban.com/subject/26999243/) | 跟开涛学搭建高可用高并发系统 | 已读 | 3 | 3 | 第二遍 20190721 - 20190727
-39 | 模式 | [设计模式之禅（第2版）](https://book.douban.com/subject/25843319/) | - | 在读 | 3 | 2 | 微信读书：20190725 - 
+30 | 技术 | [代码整洁之道](https://book.douban.com/subject/26919457/) | 程序员的职业素养 | 在读 | - | - |
+31 | 技术 | [架构整洁之道](https://book.douban.com/subject/30333919/) | - | 已读 | 4 | 3 | 20190714 完成第一遍，由于知识缺乏，其中有些概念没有明白。
+32 | 技术 | [计算机程序设计艺术 卷1](https://book.douban.com/subject/5258931/) | 基本算法 | 未读 | - | - |
+33 | 技术 | [计算机程序设计艺术 卷2](https://book.douban.com/subject/5258932/) | 半数值算法 | 未读 | - | - |
+34 | 技术 | [计算机程序设计艺术 卷3](https://book.douban.com/subject/5258933/) | 排序与查找 | 未读 | - | - |
+35 | 技术 | [计算机程序设计艺术 卷4A](https://book.douban.com/subject/7564419/) | 组合算法（一） | 未读 | - | - |
+36 | 技术 | [30天自制操作系统](https://book.douban.com/subject/11530329/)| - | 未读 | - | - |
+37 | 技术 | [GitHub入门与实践](https://book.douban.com/subject/26462816/)| - | 未读 | - | - |
+38 | 分布式 | [大型网站系统与 Java 中间件实践](https://book.douban.com/subject/25867042/) | - | 已读 | 4 | 3 | 第二遍 20190715 - 20190721
+39 | 分布式 | [亿级流量网站架构核心技术](https://book.douban.com/subject/26999243/) | 跟开涛学搭建高可用高并发系统 | 已读 | 3 | 3 | 第二遍 20190721 - 20190727
+40 | 模式 | [设计模式之禅（第2版）](https://book.douban.com/subject/25843319/) | - | 在读 | 3 | 2 | 微信读书：20190725 - 
