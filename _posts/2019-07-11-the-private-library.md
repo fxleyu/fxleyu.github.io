@@ -52,7 +52,7 @@ tags:
 27 | 技术 | [重构与模式](https://book.douban.com/subject/5360962/) | - | 未读 | - | - |
 28 | 技术 | [代码大全](https://book.douban.com/subject/1477390/) | - | 未读 | - | - |
 29 | 技术 | [代码整洁之道](https://book.douban.com/subject/4199741/) | - | 未读 | - | - |
-30 | 技术 | [代码整洁之道](https://book.douban.com/subject/26919457/) | 程序员的职业素养 | 在读 | - | - |
+30 | 技术 | [代码整洁之道](https://book.douban.com/subject/26919457/) | 程序员的职业素养 | 已读 | 3 | 2 | 20190731 逐句读完第一遍
 31 | 技术 | [架构整洁之道](https://book.douban.com/subject/30333919/) | - | 已读 | 4 | 3 | 20190714 完成第一遍，由于知识缺乏，其中有些概念没有明白。
 32 | 技术 | [计算机程序设计艺术 卷1](https://book.douban.com/subject/5258931/) | 基本算法 | 未读 | - | - |
 33 | 技术 | [计算机程序设计艺术 卷2](https://book.douban.com/subject/5258932/) | 半数值算法 | 未读 | - | - |
