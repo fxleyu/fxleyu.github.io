@@ -25,3 +25,10 @@ tags:
 创建 | Factory Method | 被实例化的子类
 创建 | Prototype | 被实例化的类
 创建 | Singleton | 一个类的唯一实例
+结构 | Adapter | 对象的接口
+结构 | Bridge | 对象的实现
+结构 | Composite | 一个对象的结构和组成
+结构 | Decorator | 对象的职责，不生成子类
+结构 | Facade | 一个子系统的接口
+结构 | Flyweight | 对象的存储开销
+结构 | Proxy | 如何访问一个对象；该对象的位置
