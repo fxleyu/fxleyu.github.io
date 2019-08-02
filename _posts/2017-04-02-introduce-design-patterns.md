@@ -15,3 +15,13 @@ tags:
 - 问题（problem）
 - 解决方案（solution）
 - 效果（consequences）
+
+
+### 设计模式所支持的设计的可变方面
+目的 | 设计模式 | 可变的方面 | 示例
+---|---|---|---
+创建 | Abstact Factory | 产品对象家族 | -
+创建 | Builder | 如何创建一个组合对象 | 
+创建 | Factory Method | 被实例化的子类
+创建 | Prototype | 被实例化的类
+创建 | Singleton | 一个类的唯一实例
