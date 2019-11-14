@@ -10,6 +10,7 @@ title: About
 
 ## 核心竞争力
 - 电商业务域
+- Java 技术栈
 
 # 技能
 - 熟悉 Java, Java 并发
@@ -21,6 +22,7 @@ title: About
 
 ## 新增技术栈
 - Spring Boot
+- Go 语言
 
 # 职业经历
 
