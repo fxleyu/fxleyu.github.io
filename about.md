@@ -12,6 +12,10 @@ title: About
 - 电商业务域
 - Java 技术栈
 
+
+领域模型 
+词汇库
+
 # 技能
 - 熟悉 Java, Java 并发
 - 熟悉 Spring、Self4L框架
