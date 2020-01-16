@@ -15,6 +15,7 @@ title: About
 
 领域模型 
 词汇库
+接口设计能力
 
 # 技能
 - 熟悉 Java, Java 并发
