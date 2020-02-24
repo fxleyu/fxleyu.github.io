@@ -10,8 +10,6 @@ title: Self-portrait
 
 # 关于生活
 我的目标是什么呀？
-
-说话要果断，要认为自己说的都是正确的
 ## 关于爱好
 要有自己爱好，不然老了怎么办？
 
@@ -29,8 +27,7 @@ title: Self-portrait
 
 我在乎小孩子吗？
 
-是吗？
-
+> Love as a collaborative work of art. (爱情是两人合作创造艺术) 「TED：爱情应有的样子」
 ## 关于人际交往
 
 # 关于工作
