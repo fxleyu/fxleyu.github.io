@@ -28,6 +28,7 @@ title: Self-portrait
 我在乎小孩子吗？
 
 > Love as a collaborative work of art. (爱情是两人合作创造艺术) 「TED：爱情应有的样子」
+
 ## 关于人际交往
 
 # 关于工作
