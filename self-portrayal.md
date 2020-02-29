@@ -32,6 +32,12 @@ title: Self-portrait
 
 > Love as a collaborative work of art. (爱情是两人合作创造艺术) 「TED：爱情应有的样子」
 
+### 喜欢的女生
+- 她不讨厌我呀
+- 不讨厌她
+- 差别不大的审美
+- 有相同的价值观呀
+
 ## 关于人际交往
 
 # 关于工作
