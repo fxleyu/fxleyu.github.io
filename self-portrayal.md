@@ -88,3 +88,5 @@ title: Self-portrait
 
 
 在错误的路上越走越远呢
+
+做人好累
