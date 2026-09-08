@@ -1,10 +1,11 @@
 /* Offline support for fxleyu.github.io. Bump this version when the app shell changes. */
 const CACHE_PREFIX = 'fxleyu-';
-const CACHE_NAME = CACHE_PREFIX + 'editorial-20260908-v6';
+const CACHE_NAME = CACHE_PREFIX + 'search-page-20260908-v7';
 const LEGACY_CACHES = ['precache-v1', 'runtime', 'main-precache-v1', 'main-runtime', 'main-precache-then-runtime'];
 const PRECACHE_LIST = [
   './',
   './archive/',
+  './search/',
   './offline.html',
   './assets/dist/site.min.css',
   './assets/dist/site.min.js',
@@ -60,6 +61,8 @@ self.addEventListener('fetch', function (event) {
     return caches.open(CACHE_NAME).then(function (cache) {
       return cache.match(request).then(function (cached) {
         if (cached) return cached;
+        // Search queries share one page shell; its cached index filters locally.
+        if (isNavigation && url.pathname === new URL('./search/', self.location.href).pathname) return cache.match('./search/');
         if (isNavigation) return cache.match('./offline.html');
         return Response.error();
       });

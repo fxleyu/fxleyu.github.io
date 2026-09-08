@@ -49,14 +49,13 @@
     }
 
     function setupSearch() {
-        var dialog = document.getElementById('site-search');
+        var page = document.getElementById('site-search');
         var input = document.getElementById('search-input');
         var results = document.getElementById('search-results');
         var status = document.getElementById('search-status');
-        if (!dialog || !input || !results || !status) return;
+        if (!page || !input || !results || !status) return;
         var index = null;
         var loading = null;
-        var opener = null;
         var limit = 50;
 
         function showResults() {
@@ -80,7 +79,7 @@
                 item.className = 'search-result';
                 var link = document.createElement('a');
                 link.href = post.url;
-                var title = document.createElement('h3');
+                var title = document.createElement('h2');
                 title.textContent = post.title;
                 link.appendChild(title);
                 item.appendChild(link);
@@ -105,7 +104,7 @@
             }
             if (loading) return;
             status.textContent = '正在加载文章索引……';
-            loading = fetch(dialog.getAttribute('data-search-index'))
+            loading = fetch(page.getAttribute('data-search-index'))
                 .then(function (response) {
                     if (!response.ok) throw new Error('Search index unavailable');
                     return response.json();
@@ -116,40 +115,42 @@
                     showResults();
                 })
                 .catch(function () {
-                    status.textContent = '暂时无法加载文章，请检查网络后重新打开搜索。';
+                    if (input.value.trim()) status.textContent = '暂时无法加载文章，请检查网络后点击“搜索”重试。';
                 })
                 .finally(function () { loading = null; });
         }
 
-        document.querySelectorAll('.site-search-open').forEach(function (button) {
-            button.addEventListener('click', function () {
-                opener = button;
-                dialog.showModal();
-                document.body.classList.add('search-is-open');
-                input.focus();
-                loadIndex();
-            });
-        });
-        dialog.querySelector('.search-close').addEventListener('click', function () { dialog.close(); });
-        dialog.addEventListener('click', function (event) {
-            if (event.target !== dialog) return;
-            var bounds = dialog.getBoundingClientRect();
-            if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) dialog.close();
-        });
-        // Native dialog supplies focus containment and Escape-to-close behavior.
-        dialog.addEventListener('close', function () {
-            document.body.classList.remove('search-is-open');
-            if (!opener) return;
-            var menu = document.getElementById('site-nav-links');
-            var target = menu && menu.hidden ? document.querySelector('.site-nav-toggle') : opener;
-            if (target) target.focus();
-        });
-        input.addEventListener('input', function () { if (index) showResults(); });
-        dialog.querySelector('form').addEventListener('submit', function (event) {
-            event.preventDefault();
-            if (index) showResults();
+        function search() {
+            if (!input.value.trim() || index) showResults();
             else loadIndex();
+        }
+
+        function updateQuery() {
+            var url = new URL(window.location.href);
+            var query = input.value.trim();
+            if (query) url.searchParams.set('q', query);
+            else url.searchParams.delete('q');
+            // Keep a shareable query without creating a history entry per keystroke.
+            window.history.replaceState(null, '', url);
+            search();
+        }
+
+        function restoreQuery() {
+            input.value = new URLSearchParams(window.location.search).get('q') || '';
+            search();
+        }
+
+        input.addEventListener('input', function (event) {
+            if (!event.isComposing) updateQuery();
         });
+        input.addEventListener('compositionend', updateQuery);
+        page.querySelector('form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            input.value = input.value.trim();
+            updateQuery();
+        });
+        window.addEventListener('popstate', restoreQuery);
+        restoreQuery();
     }
 
     function setupResponsiveContent() {

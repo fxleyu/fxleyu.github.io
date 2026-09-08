@@ -12,10 +12,10 @@
             <li><a href="{{ archive_page.url | prepend: site.baseurl }}"{% if page.url == archive_page.url %} aria-current="page"{% endif %}>归档</a></li>
             <li><a href="{{ about_page.url | prepend: site.baseurl }}"{% if page.url == about_page.url %} aria-current="page"{% elsif page.url == '/self-portrayal/' %} aria-current="location"{% endif %}>关于</a></li>
             <li>
-                <button class="site-search-open" type="button" aria-haspopup="dialog" aria-controls="site-search">
+                <a href="{{ site.baseurl }}/search/"{% if page.url == '/search/' %} aria-current="page"{% endif %}>
                     <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>
                     <span>搜索</span>
-                </button>
+                </a>
             </li>
         </ul>
     </div>

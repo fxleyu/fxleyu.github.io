@@ -1032,8 +1032,7 @@ hr {
   .article-catalog,
   .post-pagination,
   .article-comments,
-  .back-link,
-  .search-dialog {
+  .back-link {
     display: none !important;
   }
   .reading-layout,
