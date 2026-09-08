@@ -4,7 +4,7 @@ layout: default
 ---
 
 <div class="archive-layout">
-    <header class="page-heading"><h1>文章归档</h1><p id="archive-count" aria-live="polite">共 {{ site.posts.size }} 篇文章</p></header>
+    <header class="page-heading"><p class="eyebrow">THE ARCHIVE</p><h1>文章归档</h1><p id="archive-count" aria-live="polite">共 {{ site.posts.size }} 篇文章</p></header>
     <div class="archive-topics js-tags" id="archive-topics" aria-label="按主题筛选文章">
         <button type="button" class="tag-button--all topic-tag is-active" data-encode="" aria-pressed="true">全部 <span>{{ site.posts.size }}</span></button>
         {% capture tags %}

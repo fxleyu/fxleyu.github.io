@@ -3,26 +3,61 @@ layout: default
 description: "I walk slowly, like one who comes from so far away he doesn’t expect to arrive."
 ---
 
+<header class="home-heading site-width">
+    <p class="eyebrow">{{ site.author_bio }}</p>
+    <h1>风雪乐雨</h1>
+    <p class="home-description">记录技术，阅读世界，也记录生活中的自己。</p>
+</header>
+
 <div class="home-layout site-width">
-    <section class="article-feed" aria-labelledby="home-heading">
-        <header class="home-heading">
-            <p class="eyebrow">{{ site.author_bio }}</p>
-            <h1 id="home-heading">风雪乐雨</h1>
-            <p>记录技术，阅读世界，也记录生活中的自己。</p>
-        </header>
-        <div class="feed-heading"><span>最新文章</span><a href="{{ site.baseurl }}/archive/">全部 {{ site.posts.size }} 篇 ↗</a></div>
-        {% for post in paginator.posts %}
+    <aside class="author-rail" aria-label="作者与主题">
+        <div class="author-profile">
+            <a class="author-avatar" href="{{ site.baseurl }}/about/"><img src="{{ site.author_avatar | prepend: site.baseurl }}" alt="关于风雪乐雨" width="72" height="72"></a>
+            <div><p class="author-name">风雪乐雨</p><p class="author-bio">{{ site.author_bio }}</p></div>
+        </div>
+        <a class="author-about" href="{{ site.baseurl }}/about/">关于我 <span aria-hidden="true">↗</span></a>
+        <nav class="author-topics" aria-label="常写的主题">
+            <h2>常写的主题</h2>
+            {% capture ranked_topics %}{% for tag in site.tags %}
+            <a data-rank="{{ site.posts.size | minus: tag[1].size | prepend: '0000' | slice: -4, 4 }}" href="{{ site.baseurl }}/archive/?tag={{ tag[0] | url_encode }}" aria-label="{{ tag[0] | escape }}，{{ tag[1].size }} 篇文章"><span>{{ tag[0] | escape }}</span><span class="topic-count">{{ tag[1].size }}</span></a>__TOPIC__{% endfor %}{% endcapture %}
+            {% assign popular_topics = ranked_topics | strip | split: '__TOPIC__' | sort %}
+            {% for topic in popular_topics limit: 5 %}{{ topic }}{% endfor %}
+            <a class="all-topics" href="{{ site.baseurl }}/archive/">全部主题 <span aria-hidden="true">→</span></a>
+        </nav>
+    </aside>
+
+    <div class="article-feed">
+        {% assign earlier_offset = 0 %}
+        {% if paginator.page == 1 %}
+        <section aria-labelledby="latest-heading">
+        <div class="feed-heading"><h2 id="latest-heading">最新文章</h2><a href="{{ site.baseurl }}/archive/">全部 {{ site.posts.size }} 篇 <span aria-hidden="true">↗</span></a></div>
+        {% for post in paginator.posts limit: 4 %}
         <article class="post-preview">
+            <h3 class="post-title"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title | escape }}</a></h3>
+            {% include article-excerpt.html post=post %}
             <div class="post-meta">
                 <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%Y.%m.%d' }}</time>
-                {% if post.tags.size > 0 %}<a class="topic-tag" href="{{ site.baseurl }}/archive/?tag={{ post.tags.first | url_encode }}">{{ post.tags.first | escape }}</a>{% endif %}
-            </div>
-            <div class="post-copy">
-                <h2 class="post-title"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title | escape }}</a></h2>
-                {% include article-excerpt.html post=post %}
+                {% if post.tags.size > 0 %}<a class="post-topic" href="{{ site.baseurl }}/archive/?tag={{ post.tags.first | url_encode }}">{{ post.tags.first | escape }}</a>{% endif %}
+                <a class="post-read-more" href="{{ post.url | prepend: site.baseurl }}" aria-label="阅读全文：{{ post.title | escape }}">阅读全文 <span aria-hidden="true">→</span></a>
             </div>
         </article>
         {% endfor %}
+        </section>
+        {% assign earlier_offset = 4 %}
+        {% endif %}
+
+        {% if paginator.posts.size > earlier_offset %}
+        <section class="earlier-posts" aria-labelledby="earlier-heading">
+            <div class="feed-heading"><h2 id="earlier-heading">往期文章</h2><a href="{{ site.baseurl }}/archive/">按年份浏览 <span aria-hidden="true">→</span></a></div>
+            {% for post in paginator.posts offset: earlier_offset %}
+            <article class="earlier-post">
+                <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%Y.%m.%d' }}</time>
+                <h3><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title | escape }}</a></h3>
+            </article>
+            {% endfor %}
+        </section>
+        {% endif %}
+
         {% if paginator.total_pages > 1 %}
         <nav class="pagination-nav" aria-label="文章分页">
             {% if paginator.previous_page %}
@@ -34,5 +69,5 @@ description: "I walk slowly, like one who comes from so far away he doesn’t ex
             {% endif %}
         </nav>
         {% endif %}
-    </section>
+    </div>
 </div>
