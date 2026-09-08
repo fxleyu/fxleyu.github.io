@@ -2,147 +2,40 @@
 layout: default
 ---
 
-<!-- Image to hack wechat -->
-<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
-<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
-
-<!-- Post Header -->
-{% include intro-header.html type='post' %}
-
-<!-- Post Content -->
-<article>
-    <div class="container">
-        <div class="row">
-
-    <!-- Post Container -->
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                post-container">
-
-                <!-- Multi-Lingual -->
-                {% if page.multilingual %}
-                    {% include multilingual-sel.html %}
-                {% endif %}
-
-				{{ content }}
-
-                <hr style="visibility: hidden;">
-                <ul class="pager">
-                    {% if page.previous.url %}
-                    <li class="previous">
-                        <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">
-                        Previous<br>
-                        <span>{{page.previous.title}}</span>
-                        </a>
-                    </li>
-                    {% endif %}
-                    {% if page.next.url %}
-                    <li class="next">
-                        <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">
-                        Next<br>
-                        <span>{{page.next.title}}</span>
-                        </a>
-                    </li>
-                    {% endif %}
-                </ul>
-                <hr style="visibility: hidden;">
-
-                {% if site.disqus_username %}
-                <!-- disqus 评论框 start -->
-                <div class="comment">
-                    <div id="disqus_thread" class="disqus-thread"></div>
-                </div>
-                <!-- disqus 评论框 end -->
-                {% endif %}
-
-                {% if site.netease_comment %}
-                <!-- 网易云跟帖 评论框 start -->
-                <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
-                <!-- 网易云跟帖 评论框 end -->
-                {% endif %}
-            </div>  
-
-    <!-- Side Catalog Container -->
+<div class="reading-layout">
+    <article class="reading-article">
+        <header class="article-heading">
+            <a class="back-link" href="{{ site.baseurl }}/">← 文章列表</a>
+            <h1>{{ page.title | escape }}</h1>
+            {% if page.subtitle and page.subtitle != '' %}<p class="article-subtitle">{{ page.subtitle | escape }}</p>{% endif %}
+            <div class="article-byline">
+                <a href="{{ site.baseurl }}/about/" class="byline-avatar"><img src="{{ site.sidebar-avatar | prepend: site.baseurl }}" alt="作者头像" width="40" height="40"></a>
+                <div><a href="{{ site.baseurl }}/about/">{{ page.author | default: site.title | escape }}</a><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%Y年%-m月%-d日' }}</time></div>
+            </div>
+            {% if page.tags.size > 0 %}<div class="article-tags">{% for tag in page.tags %}<a class="topic-tag" href="{{ site.baseurl }}/archive/?tag={{ tag | url_encode }}">{{ tag | escape }}</a>{% endfor %}</div>{% endif %}
+        </header>
         {% unless page.no-catalog %}
-            <div class="
-                col-lg-2 col-lg-offset-0
-                visible-lg-block
-                sidebar-container
-                catalog-container">
-                <div class="side-catalog">
-                    <hr class="hidden-sm hidden-xs">
-                    <h5>
-                        <a class="catalog-toggle" href="#">CATALOG</a>
-                    </h5>
-                    <ul class="catalog-body"></ul>
-                </div>
-            </div>
+        <aside class="article-catalog" aria-label="文章目录">
+            <details class="side-catalog">
+                <summary>文章目录</summary>
+                <ul class="catalog-body"></ul>
+            </details>
+        </aside>
         {% endunless %}
-
-    <!-- Sidebar Container -->
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                sidebar-container">
-
-                <!-- Featured Tags -->
-                {% include featured-tags.html bottom=true %}
-
-                <!-- Friends Blog -->
-                {% include friends.html %}
-            </div>
-        </div>
-    </div>
-</article>
-
-<!-- add support for mathjax by voleking-->
-{% if page.mathjax %}
-  {% include mathjax_support.html %}
-{% endif %}
-
-
-
-{% if site.anchorjs %}
-<!-- async load function -->
-<script>
-    function async(u, c) {
-      var d = document, t = 'script',
-          o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-      s.parentNode.insertBefore(o, s);
-    }
-</script>
-
-<script src="https://utteranc.es/client.js"
-        repo="fxleyu/fxleyu.github.io"
-        issue-term="pathname"
-        theme="github-light"
-        crossorigin="anonymous"
-        async>
-</script>
-<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
-<script>
-    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
-        anchors.options = {
-          visible: 'hover',
-          placement: 'right',
-          // icon: '#'
-        };
-        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
-    })
-</script>
-<style>
-    /* place left on bigger screen */
-    @media all and (min-width: 800px) {
-        .anchorjs-link{
-            position: absolute;
-            left: -0.75em;
-            font-size: 1.1em;
-            margin-top : -0.1em;
-        }
-    }
-</style>
-{% endif %}
+        <div class="post-container">{{ content }}</div>
+        <nav class="post-pagination" aria-label="相邻文章">
+            {% if page.previous.url %}<a href="{{ page.previous.url | prepend: site.baseurl }}" rel="prev"><span>← 上一篇</span><strong>{{ page.previous.title | escape }}</strong></a>{% endif %}
+            {% if page.next.url %}<a href="{{ page.next.url | prepend: site.baseurl }}" rel="next"><span>下一篇 →</span><strong>{{ page.next.title | escape }}</strong></a>{% endif %}
+        </nav>
+        {% if site.comments.enabled %}
+        <section class="article-comments" aria-label="文章评论">
+            <script src="https://utteranc.es/client.js"
+                    repo="{{ site.comments.repository | escape }}"
+                    issue-term="{{ site.comments.issue_term | escape }}"
+                    theme="github-light"
+                    crossorigin="anonymous"
+                    async></script>
+        </section>
+        {% endif %}
+    </article>
+</div>

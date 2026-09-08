@@ -1,7 +1,6 @@
 # Site settings
 title: FXLEYU
 SEOTitle: 风雪乐雨的博客 | fxleyu Blog
-header-img: img/home-bg.jpg
 email: fxleyu@qq.com
 description: "I walk slowly, like one who comes from so far away he doesn’t expect to arrive. ——Jorge Luis Borges"
 keyword: "fxleyu, 风雪乐雨, 博客, 个人网站, Java, 后端, 分布式, 微服务, DDD"
@@ -20,30 +19,35 @@ twitter_username:   fxleyu
 facebook_username:  fxleyu
 #linkedin_username:  fxleyu
 
-
-
 # Build settings
-# from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
 highlighter: rouge
 permalink: pretty
 paginate: 30      # 分页设置
-exclude: ["less","node_modules","Gruntfile.js","package.json","README.md","README.zh.md"]
-anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
-# If you have timezone issue (e.g. #68) in China, uncomment to use this:
+exclude:
+  - node_modules
+  - vendor
+  - scripts
+  - assets/css
+  - assets/js
+  - package.json
+  - package-lock.json
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - NOTICE
+  - LICENSE
+heading_anchors: true
+comments:
+  enabled: true
+  repository: fxleyu/fxleyu.github.io
+  issue_term: pathname
+# Preserve historical publication dates and URLs.
 timezone: CN  
 
-# Gems
-# from PR#40, to support local preview for Jekyll 3.0
-# make sure you have this gem installed
-# `$ gem install jekyll-paginate`
+# Jekyll plugins
 plugins: [jekyll-paginate]
 
-
-
 # Markdown settings
-# replace redcarpet to kramdown,
-# although redcarpet can auto highlight code, the lack of header-id make the catalog impossible, so I switch to kramdown
-# document: http://jekyllrb.com/docs/configuration/#kramdown
 markdown: kramdown
 kramdown:
   input: GFM # use Github Flavored Markdown !important
@@ -54,9 +58,6 @@ kramdown:
       line_numbers: true
       start_line: 1
 
-
-
-
 # Analytics settings
 # Baidu Analytics
 # ba_track_id: [your track id]
@@ -65,26 +66,15 @@ kramdown:
 #ga_track_id: 'UA-49627206-1'            # Format: UA-xxxxxx-xx
 #ga_domain: fxleyu.github.io
 
-
-
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
 sidebar-about-description: "Coder, Reader & Writer"
 sidebar-avatar: /img/avatar_fxleyu.png      # use absolute URL, seeing it's used in both `/` and `/about/`
 
-
-
 # Featured Tags
 featured-tags: true                     # whether or not using Feature-Tags
 featured-condition-size: 1              # A tag will be featured if the size of it is more than this condition value
 
-
-
 # Progressive Web Apps
-chrome-tab-theme-color: "#000000"
+chrome-tab-theme-color: "#ffffff"
 service-worker: true
-
-
-
-# MathJax rendering for layout:page (e.g. post preview)
-page-mathjax: false

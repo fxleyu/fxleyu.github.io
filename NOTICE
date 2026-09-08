@@ -1,0 +1,27 @@
+FXLEYU site provenance
+
+This site is maintained independently. It does not install or load Hux Blog
+as a theme or package. Its templates originated from Hux Blog and have been
+modified for the FXLEYU reading design and native CSS/JavaScript architecture.
+The original Apache-2.0 license and upstream notices are retained in LICENSE.
+
+Original theme portions:
+  Copyright 2015-2016 Huxpro
+  https://github.com/Huxpro/huxpro.github.io
+  Apache License 2.0
+
+Historical theme subcomponents (not installed as dependencies):
+  Clean Blog Jekyll Theme
+  Copyright (c) 2013-2016 Blackrock Digital LLC.
+  https://github.com/BlackrockDigital/startbootstrap-clean-blog-jekyll/
+  MIT License; original attribution retained in LICENSE.
+
+Syntax highlighting colors:
+  Atom's One Dark theme for Jekyll
+  https://github.com/mgyongyosi/OneDarkJekyll/
+  The retained CSS has been adapted into assets/css/highlight.css.
+
+The old Snackbar component was removed and replaced with a native status
+notification. Historical source: https://codepen.io/wibblymat/pen/avAjq
+
+Modified template, style and browser-script portions are maintained by FXLEYU.

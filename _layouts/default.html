@@ -1,21 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 {% include head.html %}
 
-<!-- hack iOS CSS :active style -->
-<body ontouchstart="">
+<body class="reading-site layout-{{ page.layout }}" data-heading-anchors="{{ site.heading_anchors }}">
+
+    <a class="skip-link" href="#main-content">跳到正文</a>
 
     {% include nav.html %}
     {% include search.html %}
 
-    {{ content }}
+    <main id="main-content">
+        {{ content }}
+    </main>
 
     {% include footer.html %}
 
 
 <!-- Image to hack wechat -->
-<img src="/img/icon_wechat.png" width="0" height="0" />
+<img src="{{ site.baseurl }}/img/icon_wechat.png" width="0" height="0" alt="" aria-hidden="true" />
 <!-- Migrate from head to bottom, no longer block render and still work -->
 
 </body>

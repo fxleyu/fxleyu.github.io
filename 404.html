@@ -1,16 +1,13 @@
 ---
 layout: default
-title: 404
+title: 页面未找到
 hide-in-nav: true
-description: "404, 你懂的 :("
-header-img: "img/404-bg.jpg"
 permalink: /404.html
 ---
 
-
-<!-- I hate me！！！ -->
-{% include intro-header.html type="page" short='true' %}
-
-<script>
-	document.body.classList.add('page-fullscreen');
-</script>
+<section class="status-page">
+    <p class="status-code">404</p>
+    <h1>这一页，暂时找不到了。</h1>
+    <p>可以回到文章列表，或在归档里找找。</p>
+    <div class="status-actions"><a href="{{ site.baseurl }}/">返回首页</a><a href="{{ site.baseurl }}/archive/">查看归档 →</a></div>
+</section>

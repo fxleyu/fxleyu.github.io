@@ -1,16 +1,13 @@
 ---
 layout: default
-title: Offline
+title: 当前离线
 hide-in-nav: true
-description: "阅读过的页面可以在离线时访问哦 ;)"
-header-img: "img/404-bg.jpg"
 permalink: /offline.html
 ---
 
-
-<!-- Page Header -->
-{% include intro-header.html type="page" %}
-
-<script>
-	document.body.classList.add('page-fullscreen');
-</script>
+<section class="status-page">
+    <p class="status-code">OFFLINE</p>
+    <h1>暂时没有网络连接。</h1>
+    <p>已经缓存的文章仍可阅读。恢复网络后，请重新打开此页。</p>
+    <div class="status-actions"><a href="{{ site.baseurl }}/">返回首页</a><a href="{{ site.baseurl }}/archive/">查看归档 →</a></div>
+</section>

@@ -1,14 +1,10 @@
-<section class="visible-md visible-lg">
-  <hr>
-  <h5><a href="{{'/about/' | prepend: site.baseurl }}">ABOUT ME</a></h5>
-  <div class="short-about">
+<section class="author-profile">
     {% if site.sidebar-avatar %}
-    <img src="{{site.sidebar-avatar}}" />
+    <a class="author-avatar" href="{{ site.baseurl }}/about/" aria-label="关于风雪乐雨">
+        <img src="{{ site.sidebar-avatar | prepend: site.baseurl }}" alt="风雪乐雨的头像" width="72" height="72">
+    </a>
     {% endif %}
-    {% if site.sidebar-about-description %}
-    <p>{{site.sidebar-about-description}}</p>
-    {% endif %}
-    <!-- SNS Link -->
-    {% include sns-links.html %}
-  </div>
+    <h2><a href="{{ site.baseurl }}/about/">风雪乐雨</a></h2>
+    <p>{{ site.sidebar-about-description }}</p>
+    <a class="text-link" href="{{ site.baseurl }}/about/">关于我 ↗</a>
 </section>
