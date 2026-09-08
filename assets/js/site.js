@@ -168,7 +168,6 @@
             wrapper.setAttribute('aria-label', '可横向滚动的表格');
             table.parentNode.insertBefore(wrapper, table);
             wrapper.appendChild(table);
-            table.classList.add('table');
         });
         document.querySelectorAll('.post-container iframe[src*="youtube.com"], .post-container iframe[src*="vimeo.com"]').forEach(function (frame) {
             if (frame.parentElement.classList.contains('video-embed')) return;
@@ -179,8 +178,8 @@
         });
     }
 
-    window.generateCatalog = function (selector) {
-        var container = document.querySelector('div.post-container.active') || document.querySelector('div.post-container');
+    function generateCatalog(selector) {
+        var container = document.querySelector('div.post-container');
         var catalogs = document.querySelectorAll(selector);
         if (!container || !catalogs.length) return;
         var headings = Array.prototype.filter.call(container.querySelectorAll('h1, h2, h3, h4, h5, h6'), function (heading) { return heading.id; });
@@ -200,10 +199,10 @@
             var aside = catalog.closest('.article-catalog');
             if (aside) aside.hidden = headings.length === 0;
         });
-    };
+    }
 
     function setupCatalog() {
-        window.generateCatalog('.catalog-body');
+        generateCatalog('.catalog-body');
         watchMedia('(min-width: 1280px)', function (media) {
             document.querySelectorAll('details.side-catalog').forEach(function (details) { details.open = media.matches; });
         });

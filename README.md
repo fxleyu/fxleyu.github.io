@@ -7,10 +7,10 @@
 页面由项目自己的 Jekyll 模板、原生 CSS 和 JavaScript 组成。浏览器无需前端框架或第三方 JavaScript 运行时。静态资源使用 [esbuild](https://esbuild.github.io/) 编译和压缩，npm 只有这一个直接开发依赖。
 
 - Node.js 22 或更高版本。
-- esbuild 0.28.2（2026-09-08 向 npm 官方 registry 核实的最新稳定版本，确切依赖由 `package-lock.json` 锁定）。
+- esbuild，确切版本由 `package-lock.json` 锁定。
 - Jekyll 3.10 与 Bundler 2.4.22，保持当前 [GitHub Pages 默认构建版本](https://pages.github.com/versions/)兼容。
 
-资源构建工具和内容引擎可以分别升级。当前 Jekyll 官方最新稳定版为 [4.4.1](https://jekyllrb.com/news/2025/01/29/jekyll-4-4-1-released/)，需要 Ruby 2.7 或更高版本，官方建议 Ruby 3.2+；迁移它应同时配置自定义 Pages 构建，不能仅修改 Gemfile 后继续假定线上默认构建会使用 Jekyll 4。本项目当前保留经过验证的 Jekyll 3.10 配置。
+资源构建工具和内容引擎可以分别升级。升级 Jekyll 大版本时，应同时检查 Ruby 要求和 GitHub Pages 构建方式；默认 Pages 不会自动跟随 Gemfile 使用其他 Jekyll 大版本。
 
 ## 安装与运行
 
@@ -83,7 +83,7 @@ npm run new:post -- learning-java "学习 Java" 2026-09-08
 
 Jekyll 原生递归读取 `_posts/` 子目录，配置中的 `_posts/**/images/**` 排除规则防止它把日期目录下的源图片误识别为文章。图片产物与 `assets/dist/` 一样随源码提交，GitHub Pages 默认构建无需 npm 或自定义插件。共享正文模板将相对图片地址转换为站点地址，RSS 使用完整绝对地址，支持 `baseurl`。四个历史 `/img/2019-05/`、`/img/2020-05/` 图片地址由脚本生成兼容副本，保留已订阅 RSS 和旧链接。
 
-2026-09-08 整理了52篇文章、4张原本地图片，并将成功获取的22张外链原图保存至相应文章包。20个未能获取的外链暂时保留原地址；下载结果不代表永久失效。来源、文件 SHA-256、未完成项与当次响应记录见 [图片迁移记录](docs/image-migration.json)。
+配图来源、文件 SHA-256 和待补外链见 [图片迁移记录](docs/image-migration.json)。
 
 升级 esbuild 时先查询版本，再更新和验证：
 
@@ -96,7 +96,7 @@ npm run check
 
 ## macOS 自带 Ruby 的隔离安装
 
-本次验证使用 Ruby 2.6.10。如果系统 gem 目录不可写，可将 Bundler 安装在项目目录，无需 `sudo` 或修改系统 Ruby：
+如果系统 gem 目录不可写，可将 Bundler 安装在项目目录，无需 `sudo` 或修改系统 Ruby：
 
 ```sh
 export GEM_HOME="$PWD/.bundle/gems"

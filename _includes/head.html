@@ -26,7 +26,7 @@
     <meta property="og:description"
         content="{{ page.description | default: site.description | escape }}">
     {% endcase %}
-    <meta property="og:image" content="{{ site.url }}{{ site.sidebar-avatar }}">
+    <meta property="og:image" content="{{ site.url }}{{ site.author_avatar }}">
     <meta property="og:url" content="{{ site.url }}{{ page.url }}">
     <meta property="og:site_name" content="{{ site.SEOTitle }}">
     <meta name="google-site-verification" content="t69YwWqqLfRVeXiP5qipztRFDhbIoaD1jNGdVqUo0aQ" />
@@ -44,7 +44,7 @@
 
     <link rel="stylesheet" href="{{ '/assets/dist/site.min.css' | prepend: site.baseurl }}">
 
-    <!-- ga & ba script hoook -->
+    <!-- Baidu Analytics -->
     <script>
     var _hmt = _hmt || [];
     (function() {

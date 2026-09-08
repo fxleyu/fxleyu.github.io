@@ -1,7 +1,6 @@
 ---
 layout: page
 title: 自画像
-hide-in-nav: true
 ---
 
 **愿景** ： 成为一个自我感觉有趣的人（自得其乐）。

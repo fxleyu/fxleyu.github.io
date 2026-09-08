@@ -9,7 +9,7 @@ layout: default
             <h1>{{ page.title | escape }}</h1>
             {% if page.subtitle and page.subtitle != '' %}<p class="article-subtitle">{{ page.subtitle | escape }}</p>{% endif %}
             <div class="article-byline">
-                <a href="{{ site.baseurl }}/about/" class="byline-avatar"><img src="{{ site.sidebar-avatar | prepend: site.baseurl }}" alt="作者头像" width="40" height="40"></a>
+                <a href="{{ site.baseurl }}/about/" class="byline-avatar"><img src="{{ site.author_avatar | prepend: site.baseurl }}" alt="作者头像" width="40" height="40"></a>
                 <div><a href="{{ site.baseurl }}/about/">{{ page.author | default: site.title | escape }}</a><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%Y年%-m月%-d日' }}</time></div>
             </div>
             {% if page.tags.size > 0 %}<div class="article-tags">{% for tag in page.tags %}<a class="topic-tag" href="{{ site.baseurl }}/archive/?tag={{ tag | url_encode }}">{{ tag | escape }}</a>{% endfor %}</div>{% endif %}

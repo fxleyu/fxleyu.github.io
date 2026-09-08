@@ -1,6 +1,6 @@
 /* Offline support for fxleyu.github.io. Bump this version when the app shell changes. */
 const CACHE_PREFIX = 'fxleyu-';
-const CACHE_NAME = CACHE_PREFIX + 'system-20260908-v4';
+const CACHE_NAME = CACHE_PREFIX + 'system-20260908-v5';
 const LEGACY_CACHES = ['precache-v1', 'runtime', 'main-precache-v1', 'main-runtime', 'main-precache-then-runtime'];
 const PRECACHE_LIST = [
   './',
