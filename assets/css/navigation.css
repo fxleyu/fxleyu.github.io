@@ -12,16 +12,16 @@
   justify-content: space-between;
   width: calc(100% - 64px);
   max-width: 1120px;
-  min-height: 72px;
+  min-height: 64px;
   padding: 0;
   margin: 0 auto;
 }
 .site-brand {
   color: var(--ink);
-  font-family: var(--serif);
-  font-size: 27px;
-  font-weight: 700;
-  letter-spacing: -1.1px;
+  font-family: var(--sans);
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0;
 }
 .site-nav a,
 .site-nav button {
@@ -110,7 +110,7 @@
 }
 .search-dialog-header h2 {
   margin: 0;
-  font-size: 25px;
+  font-size: 23px;
   line-height: 1.4;
 }
 .search-close {
@@ -197,18 +197,23 @@
   font-family: var(--sans);
 }
 .site-footer .site-footer-inner {
-  max-width: 1120px;
+  max-width: 788px;
   margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 24px;
 }
 .site-footer .social-links {
   justify-content: center;
 }
 .site-footer .copyright {
-  margin: 16px 0 0;
+  margin: 0;
   color: var(--muted);
   font-size: 12px;
   line-height: 1.9;
-  text-align: center;
+  text-align: left;
 }
 .site-footer .footer-credit {
   display: inline-block;
@@ -228,7 +233,7 @@
     min-height: 64px;
   }
   .site-brand {
-    font-size: 25px;
+    font-size: 18px;
   }
   .site-nav-toggle {
     display: inline-flex;

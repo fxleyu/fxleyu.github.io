@@ -28,6 +28,7 @@ bundle install
 ```sh
 npm run build          # 编译 CSS / JS，然后生成完整 _site/
 npm run build:assets   # 只编译 CSS / JS，修改前端时可单独运行
+npm run build:posts    # 同步文章包中的配图到发布目录
 npm start              # 编译资源后启动 http://127.0.0.1:4000
 npm run dev            # 同时监听 CSS / JS 和 Jekyll 内容变更
 npm run check          # 验证构建行为，并核对提交的资源产物是否与源码一致
@@ -44,12 +45,45 @@ npm run check          # 验证构建行为，并核对提交的资源产物是�
 | 交互源码 | `assets/js/` |
 | 提交的资源产物 | `assets/dist/` |
 | 资源与站点构建脚本 | `scripts/assets.mjs`、`scripts/site.mjs` |
-| 文章 | `_posts/` |
+| 文章与配图源文件 | `_posts/年份/日期-文章标识/` |
+| 自动生成的文章配图 | `assets/posts/年份/日期-文章标识/images/` |
+| 新文章与配图同步脚本 | `scripts/posts.mjs` |
 | 离线缓存入口 | `sw.js` |
 
 修改源码后运行 `npm run build` 和 `npm run check`。`assets/dist/` 中的五个压缩资源与源码一同提交，兼容现有 GitHub Pages 构建；Pages 默认不会运行 npm。脚本只监听资源输入，输出内容未变时不重写文件，避免生成文件触发循环重建。`sw.js` 保持根路径，随 Jekyll 原样复制。
 
 请保留文章 front matter、现有时区及 `permalink: pretty` 的地址语义，检查52篇历史文章和 `/page2/` 的链接兼容后再调整相关配置。构建目录 `_site/` 与本地依赖不会提交。
+
+## 写文章与管理配图
+
+每篇文章拥有一个文件夹，按年份整理，文件夹使用原文章文件名（不含 `.md`），保留同日期文章原有的排序。Markdown 与 `images/` 一起移动、备份；共享头像等站点图片继续放在 `img/`：
+
+```text
+_posts/
+  2020/
+    2020-05-16-learn-clean-architecture/
+      2020-05-16-learn-clean-architecture.md
+      images/
+        ca.png
+```
+
+创建文章（最后的日期可省略，默认本机当天）：
+
+```sh
+npm run new:post -- learning-java "学习 Java" 2026-09-08
+```
+
+在新文章的 `images/` 放入图片，Markdown 使用相对地址，编辑器可直接预览：
+
+```md
+![架构示意图](images/architecture.png)
+```
+
+唯一编辑源是 `_posts/` 中的文章包。`npm run build` 会把配图同步到 `assets/posts/`，`npm start` 和 `npm run dev` 会监听配图新增、修改及删除。输出内容未变不会重写，删除源图会清理对应产物；生成文件不要手工修改。`npm run check` 会检测未同步的图片。
+
+Jekyll 原生递归读取 `_posts/` 子目录，配置中的 `_posts/**/images/**` 排除规则防止它把日期目录下的源图片误识别为文章。图片产物与 `assets/dist/` 一样随源码提交，GitHub Pages 默认构建无需 npm 或自定义插件。共享正文模板将相对图片地址转换为站点地址，RSS 使用完整绝对地址，支持 `baseurl`。四个历史 `/img/2019-05/`、`/img/2020-05/` 图片地址由脚本生成兼容副本，保留已订阅 RSS 和旧链接。
+
+2026-09-08 整理了52篇文章、4张原本地图片，并将成功获取的22张外链原图保存至相应文章包。20个未能获取的外链暂时保留原地址；下载结果不代表永久失效。来源、文件 SHA-256、未完成项与当次响应记录见 [图片迁移记录](docs/image-migration.json)。
 
 升级 esbuild 时先查询版本，再更新和验证：
 

@@ -1,0 +1,12 @@
+{%- assign bundle = include.post.path | remove_first: '_posts/' | split: '/' | pop | join: '/' -%}
+{%- assign images_path = '/assets/posts/' | append: bundle | append: '/images/' -%}
+{%- if include.absolute -%}
+  {%- assign images_url = images_path | absolute_url -%}
+{%- else -%}
+  {%- assign images_url = images_path | relative_url -%}
+{%- endif -%}
+{%- assign src_double = 'src="' | append: images_url -%}
+{%- assign src_single = "src='" | append: images_url -%}
+{%- assign href_double = 'href="' | append: images_url -%}
+{%- assign href_single = "href='" | append: images_url -%}
+{{- include.html | replace: 'src="images/', src_double | replace: 'src="./images/', src_double | replace: "src='images/", src_single | replace: "src='./images/", src_single | replace: 'href="images/', href_double | replace: 'href="./images/', href_double | replace: "href='images/", href_single | replace: "href='./images/", href_single -}}

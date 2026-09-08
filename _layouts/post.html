@@ -22,7 +22,7 @@ layout: default
             </details>
         </aside>
         {% endunless %}
-        <div class="post-container">{{ content }}</div>
+        <div class="post-container">{% include post-body.html post=page html=content %}</div>
         <nav class="post-pagination" aria-label="相邻文章">
             {% if page.previous.url %}<a href="{{ page.previous.url | prepend: site.baseurl }}" rel="prev"><span>← 上一篇</span><strong>{{ page.previous.title | escape }}</strong></a>{% endif %}
             {% if page.next.url %}<a href="{{ page.next.url | prepend: site.baseurl }}" rel="next"><span>下一篇 →</span><strong>{{ page.next.title | escape }}</strong></a>{% endif %}

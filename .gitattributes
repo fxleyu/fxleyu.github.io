@@ -1,0 +1,2 @@
+# Preserve source SVG bytes and their generated copies across Git checkouts.
+*.svg -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

@@ -13,9 +13,11 @@
   "scripts": {
     "build": "node scripts/site.mjs build",
     "build:assets": "node scripts/assets.mjs",
+    "build:posts": "node scripts/posts.mjs",
+    "new:post": "node scripts/posts.mjs new",
     "start": "node scripts/site.mjs start",
     "dev": "node scripts/site.mjs dev",
-    "check": "node --test scripts/*.test.mjs && node scripts/assets.mjs --check"
+    "check": "node --test scripts/*.test.mjs && node scripts/assets.mjs --check && node scripts/posts.mjs --check"
   },
   "devDependencies": {
     "esbuild": "^0.28.2"

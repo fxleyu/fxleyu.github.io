@@ -2,6 +2,7 @@ import { spawn, spawnSync } from 'node:child_process';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildAssets, projectRoot, watchAssets } from './assets.mjs';
+import { buildPostAssets, watchPostAssets } from './posts.mjs';
 
 function terminateTree(child, signal) {
   if (!child?.pid) return;
@@ -38,6 +39,7 @@ export async function runSite(mode, {
     throw new Error('Usage: node scripts/site.mjs <build|start|dev> [Jekyll options]');
   }
   let context;
+  let postContext;
   let child;
   let closed;
   let requestedExit;
@@ -55,6 +57,8 @@ export async function runSite(mode, {
   try {
     if (mode === 'dev') context = await watchAssets({ root });
     else await buildAssets({ root });
+    if (mode === 'build') await buildPostAssets({ root });
+    else postContext = await watchPostAssets({ root });
     if (requestedExit !== undefined) return requestedExit;
 
     const jekyllArgs = mode === 'build' ? ['build'] : ['serve', '--host', '127.0.0.1'];
@@ -71,6 +75,7 @@ export async function runSite(mode, {
   } finally {
     try {
       if (context) await context.dispose();
+      if (postContext) await postContext.dispose();
       if (child) await stopChild(child, closed.catch(() => {}));
     } finally {
       process.off('SIGINT', onInterrupt);

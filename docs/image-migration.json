@@ -1,0 +1,405 @@
+{
+  "checked_on": "2026-09-08",
+  "localized": [
+    {
+      "source_url": "https://note.youdao.com/yws/public/resource/f373c1e151652e56d0e8d18cd9d9aaa8/xmlnote/94ABFD325AC94EFB9D73275ED5CAD707/33178",
+      "files": [
+        "_posts/2016/2016-10-31-the-problems-of-view-focus-in-android/images/a1ee936aa192263f.png"
+      ],
+      "sha256": "a1ee936aa192263f4c043db5ac9887f90f64f5d8ab903665eeb5661c7172ab30",
+      "bytes": 24001,
+      "mime": "image/png"
+    },
+    {
+      "source_url": "https://note.youdao.com/yws/public/resource/f373c1e151652e56d0e8d18cd9d9aaa8/xmlnote/A89FF82715AD40649DC94186FE3560BB/33170",
+      "files": [
+        "_posts/2016/2016-10-31-the-problems-of-view-focus-in-android/images/fac8c3ef7a96b4d8.png"
+      ],
+      "sha256": "fac8c3ef7a96b4d8eb4fe45fdb724615be54d36b4d02111f5b4ae176786a1612",
+      "bytes": 6693,
+      "mime": "image/png"
+    },
+    {
+      "source_url": "https://note.youdao.com/yws/public/resource/f373c1e151652e56d0e8d18cd9d9aaa8/xmlnote/43CE40632A4C4FC6B50EBD6292CB920D/33180",
+      "files": [
+        "_posts/2016/2016-10-31-the-problems-of-view-focus-in-android/images/bf90219787777763.png"
+      ],
+      "sha256": "bf902197877777632da1e4d57d71bc89c3c17a3087748ffdb8e0f2dfefccdbd3",
+      "bytes": 18759,
+      "mime": "image/png"
+    },
+    {
+      "source_url": "https://note.youdao.com/yws/public/resource/f373c1e151652e56d0e8d18cd9d9aaa8/xmlnote/599BF0EE463E4B5C8FAB7255C1F5C648/33184",
+      "files": [
+        "_posts/2016/2016-10-31-the-problems-of-view-focus-in-android/images/7a3f2200ff696b41.png"
+      ],
+      "sha256": "7a3f2200ff696b41345c520a94583f40df1a7bfea6a2c62215783a3481ead3e7",
+      "bytes": 14773,
+      "mime": "image/png"
+    },
+    {
+      "source_url": "https://note.youdao.com/yws/public/resource/f373c1e151652e56d0e8d18cd9d9aaa8/xmlnote/3592A61A34E04FDB9E50E113726BF301/33194",
+      "files": [
+        "_posts/2016/2016-10-31-the-problems-of-view-focus-in-android/images/c19e674139484ab5.png"
+      ],
+      "sha256": "c19e674139484ab519d351f808656bb28997ba520d3a359a57b3d78144c3035a",
+      "bytes": 1889,
+      "mime": "image/png"
+    },
+    {
+      "source_url": "https://note.youdao.com/yws/public/resource/f373c1e151652e56d0e8d18cd9d9aaa8/xmlnote/F95526B30E164C2FB380835CD1A0D4A8/33140",
+      "files": [
+        "_posts/2016/2016-10-31-the-problems-of-view-focus-in-android/images/eb2f9cd9db421221.png"
+      ],
+      "sha256": "eb2f9cd9db421221395b5589217cab3848cd0e6b0e5c27d9aaf4577a5c66265c",
+      "bytes": 15686,
+      "mime": "image/png"
+    },
+    {
+      "source_url": "https://note.youdao.com/yws/public/resource/f373c1e151652e56d0e8d18cd9d9aaa8/xmlnote/742B3D9166B445BD9AAF598C916CEEAC/33201",
+      "files": [
+        "_posts/2016/2016-10-31-the-problems-of-view-focus-in-android/images/883db9e95278771a.png"
+      ],
+      "sha256": "883db9e95278771a6b29fc50984c082df77bb88043438c1de2333d05a623c836",
+      "bytes": 19736,
+      "mime": "image/png"
+    },
+    {
+      "source_url": "https://note.youdao.com/yws/public/resource/f373c1e151652e56d0e8d18cd9d9aaa8/xmlnote/5060D02E8D904524A372CAE841C776D0/33207",
+      "files": [
+        "_posts/2016/2016-10-31-the-problems-of-view-focus-in-android/images/2ea11d34f22da8b4.png"
+      ],
+      "sha256": "2ea11d34f22da8b4a9935ded4588d9d409d5fcac719f555e7a526792d8b1bca6",
+      "bytes": 7560,
+      "mime": "image/png"
+    },
+    {
+      "source_url": "https://note.youdao.com/yws/public/resource/f373c1e151652e56d0e8d18cd9d9aaa8/xmlnote/355F81F446CC4B349B551D5093D6D0C7/33210",
+      "files": [
+        "_posts/2016/2016-10-31-the-problems-of-view-focus-in-android/images/b03d3e573720b264.png"
+      ],
+      "sha256": "b03d3e573720b26470ea4296cc0868a2d5e27faa9703d7bbc42bb999e1e3b849",
+      "bytes": 18724,
+      "mime": "image/png"
+    },
+    {
+      "source_url": "https://note.youdao.com/yws/public/resource/f373c1e151652e56d0e8d18cd9d9aaa8/xmlnote/A5BC2EED538B4B278CE60695119292E4/33212",
+      "files": [
+        "_posts/2016/2016-10-31-the-problems-of-view-focus-in-android/images/2a3174e18ab9e984.png"
+      ],
+      "sha256": "2a3174e18ab9e984d72bc602592c8034fa28fd662d17aee00fe608889340d418",
+      "bytes": 4553,
+      "mime": "image/png"
+    },
+    {
+      "source_url": "https://note.youdao.com/yws/public/resource/f373c1e151652e56d0e8d18cd9d9aaa8/xmlnote/BA60602891324793B747B28CB1C65DF7/33214",
+      "files": [
+        "_posts/2016/2016-10-31-the-problems-of-view-focus-in-android/images/7d9043da7ceeb99d.png"
+      ],
+      "sha256": "7d9043da7ceeb99d49ade0a00c6099fc2ba88d6995fb06956b2f7f3da462759d",
+      "bytes": 15517,
+      "mime": "image/png"
+    },
+    {
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Tcp_state_diagram_fixed_new.svg/1084px-Tcp_state_diagram_fixed_new.svg.png",
+      "files": [
+        "_posts/2017/2017-03-28-introducing-transmission-control-protocol-tcp/images/d22babe6377abb32.svg"
+      ],
+      "sha256": "d22babe6377abb32b1e94cb9a572ce06b89d9353050ac2fbf77090e63a707fa8",
+      "bytes": 110703,
+      "mime": "image/svg+xml"
+    },
+    {
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Abstract_factory.svg/776px-Abstract_factory.svg.png",
+      "files": [
+        "_posts/2017/2017-04-05-introduce-creatal-patterns/images/c4396c4bfdb766d4.svg"
+      ],
+      "sha256": "c4396c4bfdb766d45b151a82234234cfe4ed2ac9142a99916c46f7107e05bb21",
+      "bytes": 271357,
+      "mime": "image/svg+xml"
+    },
+    {
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Abstract_factory_UML.svg/1016px-Abstract_factory_UML.svg.png",
+      "files": [
+        "_posts/2017/2017-04-05-introduce-creatal-patterns/images/0b80ddb0d03d317a.svg"
+      ],
+      "sha256": "0b80ddb0d03d317aaba2bd677f2a8c1e4a82e58b4c41ef48077878a2b8b024eb",
+      "bytes": 59420,
+      "mime": "image/svg+xml"
+    },
+    {
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/d/df/New_WikiFactoryMethod.png",
+      "files": [
+        "_posts/2017/2017-04-05-introduce-creatal-patterns/images/64112e6324c64409.png"
+      ],
+      "sha256": "64112e6324c64409a4482bcc6094c0e9d97851710d094ed1eb455e49fb19c3ca",
+      "bytes": 244383,
+      "mime": "image/png"
+    },
+    {
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/d/d7/ObjectAdapter.png",
+      "files": [
+        "_posts/2017/2017-04-07-introduce-structural-patterns/images/5831f259e2505273.png"
+      ],
+      "sha256": "5831f259e25052734e13b858bdedfaa911c9972a7e34eadfebe3d53b1525e47f",
+      "bytes": 11152,
+      "mime": "image/png"
+    },
+    {
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Decorator_UML_class_diagram.svg/960px-Decorator_UML_class_diagram.svg.png",
+      "files": [
+        "_posts/2017/2017-04-07-introduce-structural-patterns/images/771f932f49e4a8c3.png"
+      ],
+      "sha256": "771f932f49e4a8c3da9e44bd77538bf4eff80c1fbed41187f91acd26d7e2d1aa",
+      "bytes": 20704,
+      "mime": "image/png"
+    },
+    {
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/UML2_Decorator_Pattern.png/600px-UML2_Decorator_Pattern.png",
+      "files": [
+        "_posts/2017/2017-04-07-introduce-structural-patterns/images/05c1a71d4dac042e.png"
+      ],
+      "sha256": "05c1a71d4dac042e354d9caec01c61d75c21e8baedcca0b77789e4175d53da45",
+      "bytes": 36838,
+      "mime": "image/png"
+    },
+    {
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Builder_UML_class_diagram.svg/750px-Builder_UML_class_diagram.svg.png",
+      "files": [
+        "_posts/2017/2017-04-05-introduce-creatal-patterns/images/a569979704844c50.svg"
+      ],
+      "sha256": "a569979704844c50ac8dccf367947ff9426b59a2eaf30643d23ceeaf025a85a3",
+      "bytes": 3672,
+      "mime": "image/svg+xml"
+    },
+    {
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Prototype_UML.svg/900px-Prototype_UML.svg.png",
+      "files": [
+        "_posts/2017/2017-04-05-introduce-creatal-patterns/images/bd8d65053ba85cdb.svg"
+      ],
+      "sha256": "bd8d65053ba85cdbb0038be9149fa5d53e680765c1b6efdf9e6dc7d58534f544",
+      "bytes": 31381,
+      "mime": "image/svg+xml"
+    },
+    {
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Singleton_UML_class_diagram.svg/330px-Singleton_UML_class_diagram.svg.png",
+      "files": [
+        "_posts/2017/2017-04-05-introduce-creatal-patterns/images/62b4e4b831200b54.png"
+      ],
+      "sha256": "62b4e4b831200b546dea31470e197b998cbe3993d38a8539fda19d65078c7203",
+      "bytes": 5824,
+      "mime": "image/png"
+    },
+    {
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Adapter%28Object%29_pattern_in_LePUS3.png",
+      "files": [
+        "_posts/2017/2017-04-07-introduce-structural-patterns/images/0a6f1569bcfb9681.png"
+      ],
+      "sha256": "0a6f1569bcfb9681fb85de127b1f7a6be0a0fa3265a38e37ad8768c4caede5b2",
+      "bytes": 13389,
+      "mime": "image/png"
+    }
+  ],
+  "unresolved": [
+    {
+      "source_url": "http://img.my.csdn.net/uploads/201301/24/1359003793_3122.jpg",
+      "reason": "DNS lookup failed",
+      "references": [
+        {
+          "file": "_posts/2013/2013-01-24-code-for-runnaway-roboy-game/2013-01-24-code-for-runnaway-roboy-game.md",
+          "line": 16
+        }
+      ]
+    },
+    {
+      "source_url": "http://img.my.csdn.net/uploads/201301/24/1359003988_2571.jpg",
+      "reason": "DNS lookup failed",
+      "references": [
+        {
+          "file": "_posts/2013/2013-01-24-code-for-runnaway-roboy-game/2013-01-24-code-for-runnaway-roboy-game.md",
+          "line": 211
+        }
+      ]
+    },
+    {
+      "source_url": "http://img.my.csdn.net/uploads/201301/24/1359004754_2587.jpg",
+      "reason": "DNS lookup failed",
+      "references": [
+        {
+          "file": "_posts/2013/2013-01-24-code-for-runnaway-roboy-game/2013-01-24-code-for-runnaway-roboy-game.md",
+          "line": 253
+        }
+      ]
+    },
+    {
+      "source_url": "http://img.my.csdn.net/uploads/201301/24/1359005024_6196.jpg",
+      "reason": "DNS lookup failed",
+      "references": [
+        {
+          "file": "_posts/2013/2013-01-24-code-for-runnaway-roboy-game/2013-01-24-code-for-runnaway-roboy-game.md",
+          "line": 255
+        }
+      ]
+    },
+    {
+      "source_url": "http://wx4.sinaimg.cn/mw1024/5f4b7840ly1fe2y9q0qglj20x70d9ab2.jpg",
+      "reason": "HTTP 403",
+      "references": [
+        {
+          "file": "_posts/2017/2017-03-28-introducing-transmission-control-protocol-tcp/2017-03-28-introducing-transmission-control-protocol-tcp.md",
+          "line": 34
+        }
+      ]
+    },
+    {
+      "source_url": "http://condor.depaul.edu/jkristof/technotes/tcp-segment-format.jpg",
+      "reason": "HTTP 403",
+      "references": [
+        {
+          "file": "_posts/2017/2017-03-28-introducing-transmission-control-protocol-tcp/2017-03-28-introducing-transmission-control-protocol-tcp.md",
+          "line": 36
+        }
+      ]
+    },
+    {
+      "source_url": "http://wx4.sinaimg.cn/mw1024/5f4b7840ly1fe2xqqeaogj20wa03baa7.jpg",
+      "reason": "HTTP 403",
+      "references": [
+        {
+          "file": "_posts/2017/2017-03-28-introducing-transmission-control-protocol-tcp/2017-03-28-introducing-transmission-control-protocol-tcp.md",
+          "line": 70
+        }
+      ]
+    },
+    {
+      "source_url": "http://img.blog.csdn.net/20130801220615250",
+      "reason": "HTTP 404",
+      "references": [
+        {
+          "file": "_posts/2017/2017-03-28-introducing-transmission-control-protocol-tcp/2017-03-28-introducing-transmission-control-protocol-tcp.md",
+          "line": 182
+        }
+      ]
+    },
+    {
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Bridge_UML_class_diagram.svg/750px-Bridge_UML_class_diagram.svg.png",
+      "reason": "HTTP 429",
+      "references": [
+        {
+          "file": "_posts/2017/2017-04-07-introduce-structural-patterns/2017-04-07-introduce-structural-patterns.md",
+          "line": 57
+        }
+      ]
+    },
+    {
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Bridge_pattern_in_LePUS3.1.gif",
+      "reason": "HTTP 429",
+      "references": [
+        {
+          "file": "_posts/2017/2017-04-07-introduce-structural-patterns/2017-04-07-introduce-structural-patterns.md",
+          "line": 60
+        }
+      ]
+    },
+    {
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Composite_UML_class_diagram_%28fixed%29.svg/900px-Composite_UML_class_diagram_%28fixed%29.svg.png",
+      "reason": "HTTP 429",
+      "references": [
+        {
+          "file": "_posts/2017/2017-04-07-introduce-structural-patterns/2017-04-07-introduce-structural-patterns.md",
+          "line": 136
+        }
+      ]
+    },
+    {
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Composite_pattern_in_LePUS3.png",
+      "reason": "HTTP 429",
+      "references": [
+        {
+          "file": "_posts/2017/2017-04-07-introduce-structural-patterns/2017-04-07-introduce-structural-patterns.md",
+          "line": 139
+        }
+      ]
+    },
+    {
+      "source_url": "https://upload.wikimedia.org/wikipedia/en/5/57/Example_of_Facade_design_pattern_in_UML.png",
+      "reason": "HTTP 429",
+      "references": [
+        {
+          "file": "_posts/2017/2017-04-07-introduce-structural-patterns/2017-04-07-introduce-structural-patterns.md",
+          "line": 411
+        }
+      ]
+    },
+    {
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Command_pattern.svg/1050px-Command_pattern.svg.png",
+      "reason": "HTTP 429",
+      "references": [
+        {
+          "file": "_posts/2017/2017-04-10-introduce-behavioral-patterns/2017-04-10-introduce-behavioral-patterns.md",
+          "line": 149
+        }
+      ]
+    },
+    {
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Interpreter_UML_class_diagram.svg/804px-Interpreter_UML_class_diagram.svg.png",
+      "reason": "HTTP 429",
+      "references": [
+        {
+          "file": "_posts/2017/2017-04-10-introduce-behavioral-patterns/2017-04-10-introduce-behavioral-patterns.md",
+          "line": 301
+        }
+      ]
+    },
+    {
+      "source_url": "http://wx4.sinaimg.cn/mw690/5f4b7840ly1fetl98x8lcj20r70pvjtc.jpg",
+      "reason": "HTTP 403",
+      "references": [
+        {
+          "file": "_posts/2017/2017-04-20-the-note-of-git/2017-04-20-the-note-of-git.md",
+          "line": 46
+        }
+      ]
+    },
+    {
+      "source_url": "http://wx3.sinaimg.cn/large/5f4b7840ly1fhn75e1p6ej212m0lptc2.jpg",
+      "reason": "HTTP 403",
+      "references": [
+        {
+          "file": "_posts/2017/2017-07-15-java-security-overview/2017-07-15-java-security-overview.md",
+          "line": 58
+        }
+      ]
+    },
+    {
+      "source_url": "http://wx3.sinaimg.cn/large/5f4b7840ly1fhnam8g2pij20pe0n2q3v.jpg",
+      "reason": "HTTP 403",
+      "references": [
+        {
+          "file": "_posts/2017/2017-07-17-java-virtual-machine-overvew/2017-07-17-java-virtual-machine-overvew.md",
+          "line": 16
+        }
+      ]
+    },
+    {
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/d/dd/JvmSpec7.png",
+      "reason": "HTTP 429",
+      "references": [
+        {
+          "file": "_posts/2018/2018-10-02-hello-run-time-data-areas/2018-10-02-hello-run-time-data-areas.md",
+          "line": 14
+        }
+      ]
+    },
+    {
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/MaslowsHierarchyOfNeeds.svg/450px-MaslowsHierarchyOfNeeds.svg.png",
+      "reason": "HTTP 429",
+      "references": [
+        {
+          "file": "_posts/2018/2018-12-15-what-do-i-want/2018-12-15-what-do-i-want.md",
+          "line": 62
+        }
+      ]
+    }
+  ]
+}

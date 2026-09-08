@@ -27,6 +27,9 @@ exclude:
   - node_modules
   - vendor
   - scripts
+  - docs
+  # Post bundle folders contain dates; keep source images out of Jekyll's post matcher.
+  - _posts/**/images/**
   - assets/css
   - assets/js
   - package.json

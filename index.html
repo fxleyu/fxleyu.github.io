@@ -6,23 +6,20 @@ description: "I walk slowly, like one who comes from so far away he doesn’t ex
 <div class="home-layout site-width">
     <section class="article-feed" aria-labelledby="home-heading">
         <header class="home-heading">
+            <p class="eyebrow">{{ site.sidebar-about-description }}</p>
             <h1 id="home-heading">风雪乐雨</h1>
-            <p>{{ site.sidebar-about-description }}</p>
+            <p>记录技术，阅读世界，也记录生活中的自己。</p>
         </header>
-        <div class="feed-heading"><span>最新文章</span></div>
+        <div class="feed-heading"><span>最新文章</span><a href="{{ site.baseurl }}/archive/">全部 {{ site.posts.size }} 篇 ↗</a></div>
         {% for post in paginator.posts %}
         <article class="post-preview">
-            <div class="post-author">
-                <img src="{{ site.sidebar-avatar | prepend: site.baseurl }}" alt="" width="22" height="22" loading="lazy">
-                <span>{{ post.author | default: site.title | escape }}</span>
-            </div>
-            <h2 class="post-title"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title | escape }}</a></h2>
-            {% include article-excerpt.html post=post %}
             <div class="post-meta">
-                <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%Y年%-m月%-d日' }}</time>
-                {% for tag in post.tags limit: 3 %}
-                <a class="topic-tag" href="{{ site.baseurl }}/archive/?tag={{ tag | url_encode }}">{{ tag | escape }}</a>
-                {% endfor %}
+                <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%Y.%m.%d' }}</time>
+                {% if post.tags.size > 0 %}<a class="topic-tag" href="{{ site.baseurl }}/archive/?tag={{ post.tags.first | url_encode }}">{{ post.tags.first | escape }}</a>{% endif %}
+            </div>
+            <div class="post-copy">
+                <h2 class="post-title"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title | escape }}</a></h2>
+                {% include article-excerpt.html post=post %}
             </div>
         </article>
         {% endfor %}
@@ -38,10 +35,4 @@ description: "I walk slowly, like one who comes from so far away he doesn’t ex
         </nav>
         {% endif %}
     </section>
-    <aside class="author-sidebar" aria-label="作者与文章主题">
-        {% include short-about.html %}
-        {% include featured-tags.html %}
-        <section class="sidebar-links"><h2>其他地方</h2>{% include sns-links.html %}</section>
-        {% include friends.html %}
-    </aside>
 </div>
