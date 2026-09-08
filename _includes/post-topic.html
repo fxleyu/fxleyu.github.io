@@ -1,0 +1,10 @@
+{%- assign reading_topic = 'tech' -%}
+{%- for group in site.data.reading.topics -%}
+  {%- for tag in include.post.tags -%}
+    {%- if group.tags contains tag -%}{%- assign reading_topic = group.id -%}{%- endif -%}
+  {%- endfor -%}
+{%- endfor -%}
+{%- for group in site.data.reading.topics -%}
+  {%- if group.urls contains include.post.url -%}{%- assign reading_topic = group.id -%}{%- endif -%}
+{%- endfor -%}
+{{- reading_topic -}}

@@ -1,0 +1,17 @@
+{%- assign related_count = 0 -%}
+{%- capture related_links -%}
+{%- for candidate in site.posts -%}
+  {%- if candidate.url != page.url -%}
+    {%- assign has_shared_tag = false -%}
+    {%- for tag in page.tags -%}{%- if candidate.tags contains tag -%}{%- assign has_shared_tag = true -%}{%- endif -%}{%- endfor -%}
+    {%- if has_shared_tag -%}
+      <li><a href="{{ candidate.url | prepend: site.baseurl }}">{{ candidate.title | escape }} <span aria-hidden="true">→</span></a></li>
+      {%- assign related_count = related_count | plus: 1 -%}
+      {%- if related_count == 3 -%}{%- break -%}{%- endif -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- endcapture -%}
+{% if related_count > 0 %}
+<section class="related-reading" aria-labelledby="related-heading"><h2 id="related-heading">继续阅读</h2><ul>{{ related_links }}</ul></section>
+{% endif %}

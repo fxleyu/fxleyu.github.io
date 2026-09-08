@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 搜索文章
-description: "搜索博客中的文章标题、副标题与标签。"
+description: "搜索博客中的文章标题、标签与正文。"
 permalink: /search/
 ---
 
@@ -9,16 +9,24 @@ permalink: /search/
     <header class="page-heading">
         <p class="eyebrow">SEARCH</p>
         <h1 id="search-title">搜索文章</h1>
-        <p>从标题、副标题或标签中，找一篇想读的文章。</p>
+        <p>从一个关键词出发，查找标题、标签与正文。</p>
     </header>
     <form class="search-form" role="search" action="{{ site.baseurl }}/search/" method="get">
         <label for="search-input">关键词</label>
         <div class="search-field">
-            <input type="search" id="search-input" name="q" placeholder="试试 Java、架构、学习……" autocomplete="off" enterkeyhint="search" aria-describedby="search-status">
+            <input type="search" id="search-input" name="q" placeholder="试试 Java、架构、缓存……" autocomplete="off" enterkeyhint="search" aria-describedby="search-status">
             <button class="search-submit" type="submit">搜索</button>
         </div>
     </form>
     <p class="search-status" id="search-status" role="status" aria-live="polite" aria-atomic="true">输入关键词，找一篇想读的文章。</p>
     <div id="search-results" class="search-results"></div>
+    <div class="search-discovery" id="search-discovery">
+        <p>也可以按主题慢慢读。</p>
+        <nav class="search-topics" aria-label="按主题浏览文章">
+            <a href="{{ site.baseurl }}/archive/?topic=tech">技术 <span aria-hidden="true">→</span></a>
+            <a href="{{ site.baseurl }}/archive/?topic=reading">阅读 <span aria-hidden="true">→</span></a>
+            <a href="{{ site.baseurl }}/archive/?topic=life">生活 <span aria-hidden="true">→</span></a>
+        </nav>
+    </div>
     <noscript><p>搜索需要启用 JavaScript，也可以前往<a class="back-link" href="{{ site.baseurl }}/archive/">文章归档</a>查找。</p></noscript>
 </section>

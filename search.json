@@ -3,10 +3,13 @@ layout: null
 ---
 [
   {% for post in site.posts %}
+    {% assign selection = site.data.reading.featured | where: 'url', post.url | first %}
     {
       "title"    : {{ post.title | jsonify }},
       "subtitle" : {{ post.subtitle | default: '' | jsonify }},
       "tags"     : {{ post.tags | join: ', ' | jsonify }},
+      "summary"  : {{ selection.summary | default: post.description | default: post.subtitle | default: post.excerpt | strip_html | normalize_whitespace | truncate: 180 | jsonify }},
+      "content"  : {{ post.content | strip_html | normalize_whitespace | jsonify }},
       "url"      : {{ post.url | prepend: site.baseurl | jsonify }},
       "date"     : {{ post.date | date_to_xmlschema | jsonify }}
     } {% unless forloop.last %},{% endunless %}

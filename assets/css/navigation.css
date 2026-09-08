@@ -10,13 +10,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 28px;
   width: calc(100% - 64px);
-  max-width: 1080px;
+  max-width: var(--site-width);
   min-height: 72px;
   padding: 0;
   margin: 0 auto;
 }
 .site-brand {
+  margin-right: auto;
   color: var(--ink);
   font-family: var(--serif);
   font-size: 25px;
@@ -35,7 +37,8 @@
   margin: 0;
   padding: 0;
 }
-.site-nav-links a {
+.site-nav-links a,
+.site-search-link {
   display: inline-flex;
   align-items: center;
   gap: 7px;
@@ -51,12 +54,14 @@
   cursor: pointer;
 }
 .site-nav-links [aria-current="page"],
-.site-nav-links [aria-current="location"] {
+.site-nav-links [aria-current="location"],
+.site-search-link[aria-current="page"] {
   color: var(--accent);
   font-weight: 600;
   border-bottom-color: var(--accent);
 }
-.site-nav-links a:hover {
+.site-nav-links a:hover,
+.site-search-link:hover {
   color: var(--accent);
 }
 .site-nav-toggle {
@@ -170,7 +175,7 @@
   font-family: var(--sans);
 }
 .site-footer .site-footer-inner {
-  max-width: 1080px;
+  max-width: var(--site-width);
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
@@ -204,12 +209,14 @@
   .site-nav-inner {
     flex-wrap: wrap;
     min-height: 64px;
+    gap: 0 20px;
   }
   .site-nav-toggle {
     display: inline-flex;
   }
   .site-nav-links {
     flex-basis: 100%;
+    order: 4;
     justify-content: space-between;
     gap: 16px;
     padding: 4px 0 12px;
@@ -230,4 +237,18 @@
   .site-nav-inner {
     width: calc(100% - 40px);
   }
+}
+
+.search-discovery { margin: 28px 0 0; color: var(--muted); font-size: .875rem; }
+.search-discovery p { margin-bottom: 12px; }
+.search-topics { display: flex; flex-wrap: wrap; gap: 16px 32px; }
+.search-topics a { display: inline-flex; align-items: center; gap: 14px; min-height: 44px; color: var(--ink); }
+.search-topics span { color: var(--accent); }
+.search-result mark { color: inherit; background: #e8efe1; border-radius: 2px; }
+.search-result .search-result-snippet { font-size: .9375rem; line-height: 1.8; }
+@media (max-width: 480px) {
+  .site-nav-inner { width: calc(100% - 40px); }
+  .site-brand { font-size: 23px; }
+  .site-nav-toggle svg { display: none; }
+  .search-result h2 { font-size: 1.1875rem; }
 }

@@ -12,95 +12,128 @@
   }
 
   function initArchive() {
+    var topicList = document.querySelector('.archive-primary-topics');
     var tagList = document.querySelector('.js-tags');
     var result = document.querySelector('.js-result');
-    if (!tagList || !result) return;
+    if (!topicList || !tagList || !result) return;
 
-    var buttons = Array.prototype.slice.call(tagList.querySelectorAll('button.tag-button, button.tag-button--all'));
-    var sections = Array.prototype.map.call(result.querySelectorAll('section'), function(section) {
+    var topicButtons = Array.prototype.slice.call(topicList.querySelectorAll('button[data-topic]'));
+    var tagButtons = Array.prototype.slice.call(tagList.querySelectorAll('button[data-encode]'));
+    var yearLinks = Array.prototype.slice.call(document.querySelectorAll('.archive-year-link'));
+    var sections = Array.prototype.map.call(result.querySelectorAll('section.archive-year'), function(section) {
       return {
         element: section,
+        year: section.getAttribute('data-year'),
         articles: Array.prototype.map.call(section.querySelectorAll('.item[data-tags]'), function(article) {
           return {
             element: article,
+            topic: article.getAttribute('data-topic'),
             tags: (article.getAttribute('data-tags') || '').split(',').map(decodeTag)
           };
         })
       };
     });
     var count = document.getElementById('archive-count');
+    var tagFilter = document.getElementById('archive-tag-filter');
+    var tagSelection = document.getElementById('archive-tag-selection');
+    var defaultTagLabel = tagSelection ? tagSelection.textContent : '';
 
     function buttonTag(button) {
       return decodeTag(button.getAttribute('data-encode'));
     }
 
-    function showTag(requestedTag) {
-      var tag = buttons.some(function(button) {
+    function markSelected(button, selected) {
+      button.setAttribute('aria-pressed', selected ? 'true' : 'false');
+      button.classList.toggle('is-active', selected);
+    }
+
+    function markCurrentYear() {
+      yearLinks.forEach(function(link) {
+        if (!link.hidden && link.getAttribute('href') === window.location.hash) {
+          link.setAttribute('aria-current', 'location');
+        } else {
+          link.removeAttribute('aria-current');
+        }
+      });
+    }
+
+    function showFilter(requestedTopic, requestedTag) {
+      // A tag is a narrower alternative to a topic, never a hidden second filter.
+      // Existing tag URLs take precedence if both query parameters are supplied.
+      var tag = tagButtons.some(function(button) {
         return buttonTag(button) === requestedTag;
       }) ? requestedTag : '';
+      var topic = !tag && topicButtons.some(function(button) {
+        return button.getAttribute('data-topic') === requestedTopic;
+      }) ? requestedTopic : '';
       var articleCount = 0;
+      var visibleYears = {};
 
       sections.forEach(function(section) {
         var visibleCount = 0;
         section.articles.forEach(function(article) {
-          var visible = !tag || article.tags.indexOf(tag) !== -1;
+          var visible = tag ? article.tags.indexOf(tag) !== -1 : !topic || article.topic === topic;
           article.element.hidden = !visible;
-          article.element.classList.remove('d-none');
           if (visible) visibleCount++;
         });
         section.element.hidden = visibleCount === 0;
-        section.element.classList.remove('d-none');
+        visibleYears[section.year] = visibleCount;
         articleCount += visibleCount;
       });
 
-      buttons.forEach(function(button) {
-        var selected = buttonTag(button) === tag;
-        button.setAttribute('aria-pressed', selected ? 'true' : 'false');
-        button.classList.toggle('is-active', selected);
-        button.classList.toggle('focus', selected);
+      var label = '';
+      topicButtons.forEach(function(button) {
+        var selected = !tag && button.getAttribute('data-topic') === topic;
+        markSelected(button, selected);
+        if (selected && topic) label = button.getAttribute('data-label') || topic;
       });
-      result.classList.remove('d-none');
-      if (count) count.textContent = '共 ' + articleCount + ' 篇文章';
+      tagButtons.forEach(function(button) {
+        markSelected(button, !!tag && buttonTag(button) === tag);
+      });
+      yearLinks.forEach(function(link) {
+        var year = link.getAttribute('data-year');
+        var total = visibleYears[year] || 0;
+        link.hidden = total === 0;
+        link.setAttribute('aria-label', year + '年，' + total + '篇文章');
+      });
+      markCurrentYear();
+
+      if (tag) label = '标签「' + tag + '」';
+      if (count) count.textContent = (label ? label + ' · ' : '') + '共 ' + articleCount + ' 篇文章';
+      if (tagSelection) tagSelection.textContent = tag || defaultTagLabel;
+      if (tag && tagFilter) tagFilter.open = true;
     }
 
     function readLocation() {
-      showTag(new URLSearchParams(window.location.search).get('tag') || '');
+      var params = new URLSearchParams(window.location.search);
+      showFilter(params.get('topic') || '', params.get('tag') || '');
     }
 
-    buttons.forEach(function(button) {
+    function selectFilter(kind, value) {
+      var url = new URL(window.location.href);
+      url.searchParams.delete('topic');
+      url.searchParams.delete('tag');
+      if (value) url.searchParams.set(kind, value);
+      url.hash = '';
+      if (url.href !== window.location.href) {
+        window.history.pushState(null, '', url.pathname + url.search);
+      }
+      showFilter(kind === 'topic' ? value : '', kind === 'tag' ? value : '');
+    }
+
+    topicButtons.forEach(function(button) {
       button.addEventListener('click', function() {
-        var tag = buttonTag(button);
-        var url = new URL(window.location.href);
-        if (tag) {
-          url.searchParams.set('tag', tag);
-        } else {
-          url.searchParams.delete('tag');
-        }
-        if (url.href !== window.location.href) {
-          window.history.pushState(null, '', url.pathname + url.search + url.hash);
-        }
-        showTag(tag);
+        selectFilter('topic', button.getAttribute('data-topic'));
       });
     });
-
-    window.addEventListener('popstate', readLocation);
-    readLocation();
-
-    var topicsToggle = document.getElementById('archive-topics-toggle');
-    if (topicsToggle) {
-      function setTopicsExpanded(expanded) {
-        tagList.classList.toggle('is-expanded', expanded);
-        topicsToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-        topicsToggle.textContent = expanded ? '收起主题' : '展开全部主题';
-      }
-
-      topicsToggle.addEventListener('click', function() {
-        setTopicsExpanded(topicsToggle.getAttribute('aria-expanded') !== 'true');
+    tagButtons.forEach(function(button) {
+      button.addEventListener('click', function() {
+        selectFilter('tag', buttonTag(button));
       });
-      setTopicsExpanded(false);
-      tagList.classList.add('is-collapsible');
-      topicsToggle.hidden = false;
-    }
+    });
+    window.addEventListener('popstate', readLocation);
+    window.addEventListener('hashchange', markCurrentYear);
+    readLocation();
   }
 
   if (document.readyState === 'loading') {
