@@ -635,17 +635,31 @@ hr {
   color: var(--muted);
   line-height: 1.7;
 }
-.about-navigation {
+.about-tabs {
   display: flex;
-  flex-wrap: wrap;
   gap: 28px;
-  border-top: 1px solid var(--line);
-  padding-top: 24px;
-  margin: 28px 0 16px;
+  border-bottom: 1px solid var(--line);
+  margin: 28px 0 0;
   font-size: 0.9375rem;
 }
-.about-navigation a {
-  color: var(--accent);
+.about-tabs a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 12px 2px;
+  margin-bottom: -1px;
+  border-bottom: 2px solid transparent;
+  color: var(--muted);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.about-tabs a:hover {
+  color: var(--ink);
+}
+.about-tabs a[aria-current="page"] {
+  color: var(--ink);
+  font-weight: 600;
+  border-bottom-color: var(--ink);
 }
 .page-content {
   margin-top: 36px;

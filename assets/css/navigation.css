@@ -53,7 +53,8 @@
   border: 0;
   cursor: pointer;
 }
-.site-nav-links [aria-current="page"] {
+.site-nav-links [aria-current="page"],
+.site-nav-links [aria-current="location"] {
   color: var(--ink);
   font-weight: 600;
 }

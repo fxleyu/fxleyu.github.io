@@ -2,21 +2,22 @@
 layout: default
 ---
 
+{% assign is_about_page = false %}
+{% if page.url == '/about/' or page.url == '/self-portrayal/' %}{% assign is_about_page = true %}{% endif %}
+
 <article class="reading-layout page-layout">
     <header class="page-heading">
-        <h1>{{ page.title | escape }}</h1>
+        <h1>{% if is_about_page %}关于{% else %}{{ page.title | escape }}{% endif %}</h1>
         {% if page.description %}<p>{{ page.description | escape }}</p>{% endif %}
     </header>
-    {% if page.url == '/about/' %}
+    {% if is_about_page %}
     <div class="about-intro">
         <img src="{{ site.sidebar-avatar | prepend: site.baseurl }}" alt="风雪乐雨的头像" width="72" height="72">
         <div><p class="about-name">风雪乐雨</p><p>{{ site.sidebar-about-description }}</p></div>
     </div>
     <p class="about-quote">{{ site.description | escape }}</p>
-    <nav class="about-navigation" aria-label="个人信息"><span aria-current="page">关于我</span><a href="{{ site.baseurl }}/self-portrayal/">自画像 →</a></nav>
     {% include sns-links.html %}
-    {% elsif page.url == '/self-portrayal/' %}
-    <p class="back-link"><a href="{{ site.baseurl }}/about/">← 关于我</a></p>
+    {% include about-tabs.html %}
     {% endif %}
     <div class="post-container page-content">{{ content }}</div>
 </article>
