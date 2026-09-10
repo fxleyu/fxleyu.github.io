@@ -6,6 +6,9 @@ keyword: "fxleyu, 风雪乐雨, 博客, 个人网站, Java, 后端, 分布式, �
 url: "https://fxleyu.github.io"              # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
 
+# Baidu Analytics for the production site; leave empty to disable.
+baidu_analytics: "ed2e207b009aeafb1572e1d1cb04903f"
+
 # Publish posts or collection documents with a future date.
 future: true
 

@@ -44,14 +44,17 @@
 
     <link rel="stylesheet" href="{{ '/assets/dist/site.min.css' | prepend: site.baseurl }}">
 
+    {% if jekyll.environment == 'production' and site.baidu_analytics != '' and site.baidu_analytics %}
     <!-- Baidu Analytics -->
     <script>
     var _hmt = _hmt || [];
     (function() {
+      if (window.location.hostname !== new URL({{ site.url | jsonify }}).hostname) return;
       var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?2a53a4d9ee53a597c303cd449e0c7e3e";
+      hm.src = "https://hm.baidu.com/hm.js?{{ site.baidu_analytics }}";
       var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
     })();
     </script>
+    {% endif %}
 </head>

@@ -136,6 +136,19 @@ npm run check
 
 npm 12 使用 `allowScripts` 管理依赖安装脚本。本项目仅允许锁定版本的 esbuild 安装脚本；升级 esbuild 时同步更新该版本条目。
 
+## 访问统计
+
+访问数据在[百度统计](https://tongji.baidu.com/)查看。登录后选择「风雪乐雨的博客 / fxleyu.github.io」，站点编号为 `23517469`。该站点于 2026-09-10 重新创建，从新代码上线后开始累计，旧统计 ID 的历史数据不会自动迁入。
+
+- 「网站概况 / 趋势分析」：浏览量（PV）、访客数（UV）及变化趋势。
+- 「实时访客」：检查近期访问是否进入统计。
+- 「全部来源」：搜索引擎、外部链接及直接访问。
+- 「受访页面」：各篇文章的访问情况。
+
+跟踪 ID 配置在 `_config.yml` 的 `baidu_analytics`，设置为空字符串可关闭统计。仅 `JEKYLL_ENV=production` 构建会输出统计代码，且浏览器域名必须与 `site.url` 一致；本地开发和本地预览不加载统计脚本。代码通过公共页头加载，每页一次。
+
+部署后可在「使用设置 → 代码安装检查」检查首页。新代码的报告可能需要约 20 分钟更新，以百度统计后台提示为准。
+
 ## GitHub Pages 部署
 
 工作流位于 [`.github/workflows/pages.yml`](.github/workflows/pages.yml)。仓库 **Settings → Pages → Build and deployment → Source** 应设为 **GitHub Actions**。
