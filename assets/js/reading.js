@@ -227,6 +227,9 @@ function setupFragmentReveal(container) {
 
 function setupCatalog(container, headings) {
     const catalogs = document.querySelectorAll('.catalog-body');
+    const hasOutline = catalogs.length > 0 && headings.length > 0;
+    container.closest('.apple-reader')?.classList.toggle('reader-no-outline', !hasOutline);
+    container.closest('.apple-reading-grid')?.classList.toggle('without-outline', !hasOutline);
     if (!catalogs.length) return;
     const links = [];
     catalogs.forEach(catalog => {

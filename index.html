@@ -3,54 +3,73 @@ layout: default
 description: "Java、系统设计、读书笔记与生活记录。风雪乐雨的个人文集。"
 ---
 
-<div class="home-layout reading-layout">
-    <header class="home-heading">
-        <div class="home-identity">
-            <div><p class="eyebrow">{{ site.author_bio }}</p><h1>{% if paginator.page == 1 %}风雪乐雨{% else %}往期文章{% endif %}</h1></div>
-            <a class="home-avatar" href="{{ site.baseurl }}/about/"><img src="{{ site.author_avatar | prepend: site.baseurl }}" width="64" height="64" alt="关于风雪乐雨"></a>
-        </div>
-        <p class="home-description">记录技术，阅读世界，也记录生活中的自己。</p>
+{% if paginator.page == 1 %}
+<div class="apple-home">
+    <header class="apple-intro">
+        <div><p class="apple-kicker">{{ site.author_bio | upcase | escape }}</p><h1>风雪乐雨<span class="apple-title-dot">.</span></h1><p class="apple-description">记录技术，阅读世界，<br class="mobile-break">也记录生活中的自己。</p></div>
+        <a class="apple-author" href="{{ site.baseurl }}/about/" aria-label="关于风雪乐雨"><img src="{{ site.author_avatar | prepend: site.baseurl }}" alt="风雪乐雨的头像" width="88" height="88"></a>
     </header>
-
-    <nav class="reading-paths" aria-label="按主题阅读">
-        {% for path in site.data.reading.topics %}
-        <a href="{{ site.baseurl }}/archive/?topic={{ path.id }}"><span>{{ path.label }} <span aria-hidden="true">→</span></span><small>{{ path.description }}</small></a>
-        {% endfor %}
-    </nav>
-
-    {% if paginator.page == 1 %}
-    <section class="featured-reading" aria-labelledby="featured-heading">
-        <div class="feed-heading"><h2 id="featured-heading">从这几篇开始</h2><span>精选阅读</span></div>
-        <div class="featured-grid">
-            {% for selection in site.data.reading.featured %}{% assign selected_post = site.posts | where: 'url', selection.url | first %}
+    <section aria-labelledby="featured-heading">
+        <div class="apple-section-title"><h2 id="featured-heading">精选阅读</h2><span>从这几篇开始</span></div>
+        <div class="apple-featured">
+            {% for selection in site.data.reading.featured %}
+            {% assign selected_post = site.posts | where: 'url', selection.url | first %}
             {% if selected_post %}
-            <article class="featured-post">
-                <p class="featured-topic"><span class="featured-number" aria-hidden="true">0{{ forloop.index }}</span>{{ selection.topic }}</p>
-                <h3><a href="{{ selected_post.url | prepend: site.baseurl }}">{{ selected_post.title | escape }}</a></h3>
-                <p class="featured-summary">{{ selection.summary | escape }}</p>
-            </article>
-            {% endif %}{% endfor %}
+            <a class="apple-story apple-story-{{ forloop.index0 }}" href="{{ selected_post.url | prepend: site.baseurl }}">
+                <div class="apple-story-category">{{ selection.topic | escape }}</div>
+                <h3>{{ selection.display_title | default: selected_post.title | escape }}{% if selection.display_emphasis %}<span class="apple-aqs">{{ selection.display_emphasis | escape }}</span>{% endif %}</h3>
+                <p>{{ selection.summary | escape }}</p>
+                <div class="apple-story-bottom"><time datetime="{{ selected_post.date | date_to_xmlschema }}">{{ selected_post.date | date: '%Y.%m.%d' }}</time><span class="apple-arrow" aria-hidden="true">↗</span></div>
+            </a>
+            {% endif %}
+            {% endfor %}
         </div>
     </section>
-    {% endif %}
-
-    <section class="recent-reading" aria-labelledby="recent-heading">
-        <div class="feed-heading"><h2 id="recent-heading">{% if paginator.page == 1 %}最近发布{% else %}按时间浏览{% endif %}</h2><a href="{{ site.baseurl }}/archive/">全部 {{ site.posts.size }} 篇 <span aria-hidden="true">→</span></a></div>
-        {% if paginator.page == 1 %}{% assign recent_limit = 8 %}{% else %}{% assign recent_limit = site.paginate %}{% endif %}
-        {% for post in paginator.posts limit: recent_limit %}
-        <article class="earlier-post">
-            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%Y.%m.%d' }}</time>
+    <div class="apple-lower">
+        <section class="apple-recent" aria-labelledby="recent-heading">
+            <div class="apple-section-title"><h2 id="recent-heading">按时间阅读</h2><a href="{{ site.baseurl }}/archive/">全部 {{ site.posts.size }} 篇 <span aria-hidden="true">›</span></a></div>
+            {% for post in paginator.posts limit: 8 %}
+            <article class="apple-recent-row"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%Y.%m.%d' }}</time><h3><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title | escape }}<span aria-hidden="true">↗</span></a></h3></article>
+            {% endfor %}
+        </section>
+        <aside class="apple-topics" aria-label="按主题阅读">
+            <h2>按主题阅读</h2>
+            {% for topic in site.data.reading.topics %}
+            <a href="{{ site.baseurl }}/archive/?topic={{ topic.id }}"><span><strong>{{ topic.label | escape }}</strong><small>{{ topic.description | escape }}</small></span><span aria-hidden="true">›</span></a>
+            {% endfor %}
+            <p class="apple-archive-note">{{ site.posts.last.date | date: '%Y' }}—{{ site.posts.first.date | date: '%Y' }}<br>{{ site.posts.size }} 篇记录，慢慢积累。</p>
+        </aside>
+    </div>
+</div>
+{% else %}
+<div class="apple-collection">
+    <header class="interior-heading"><p class="interior-kicker">继续翻阅</p><h1>往期文章</h1><p class="interior-description">第 {{ paginator.page }} 页 · {{ paginator.posts.size }} 篇较早的记录</p></header>
+    <div class="collection-content">
+        {% for post in paginator.posts %}
+        {% assign current_year = post.date | date: '%Y' %}
+        {% if current_year != previous_year %}
+            {% unless forloop.first %}</div></section>{% endunless %}
+            <section class="collection-year"><h2>{{ current_year }}</h2><div>
+            {% assign previous_year = current_year %}
+        {% endif %}
+        {% capture post_topic %}{% include post-topic.html post=post %}{% endcapture %}
+        {% assign post_topic = post_topic | strip %}
+        {% assign topic = site.data.reading.topics | where: 'id', post_topic | first %}
+        {% assign selection = site.data.reading.featured | where: 'url', post.url | first %}
+        {% assign summary = post.subtitle | default: selection.summary | default: post.description | default: post.excerpt | strip_html | normalize_whitespace | truncate: 180 %}
+        <article class="collection-row">
+            <div class="collection-row-meta"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%Y.%m.%d' }}</time><span>{{ topic.label | escape }}</span></div>
             <h3><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title | escape }}</a></h3>
+            {% if summary != '' %}<p>{{ summary | escape }}</p>{% endif %}
         </article>
+        {% if forloop.last %}</div></section>{% endif %}
         {% endfor %}
-        <div class="reading-more"><a href="{{ site.baseurl }}/archive/">浏览完整归档 <span aria-hidden="true">→</span></a><span>{{ site.posts.last.date | date: '%Y' }}—{{ site.posts.first.date | date: '%Y' }} · {{ site.posts.size }} 篇记录</span></div>
-    </section>
-
-    {% if paginator.page > 1 %}
+    </div>
     <nav class="pagination-nav" aria-label="文章分页">
         {% if paginator.previous_page %}<a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" rel="prev">← 较新的文章</a>{% endif %}
         <span class="page-number">{{ paginator.page }} / {{ paginator.total_pages }}</span>
         {% if paginator.next_page %}<a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}" rel="next">更早的文章 →</a>{% endif %}
     </nav>
-    {% endif %}
+    <a class="interior-back" href="{{ site.baseurl }}/archive/">按主题或年份查找 <span aria-hidden="true">›</span></a>
 </div>
+{% endif %}

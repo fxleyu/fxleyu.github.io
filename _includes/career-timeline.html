@@ -1,0 +1,5 @@
+<ol class="career-timeline">
+    {% for career in page.careers %}
+    <li><span class="career-period">{{ career.period | escape }}</span><div><h3>{{ career.company | escape }}</h3><p>{{ career.team | escape }} · {{ career.role | escape }}</p></div></li>
+    {% endfor %}
+</ol>

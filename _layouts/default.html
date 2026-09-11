@@ -3,7 +3,7 @@
 
 {% include head.html %}
 
-<body class="reading-site layout-{{ page.layout }}" data-heading-anchors="{{ site.heading_anchors }}">
+<body class="reading-site layout-{{ page.layout }}{% if page.url != '/' and page.url != '/index.html' %} apple-interior{% endif %}{% if page.url == '/search/' %} interior-search{% endif %}" data-heading-anchors="{{ site.heading_anchors }}">
 
     <a class="skip-link" href="#main-content">跳到正文</a>
 

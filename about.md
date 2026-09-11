@@ -1,7 +1,26 @@
 ---
 layout: page
 title: 关于
+careers:
+  - period: "2023.07 - xxxx.xx"
+    company: 禾观科技
+    team: 增长团队
+    role: 软件开发工程师
+  - period: "2019.07 - 2023.07"
+    company: 阿里考拉
+    team: 前台产品研发部
+    role: 软件开发工程师
+  - period: "2018.02 - 2019.06"
+    company: 京东商城
+    team: 前台产品研发部
+    role: 软件开发工程师
+  - period: "2015.07 - 2018.01"
+    company: 中兴通讯
+    team: 终端手机事业部
+    role: 平台开发工程师
 ---
+
+<div class="profile-introduction" markdown="1">
 
 软件开发工程师，关注 Java、分布式系统与电商业务。这里也记录阅读、生活与个人思考。
 
@@ -9,6 +28,10 @@ title: 关于
 >    1. 善于总结
 >    2. 对所做事情有自己的思考
 >    3. 在对技术进行驱动的同时，考虑业务（业务领域 业务边界）
+
+</div>
+
+<section class="profile-section" markdown="1">
 
 <h2 id="核心竞争力">核心竞争力</h2>
 
@@ -21,6 +44,10 @@ title: 关于
 词汇库
 接口设计能力
 
+</section>
+
+<section class="profile-section" markdown="1">
+
 <h2 id="技能">技能</h2>
 
 - 熟悉 Java, Java 并发
@@ -31,21 +58,27 @@ title: 关于
 - ZooKeeper服务
 - 技术栈偏向于分布式，缺少永久数据库开发经验
 
+</section>
+
+<section class="profile-section" markdown="1">
 
 <h2 id="职业经历">职业经历</h2>
 
-时间  | 公司 | 部门 | 职位
----|--|---|---
-2023.07 - xxxx.xx  | 禾观科技 | 增长团队 | 软件开发工程师
-2019.07 - 2023.07  | 阿里考拉 | 前台产品研发部 | 软件开发工程师
-2018.02 - 2019.06  | 京东商城 | 前台产品研发部 | 软件开发工程师
-2015.07 - 2018.01  | 中兴通讯 | 终端手机事业部 | 平台开发工程师
+{% include career-timeline.html %}
+
+</section>
+
+<section class="profile-section" markdown="1">
 
 <h2 id="优势">优势</h2>
 
 - 问题分析解决能力
 - 代码阅读能力
 - 快速学习能力
+
+</section>
+
+<section class="profile-section" markdown="1">
 
 <h2 id="职业规划">职业规划</h2>
 
@@ -156,3 +189,5 @@ Android 手机平台应用维护。依照时间顺序依次处理过 Email（SMT
 2024 学习 togaf 智能家居
 
 </details>
+
+</section>

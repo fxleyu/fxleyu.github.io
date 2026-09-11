@@ -4,20 +4,23 @@ layout: default
 
 {% assign is_about_page = false %}
 {% if page.url == '/about/' or page.url == '/self-portrayal/' %}{% assign is_about_page = true %}{% endif %}
-
-<article class="reading-layout page-layout{% if page.url == '/self-portrayal/' %} personal-writing{% endif %}">
-    <header class="page-heading">
-        {% if is_about_page %}<p class="eyebrow">ABOUT / FXLEYU</p>{% endif %}
-        <h1>{% if is_about_page %}关于{% else %}{{ page.title | escape }}{% endif %}</h1>
-        {% if page.description %}<p>{{ page.description | escape }}</p>{% endif %}
+{% if is_about_page %}
+<article class="apple-profile{% if page.url == '/self-portrayal/' %} apple-portrait personal-writing{% endif %}">
+    <header class="apple-profile-header">
+        <div class="apple-profile-identity">
+            <img src="{{ site.author_avatar | prepend: site.baseurl }}" alt="风雪乐雨的头像" width="106" height="106">
+            <div><p class="interior-kicker">关于</p><h1>风雪乐雨</h1><p class="profile-subtitle">{{ site.author_bio | escape }}</p></div>
+        </div>
+        {% include about-tabs.html %}
     </header>
-    {% if is_about_page %}
-    <div class="about-intro">
-        <img src="{{ site.author_avatar | prepend: site.baseurl }}" alt="风雪乐雨的头像" width="64" height="64">
-        <div><p class="about-name">风雪乐雨</p><p>{{ site.author_bio }}</p></div>
+    <div class="apple-profile-grid">
+        <aside class="apple-profile-side"><div class="profile-contact"><p>在这里找到我</p>{% include sns-links.html %}</div></aside>
+        <div class="post-container apple-profile-content">{% if page.url == '/self-portrayal/' %}<p class="about-quote">{{ site.description | escape }}</p>{% endif %}{{ content }}</div>
     </div>
-    {% include sns-links.html %}
-    {% include about-tabs.html %}
-    {% endif %}
-    <div class="post-container page-content">{% if page.url == '/self-portrayal/' %}<p class="about-quote">{{ site.description | escape }}</p>{% endif %}{{ content }}</div>
 </article>
+{% else %}
+<article class="reading-layout page-layout">
+    <header class="interior-heading"><h1>{{ page.title | escape }}</h1>{% if page.description %}<p class="interior-description">{{ page.description | escape }}</p>{% endif %}</header>
+    <div class="post-container page-content">{{ content }}</div>
+</article>
+{% endif %}

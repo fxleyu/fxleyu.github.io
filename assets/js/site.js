@@ -56,6 +56,9 @@ import { setupReading } from './reading.js';
         setupNavigation();
         setupSearch();
         setupReading();
+        document.querySelectorAll('[data-retry]').forEach(button => {
+            button.addEventListener('click', () => window.location.reload());
+        });
     }
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
     else init();

@@ -22,10 +22,12 @@ topics:
 featured:
   - url: /2019/05/12/AQS-and-synchronization-aids/
     topic: 技术
+    display_title: 初探并发组件的基石
+    display_emphasis: AQS
     summary: 从等待队列与状态变量出发，理解 AQS 的数据结构，以及 CountDownLatch 如何借助它协调线程。
   - url: /2020/05/16/learn-clean-architecture/
     topic: 阅读
-    summary: 数据库、Web 与框架应该处在什么位置？围绕实现细节与业务边界，重读《架构整洁之道》。
+    summary: 数据库、Web 与框架应该处在什么位置？重读架构与业务的边界。
   - url: /2019/06/30/the-1st-half-year-summary-of-2019/
     topic: 生活
-    summary: 看过的电影、读过的书，以及工作中的一些片段。用一份清单，留下半年的生活轨迹。
+    summary: 看过的电影、读过的书，以及工作中的一些片段。

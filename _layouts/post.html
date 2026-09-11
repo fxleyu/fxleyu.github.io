@@ -3,42 +3,47 @@ layout: default
 ---
 
 {% capture article_topic %}{% include post-topic.html post=page %}{% endcapture %}
-<div class="reading-layout reading-{{ article_topic | strip }}">
-    <article class="reading-article">
-        <header class="article-heading">
-            <a class="back-link" href="{{ site.baseurl }}/">← 文章列表</a>
-            <h1>{{ page.title | escape }}</h1>
-            {% if page.subtitle and page.subtitle != '' %}<p class="article-subtitle">{{ page.subtitle | escape }}</p>{% endif %}
-            <div class="article-meta-row"><div class="article-byline">
-                <a href="{{ site.baseurl }}/about/" class="byline-avatar"><img src="{{ site.author_avatar | prepend: site.baseurl }}" alt="作者头像" width="40" height="40"></a>
-                <div><a href="{{ site.baseurl }}/about/">{{ page.author | default: site.title | escape }}</a><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%Y年%-m月%-d日' }}</time></div>
-            </div>
-            {% if page.tags.size > 0 %}<div class="article-tags">{% for tag in page.tags %}<a class="topic-tag" href="{{ site.baseurl }}/archive/?tag={{ tag | url_encode }}">{{ tag | escape }}</a>{% endfor %}</div>{% endif %}
-            </div>
-        </header>
+{% assign article_topic = article_topic | strip %}
+{% assign topic = site.data.reading.topics | where: 'id', article_topic | first %}
+<article class="apple-reader reading-{{ article_topic }} reader-no-outline">
+    <nav class="interior-breadcrumb" aria-label="文章位置"><a href="{{ site.baseurl }}/">文章</a><span aria-hidden="true">/</span><a href="{{ site.baseurl }}/archive/?topic={{ article_topic }}">{{ topic.label | escape }}</a></nav>
+    <header class="article-heading apple-document-head">
+        <p class="interior-kicker">{{ topic.label | escape }} · 阅读记录</p>
+        <h1>{{ page.title | escape }}</h1>
+        {% if page.subtitle and page.subtitle != '' %}<p class="article-subtitle">{{ page.subtitle | escape }}</p>{% endif %}
+        <div class="article-meta-row"><div class="article-byline">
+            <a href="{{ site.baseurl }}/about/" class="byline-avatar"><img src="{{ site.author_avatar | prepend: site.baseurl }}" alt="作者头像" width="40" height="40"></a>
+            <div><a href="{{ site.baseurl }}/about/">{{ page.author | default: site.title | escape }}</a><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%Y年%-m月%-d日' }}</time></div>
+        </div>
+        {% if page.tags.size > 0 %}<div class="article-tags">{% for tag in page.tags %}<a class="topic-tag" href="{{ site.baseurl }}/archive/?tag={{ tag | url_encode }}">{{ tag | escape }}</a>{% endfor %}</div>{% endif %}
+        </div>
+    </header>
+    <div class="apple-reading-grid without-outline">
         {% unless page.no-catalog %}
-        <aside class="article-catalog" aria-label="文章目录">
-            <details class="side-catalog">
-                <summary>文章目录</summary>
-                <ul class="catalog-body"></ul>
-            </details>
+        <aside class="article-catalog apple-outline" aria-label="文章目录" hidden>
+            <details class="side-catalog"><summary>文章目录</summary><ul class="catalog-body"></ul></details>
         </aside>
         {% endunless %}
-        <div class="post-container">{% include post-body.html post=page html=content %}</div>
-        {% include related-posts.html %}
-        <nav class="post-pagination" aria-label="相邻文章">
-            {% if page.previous.url %}<a href="{{ page.previous.url | prepend: site.baseurl }}" rel="prev"><span>← 上一篇</span><strong>{{ page.previous.title | escape }}</strong></a>{% endif %}
-            {% if page.next.url %}<a href="{{ page.next.url | prepend: site.baseurl }}" rel="next"><span>下一篇 →</span><strong>{{ page.next.title | escape }}</strong></a>{% endif %}
-        </nav>
-        {% if site.comments.enabled %}
-        <section class="article-comments" aria-label="文章评论">
-            <script src="https://utteranc.es/client.js"
-                    repo="{{ site.comments.repository | escape }}"
-                    issue-term="{{ site.comments.issue_term | escape }}"
-                    theme="github-light"
-                    crossorigin="anonymous"
-                    async></script>
-        </section>
-        {% endif %}
-    </article>
-</div>
+        <div class="apple-reading-flow">
+            <div class="post-container">{% include post-body.html post=page html=content %}</div>
+            <div class="apple-reading-end">
+                {% include related-posts.html %}
+                <nav class="post-pagination" aria-label="相邻文章">
+                    {% if page.previous.url %}<a href="{{ page.previous.url | prepend: site.baseurl }}" rel="prev"><span>← 上一篇</span><strong>{{ page.previous.title | escape }}</strong></a>{% endif %}
+                    {% if page.next.url %}<a href="{{ page.next.url | prepend: site.baseurl }}" rel="next"><span>下一篇 →</span><strong>{{ page.next.title | escape }}</strong></a>{% endif %}
+                </nav>
+                <a class="interior-back" href="{{ site.baseurl }}/archive/">浏览全部文章 <span aria-hidden="true">›</span></a>
+            </div>
+            {% if site.comments.enabled %}
+            <section class="article-comments" aria-label="文章评论">
+                <script src="https://utteranc.es/client.js"
+                        repo="{{ site.comments.repository | escape }}"
+                        issue-term="{{ site.comments.issue_term | escape }}"
+                        theme="github-light"
+                        crossorigin="anonymous"
+                        async></script>
+            </section>
+            {% endif %}
+        </div>
+    </div>
+</article>
